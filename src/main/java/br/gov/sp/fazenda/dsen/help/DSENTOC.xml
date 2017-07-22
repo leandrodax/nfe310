@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE toc
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 2.0//EN"
+           "http://java.sun.com/products/javahelp/toc_2_0.dtd">
+
+<toc version="2.0">
+
+	<tocitem text="Software Emissor NF-e" target="EmissorNFe-inicio" />
+	
+	<tocitem text="Iniciando" target="Iniciando" />
+	
+	<tocitem text="Menus" target="Menu" />
+	
+	<tocitem text="Emitente" target="Emitente" >
+		<tocitem text="Iniciando um emitente" target="Emitente-Iniciando_um_Emitente" />
+		<tocitem text="Saída do emitente atual e seleção de outro emitente" target="Emitente-Saindo_e_selecionando_emitente" />
+		<tocitem text="Inclusão de emitente" target="Emitente-Inclusao" />
+		<tocitem text="Detalhamento e Edição de emitente" target="Emitente-Edicao" />
+		<tocitem text="Exclusão de emitente" target="Emitente-Exclusao" />
+		<tocitem text="Pesquisa de emitente" target="Emitente-Pesquisa" />
+		<tocitem text="Campos do emitente" target="Emitente-Campos" />
+	</tocitem>
+	
+	<tocitem text="Nota Fiscal eletrônica" target="" >
+		<tocitem text="Conceitos gerais" target="Conceitos_gerais" >
+			<tocitem text="Tipos" target="NF-e-Conceito-Tipos" />
+			<tocitem text="Situações" target="NF-e-Conceito-Situacoes" />
+		</tocitem>
+		<tocitem text="Seqüência para emissão de NF-e" target="NF-e-Sequencia" />
+		<tocitem text="Gerenciamento de NF-e" target="NF-e-Acao-Gerenciamento_NF-e" />
+		<tocitem text="Geração de nova NF-e" target="NF-e-Acao-Gerando_NF-e" />
+		<tocitem text="Edição de NF-e" target="NF-e-Acao-Editando_NF-e" />
+		<tocitem text="Validação de NF-e" target="NF-e-Acao-Validando_NF-e" />
+		<tocitem text="Assinatura de NF-e" target="NF-e-Acao-Assinando_NF-e" />
+		<tocitem text="Transmissão de NF-e" target="NF-e-Acao-Transmitindo_NF-e" />
+		<tocitem text="Impressão de DANF-e" target="NF-e-Acao-Imprimindo_DANF-e" />
+		<tocitem text="Cancelamento de NF-e" target="NF-e-Acao-Cancelando_NF-e" />
+		<tocitem text="Exclusão de NF-e" target="NF-e-Acao-Excluindo_NF-e" />
+		<tocitem text="Consulta situação na SEFAZ" target="NF-e-Acao-Consultando_na_SEFAZ" />
+		<tocitem text="Busca dos retornos e pendências na SEFAZ" target="NF-e-Acao-Busca_de_retornos" />
+		<tocitem text="Histórico de retornos da SEFAZ" target="NF-e-Acao-Historico" />
+		<tocitem text="Outras funções" target="NF-e-Acao-Outras_funcoes" >
+			<tocitem text="Consulta de NF-e não cadastrada" target="NF-e-Acao-Consulta_NF-e_nao_cadastrada" />
+		  	<tocitem text="Cancelamento de NF-e não cadastrada" target="NF-e-Acao-Cancelar_NF-e_nao_cadastrada" />
+		</tocitem>  
+		<tocitem text="Campos da NF-e" target="NF-e-Campos" >
+			<tocitem text="Dados da NF-e" target="NF-e-Campos-Aba_Dados" />
+			<tocitem text="Emitente" target="NF-e-Campos-Aba_Emitente" />
+			<tocitem text="Destinatário/Remetente" target="NF-e-Campos-Aba_Destinatario" />
+			<tocitem text="Produtos e Serviços" target="NF-e-Campos-Aba_Produto" >
+				<tocitem text="Dados" target="NF-e-Campos-Aba_Produto-Dados" />
+				<tocitem text="Tributos" target="NF-e-Campos-Aba_Produto-Tributos" />
+				<tocitem text="Informações Adicionais" target="NF-e-Campos-Aba_Produto-Inf_Adicionais" />
+				<tocitem text="Declaração de Importação" target="NF-e-Campos-Aba_Produto-DI" />
+				<tocitem text="Veículo novo" target="NF-e-Campos-Aba_Produto-Veiculo_novo" />
+				<tocitem text="Medicamento" target="NF-e-Campos-Aba_Produto-Medicamento" />
+				<tocitem text="Armamento" target="NF-e-Campos-Aba_Produto-Armamento" />
+				<tocitem text="Combustível" target="NF-e-Campos-Aba_Produto-Combustivel" />
+			</tocitem>
+			<tocitem text="Totais" target="NF-e-Campos-Aba_Totais" />
+			<tocitem text="Transporte" target="NF-e-Campos-Aba_Transporte" />
+			<tocitem text="Cobrança" target="NF-e-Campos-Aba_Cobranca" />
+			<tocitem text="Informações Adicionais" target="NF-e-Campos-Aba_Informacoes_Adicionais" />
+			<tocitem text="Exportação e Compras" target="NF-e-Campos-Aba_Exportacao_e_Compras" />
+			<tocitem text="Cana" target="NF-e-Campos-Aba_Cana" />
+			<tocitem text="Certificado Digital" target="NF-e-Campos-Aba_Certificado_Digital" />
+		</tocitem>
+	</tocitem>
+	
+	<tocitem text="Inutilização de faixas de numeração" target="Inutilizacao" />
+	
+	<tocitem text="Aviso" target="Aviso" />
+	
+	<tocitem text="Cadastros" target="" >
+		<tocitem text="Cliente" target="Cadastro-Cliente" >
+			<tocitem text="Inclusão de Cliente" target="Cadastro-Cliente-Inclusao" />
+		    <tocitem text="Detalhamento e Edição de Cliente" target="Cadastro-Cliente-Edicao" />
+		    <tocitem text="Exclusão de Cliente" target="Cadastro-Cliente-Exclusao" />
+			<tocitem text="Pesquisa de Cliente" target="Cadastro-Cliente-Pesquisa" />
+		    <tocitem text="Campos do Cliente" target="Cadastro-Cliente-Campos" />
+		</tocitem>  
+	  	<tocitem text="Produto" target="Cadastro-Produto" >
+			<tocitem text="Inclusão de Produto" target="Cadastro-Produto-Inclusao" />
+		    <tocitem text="Detalhamento e Edição de Produto" target="Cadastro-Produto-Edicao" />
+		    <tocitem text="Exclusão de Produto" target="Cadastro-Produto-Exclusao" />
+			<tocitem text="Pesquisa de Produto" target="Cadastro-Produto-Pesquisa" />
+		    <tocitem text="Campos do Produto" target="Cadastro-Produto-Campos" />
+		</tocitem>  
+	  	<tocitem text="Transportadora" target="Cadastro-Transportadora" >
+			<tocitem text="Inclusão de Transportadora" target="Cadastro-Transportadora-Inclusao" />
+		    <tocitem text="Detalhamento e Edição de Transportadora" target="Cadastro-Transportadora-Edicao" />
+		    <tocitem text="Exclusão de Transportadora" target="Cadastro-Transportadora-Exclusao" />
+			<tocitem text="Pesquisa de Transportadora" target="Cadastro-Transportadora-Pesquisa" />
+		    <tocitem text="Campos do Transportadora" target="Cadastro-Transportadora-Campos" />
+	  	</tocitem>
+	</tocitem>
+	
+	<tocitem text="Importação de dados" target="Importacao" />
+	
+	<tocitem text="Exportação de dados" target="Exportacao" />
+	
+	<tocitem text="Relatório Gerencial" target="Relatorio_gerencial" />
+	
+	<tocitem text="Parâmetros de configuração do Software" target="Parametros_do_Sistema" />
+	
+	<tocitem text="Backup e Restauração dos dados" target="Backup_e_Restore" />
+	
+	<tocitem text="Atualizações Automáticas" target="Atualizacao_automatica" />
+   
+</toc>

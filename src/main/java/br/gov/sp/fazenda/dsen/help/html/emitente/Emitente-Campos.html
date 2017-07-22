@@ -1,0 +1,973 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+
+  
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+
+
+  
+  
+  <link href="../css/internet.css" type="text/css" rel="stylesheet">
+
+
+  
+  
+  
+  <title>Emitente - Preenchimento de Campos</title>
+</head>
+
+
+<body>
+
+
+
+<span class="titulo_sistema">Software Emissor NF-e</span><br>
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+<span class="titulo">Preenchimento de Campos para o emitente</span><br>
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+
+
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="7" cellspacing="0">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+
+
+      <th style="background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+
+
+
+      <th style="background-color: rgb(237, 239, 236);">Obrigat&oacute;rio</th>
+
+
+
+
+
+      <th style="background-color: rgb(237, 239, 236);">Tipo de&nbsp;dado</th>
+
+
+
+
+
+      <th style="background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+
+
+
+      <th style="background-color: rgb(237, 239, 236); width: 40%;">Observa&ccedil;&otilde;es</th>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">CNPJ</span></td>
+
+
+
+
+
+      <td style="height: 40px; text-align: center;">Sim</td>
+
+
+
+
+
+      <td style="height: 40px;">Num&eacute;rico</td>
+
+
+
+
+
+      <td style="height: 40px;">14
+d&iacute;gitos com
+formato: <br>
+
+
+
+
+
+      DD.DDD.DDD/DDDD-DD</td>
+
+
+
+
+
+      <td style="height: 40px;">N&atilde;o
+&eacute; poss&iacute;vel a
+inser&ccedil;&atilde;o de 2 CNPJs;<br>
+
+
+
+
+
+N&atilde;o &eacute; poss&iacute;vel a
+edi&ccedil;&atilde;o do CNPJ do Emitente uma vez criado;
+
+       </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td><span style="font-weight: bold;">Raz&atilde;o Social</span></td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+
+      <td>1 a 60 caracteres</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;"><span style="font-weight: bold;">Nome Fantasia</span></td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+
+      <td>1 a 60 caracteres</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;">Inscri&ccedil;&atilde;o
+Estadual</td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+
+      <td>At&eacute; 14
+d&iacute;gitos da IE</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;">Inscri&ccedil;&atilde;o
+Municipal</td>
+
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+
+      <td>At&eacute; 15
+d&iacute;gitos da IM</td>
+
+
+
+
+
+      <td>Este campo deve ser
+informado, quando ocorrer a emiss&atilde;o de NF-e conjugada, com
+presta&ccedil;&atilde;o de servi&ccedil;os sujeitos ao
+ISSQN e fornecimento de pe&ccedil;as sujeitos ao ICMS.<br>
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;">CNAE</td>
+
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+
+      <td>7 d&iacute;gitos do
+CNAE</td>
+
+
+
+
+
+      <td>Deve ser informado quando
+o campo Inscri&ccedil;&atilde;o Municipal for informado.<br>
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td><span style="font-weight: bold;">Inscri&ccedil;&atilde;o 
+Estadual do Substituto Tribut&aacute;rio</span></td>
+
+
+
+      <td style="text-align: center;">N&atilde;o<small></small></td>
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+      <td>At&eacute; 14
+d&iacute;gitos da IE</td>
+
+
+
+      <td><small>Deve ser informado a IE do ST da UF de destino da mercadoria, quando houver a 
+reten&ccedil;&atilde;o do ICMS ST para a UF de destino.</small></td>
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+<span style="font-weight: bold;"><a name="Endereco"></a>Endere&ccedil;o<br>
+
+
+
+
+
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span><br>
+
+
+
+
+
+<span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="7" cellspacing="0">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Obrigat&oacute;rio</th>
+
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Tipo de&nbsp;dado</th>
+
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 40%;">Observa&ccedil;&otilde;es</th>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">Logradouro</span></td>
+
+
+
+
+
+      <td style="height: 40px; text-align: center;">Sim</td>
+
+
+
+
+
+      <td style="height: 40px;">Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+
+      <td style="height: 40px;">1
+a 60 caracteres</td>
+
+
+
+
+
+      <td style="height: 40px;">-<br>
+
+
+
+
+
+       </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td><span style="font-weight: bold;">N&uacute;mero</span></td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+
+      <td>2&nbsp;a 60 caracteres</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;"><span style="font-weight: bold;">Complemento</span></td>
+
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+
+      <td>2&nbsp;a 60 caracteres</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;">Bairro</td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+
+      <td>1 a 60 caracteres</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;">CEP</td>
+
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+
+      <td>8&nbsp;d&iacute;gitos
+do CEP em formato:<br>
+
+
+
+
+
+DDDDD-DDD</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;">Pa&iacute;s</td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+      <td>Fixo Brasil</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="font-weight: bold;">UF</td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+      <td>Escolher a UF
+atrav&eacute;s da lista</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td><span style="font-weight: bold;">Munic&iacute;pio</span></td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+      <td>Ap&oacute;s a escolha
+da UF, escolher o Munic&iacute;pio do cliente na lista</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td><span style="font-weight: bold;">Fone</span></td>
+
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+
+      <td>10 d&iacute;gitos:<br>
+
+
+
+
+
+2 d&iacute;gitos para DDD<br>
+
+
+
+
+
+8 d&iacute;gitos para o telefone</td>
+
+
+
+
+
+      <td>-</td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+<br>
+
+
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="Logotipo"></a>Logotipo</span><br>
+
+
+
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span>O Logotipo do Emitente &eacute; utilizado na impress&atilde;o dos DANF-e's.<br>
+
+
+
+N&atilde;o &eacute; poss&iacute;vel exportar o logotipo do emitente atrav&eacute;s das 
+funcionalidades de exporta&ccedil;&atilde;o TXT ou XML.<br>
+
+
+
+Para carregar uma nova imagem de Logotipo, clicar em <span style="font-weight: bold;">Selecionar Imagem</span> e escolher o arquivo de imagem.<br>
+
+
+
+<br>
+
+<br>
+<br>
+
+<br>
+
+<br>
+
+<br>
+<br>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+package br.gov.sp.fazenda.dsen.model.business.util;
+
+import java.security.PrivateKey;
+import java.security.cert.X509Certificate;
+import java.text.MessageFormat;
+
+import br.gov.sp.fazenda.dsen.common.enumeration.AppContextEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.GrupoNotificacaoEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.ServicoSefazEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.WSStatusRetorno;
+import br.gov.sp.fazenda.dsen.common.util.DSENConstants;
+import br.gov.sp.fazenda.dsen.common.util.DSENMessageConstants;
+import br.gov.sp.fazenda.dsen.common.util.DSENProperties;
+import br.gov.sp.fazenda.dsen.common.util.DocumentoUtil;
+import br.gov.sp.fazenda.dsen.common.util.ErroXmlResposta;
+import br.gov.sp.fazenda.dsen.common.util.ErroXmlResposta.ErroXmlRespostaAcao;
+import br.gov.sp.fazenda.dsen.model.business.WSBusiness;
+import br.gov.sp.fazenda.dsen.util.DSENUtilHelper;
+import br.gov.sp.fazenda.dsge.common.app.AppContext;
+import br.gov.sp.fazenda.dsge.common.app.Notificador;
+import br.gov.sp.fazenda.dsge.common.enumeration.ProblemaConexaoAcao;
+import br.gov.sp.fazenda.dsge.common.util.StringHelper;
+import br.gov.sp.fazenda.dsge.common.util.XMLUtil;
+import br.gov.sp.fazenda.dsge.util.EstadoTO;
+
+
+
+/**
+ * 
+ * @author leovieira
+ */
+public class ConsultaStatusServicoHelper {
+
+	public boolean consultarStatusServico(EstadoTO emitenteEstadoTO, X509Certificate certificate, PrivateKey privateKey, ServicoSefazEnum servicoSefazEnum, boolean isSefaz) throws Exception {
+		
+		String wsReceptor = isSefaz ? DSENMessageConstants.MSG_WS_SEFAZ : DSENMessageConstants.MSG_WS_RFB;
+		ScanHelper scanHelper = new ScanHelper();
+		EstadoTO estadoTO = scanHelper.getEstadoTO(emitenteEstadoTO, isSefaz);
+		String consultaStatusServicoCabecalho = DocumentoUtil.criarCabecalhoMensagem(ServicoSefazEnum.StatusServico,emitenteEstadoTO.getCodigo(),DSENProperties.getInstance().getVersaoSchemaStatusServico());                         
+		WSBusiness wsbusiness = new WSBusiness();
+		String url;
+		
+		try{
+			url = DSENUtilHelper.getInstance().getURLPorUF(estadoTO, ServicoSefazEnum.StatusServico);
+		}catch(Exception e){
+			Notificador.getInstance().notificar(MessageFormat.format(DSENMessageConstants.UF_NAO_HABILITADA, estadoTO.getSigla()),GrupoNotificacaoEnum.UF_NAO_HABILITADA);
+    		return false;
+		}
+		
+		if(StringHelper.isBlankOrNull(url)){
+			Notificador.getInstance().notificar(MessageFormat.format(DSENMessageConstants.UF_NAO_HABILITADA, estadoTO.getSigla()),GrupoNotificacaoEnum.UF_NAO_HABILITADA);
+    		return false;
+		}
+
+		if(DSENConstants.CONSULTA_STATUS_SERVICO_HABILITADA){
+			String consultaStatusServicoRetorno = wsbusiness.servico(
+					consultaStatusServicoCabecalho, 
+					DocumentoUtil.criarConsStatServDocument(emitenteEstadoTO.getCodigo()), 
+					estadoTO,
+					ServicoSefazEnum.StatusServico,
+					certificate,
+					privateKey);
+
+			WSStatusRetorno statusRetorno = DocumentoUtil.validarRetConsStatServDocument(consultaStatusServicoRetorno);
+			switch (statusRetorno) {
+			case XML_INVALIDO:
+				ErroXmlResposta erroXmlResposta = new ErroXmlResposta(servicoSefazEnum, url, consultaStatusServicoRetorno,isSefaz?DSENMessageConstants.MSG_WS_SEFAZ:DSENMessageConstants.MSG_WS_RFB);
+				GrupoNotificacaoEnum gEnum = GrupoNotificacaoEnum.ERRO_RESPOSTA_SEFAZ_CONSULTA_STATUS;
+				Notificador.getInstance().notificar(erroXmlResposta, gEnum);
+				ErroXmlRespostaAcao acao = AppContext.getInstance().getContextParameter(AppContextEnum.ERRO_XML_RETORNO_ACAO, ErroXmlRespostaAcao.class);
+				if (ErroXmlRespostaAcao.FECHAR.equals(acao)) {
+					return false;
+				} else {
+					return true;
+				}
+			case STATUS_SERVICO_EM_OPERACAO:
+				return true;
+			case STATUS_SERVICO_EM_DESATIVACAO:
+			case STATUS_SERVICO_PARALISADO:
+				if (servicoSefazEnum != ServicoSefazEnum.Recepcao) {
+					return true;
+				} 
+			default:
+				String mensagemErro = MessageFormat.format(DSENMessageConstants.MSG_WS_RETORNO_NOK,
+						wsReceptor, 
+						XMLUtil.getTagConteudo(consultaStatusServicoRetorno, "cStat", false).get(0), 
+						XMLUtil.getTagConteudo(consultaStatusServicoRetorno, "xMotivo", false).get(0)); 
+				ProblemaConexaoAcao problemaConexaoAcao = notificarFalhaConsultaStatusServico(mensagemErro,isSefaz);
+				if (problemaConexaoAcao == ProblemaConexaoAcao.RECONECTAR) {
+					return consultarStatusServico(emitenteEstadoTO, certificate, privateKey, servicoSefazEnum,isSefaz);
+				} else {
+					return false;
+				}
+			}
+		}else{
+			return true;
+		}
+
+	}
+
+	private ProblemaConexaoAcao notificarFalhaConsultaStatusServico(String mensagemErro,boolean isSefaz) {
+		if(isSefaz){
+			Notificador.getInstance().notificar(mensagemErro, GrupoNotificacaoEnum.CONSULTA_STATUS_SERVICO_NOK_SEFAZ);
+		}else{
+			Notificador.getInstance().notificar(mensagemErro, GrupoNotificacaoEnum.CONSULTA_STATUS_SERVICO_NOK_SCAN);
+		}
+		ProblemaConexaoAcao problemaConexaoAcao = AppContext.getInstance().getContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO, ProblemaConexaoAcao.class);
+		AppContext.getInstance().removeContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO);
+		return problemaConexaoAcao;
+	}
+}

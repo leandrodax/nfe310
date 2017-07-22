@@ -1,0 +1,853 @@
+3104502|Arinos
+3108206|Bonfinopolis de Minas
+3109303|Buritis
+3109451|Cabeceira Grande
+3122470|Dom Bosco
+3126208|Formoso
+3144375|Natalandia
+3170404|Unai
+3170479|Uruana de Minas
+3108552|Brasilandia de Minas
+3128600|Guarda-Mor
+3136306|Joao Pinheiro
+3137106|Lagamar
+3137536|Lagoa Grande
+3147006|Paracatu
+3153400|Presidente Olegario
+3161700|Sao Goncalo do Abaete
+3170750|Varjao de Minas
+3171006|Vazante
+3108255|Bonito de Minas
+3116159|Chapada Gaucha
+3117836|Conego Marinho
+3130051|Icarai de Minas
+3132107|Itacarambi
+3135209|Januaria
+3136959|Juvenilia
+3139300|Manga
+3140852|Matias Cardoso
+3142254|Miravania
+3142700|Montalvania
+3149150|Pedras de Maria da Cruz
+3150570|Pintopolis
+3161106|Sao Francisco
+3162450|Sao Joao das Missoes
+3170529|Urucuia
+3115474|Catuti
+3124302|Espinosa
+3127339|Gameleiras
+3135050|Jaiba
+3135100|Janauba
+3139250|Mamonas
+3141009|Mato Verde
+3142908|Monte Azul
+3145059|Nova Porteirinha
+3146552|Pai Pedro
+3152204|Porteirinha
+3154507|Riacho dos Machados
+3166956|Serranopolis de Minas
+3101003|Aguas Vermelhas
+3106655|Berizal
+3120870|Curral de Dentro
+3122355|Divisa Alegre
+3127073|Fruta de Leite
+3130655|Indaiabira
+3143450|Montezuma
+3144656|Ninheira
+3145372|Novorizonte
+3155603|Rio Pardo de Minas
+3156502|Rubelita
+3157005|Salinas
+3157377|Santa Cruz de Salinas
+3160454|Santo Antonio do Retiro
+3162708|Sao Joao do Paraiso
+3168002|Taiobeiras
+3170651|Vargem Grande do Rio Pardo
+3109402|Buritizeiro
+3129608|Ibiai
+3135605|Jequitai
+3137304|Lagoa dos Patos
+3138104|Lassance
+3151206|Pirapora
+3154457|Riachinho
+3157609|Santa Fe de Minas
+3164209|Sao Romao
+3170800|Varzea da Palma
+3108602|Brasilia de Minas
+3111150|Campo Azul
+3112703|Capitao Eneas
+3116506|Claro dos Pocoes
+3118809|Coracao de Jesus
+3126703|Francisco Sa
+3127354|Glaucilandia
+3129657|Ibiracatu
+3135357|Japonvar
+3136801|Juramento
+3138658|Lontra
+3138682|Luislandia
+3142007|Mirabela
+3143302|Montes Claros
+3147956|Patis
+3152131|Ponto Chique
+3162252|Sao Joao da Lagoa
+3162401|Sao Joao da Ponte
+3162658|Sao Joao do Pacui
+3170008|Ubai
+3170909|Varzelandia
+3171030|Verdelandia
+3108503|Botumirim
+3120300|Cristalia
+3127800|Grao Mogol
+3132008|Itacambira
+3136579|Josenopolis
+3146255|Padre Carvalho
+3107307|Bocaiuva
+3123809|Engenheiro Navarro
+3126604|Francisco Dumont
+3128253|Guaraciama
+3145455|Olhos-d'Agua
+3120102|Couto de Magalhaes de Minas
+3121001|Datas
+3121605|Diamantina
+3125408|Felicio dos Santos
+3125507|Sao Goncalo do Rio Preto
+3127602|Gouveia
+3153301|Presidente Kubitschek
+3165909|Senador Modestino Goncalves
+3102852|Angelandia
+3104452|Aricanduva
+3106507|Berilo
+3112307|Capelinha
+3113503|Carbonita
+3116100|Chapada do Norte
+3126505|Francisco Badaro
+3132503|Itamarandiba
+3135456|Jenipapo de Minas
+3136520|Jose Goncalves de Minas
+3138351|Leme do Prado
+3141801|Minas Novas
+3169703|Turmalina
+3171071|Veredinha
+3103405|Aracuai
+3113008|Carai
+3119500|Coronel Murta
+3134004|Itinga
+3145307|Novo Cruzeiro
+3146305|Padre Paraiso
+3152170|Ponto dos Volantes
+3171600|Virgem da Lapa
+3102704|Cachoeira de Pajeu
+3117009|Comercinho
+3133303|Itaobim
+3141405|Medina
+3148707|Pedra Azul
+3101706|Almenara
+3105202|Bandeira
+3122454|Divisopolis
+3125606|Felisburgo
+3134707|Jacinto
+3135803|Jequitinhonha
+3136009|Joaima
+3136504|Jordania
+3140555|Mata Verde
+3143153|Monte Formoso
+3146750|Palmopolis
+3155108|Rio do Prado
+3156601|Rubim
+3157104|Salto da Divisa
+3158102|Santa Maria do Salto
+3160306|Santo Antonio do Jacinto
+3104700|Ataleia
+3115458|Catuji
+3126752|Franciscopolis
+3126802|Frei Gaspar
+3132305|Itaipe
+3137007|Ladainha
+3139201|Malacacheta
+3145356|Novo Oriente de Minas
+3146206|Ouro Verde de Minas
+3148509|Pavao
+3152402|Pote
+3165552|Setubinha
+3168606|Teofilo Otoni
+3100906|Aguas Formosas
+3106606|Bertopolis
+3113701|Carlos Chagas
+3120151|Crisolita
+3127057|Fronteira dos Vales
+3138906|Machacalis
+3144300|Nanuque
+3157658|Santa Helena de Minas
+3166709|Serra dos Aimores
+3170305|Umburatiba
+3109808|Cachoeira Dourada
+3112604|Capinopolis
+3129103|Gurinhata
+3131406|Ipiacu
+3134202|Ituiutaba
+3159803|Santa Vitoria
+3103504|Araguari
+3103751|Arapora
+3111804|Canapolis
+3115003|Cascalho Rico
+3115805|Centralina
+3130705|Indianopolis
+3142809|Monte Alegre de Minas
+3152808|Prata
+3169604|Tupaciguara
+3170206|Uberlandia
+3100104|Abadia dos Dourados
+3119302|Coromandel
+3120706|Cruzeiro da Fortaleza
+3123502|Douradoquara
+3124807|Estrela do Sul
+3127909|Grupiara
+3131604|Irai de Minas
+3143104|Monte Carmelo
+3148103|Patrocinio
+3156403|Romaria
+3166808|Serra do Salitre
+3103801|Arapua
+3114303|Carmo do Paranaiba
+3128907|Guimarania
+3137502|Lagoa Formosa
+3141207|Matutina
+3148004|Patos de Minas
+3155504|Rio Paranaiba
+3159704|Santa Rosa da Serra
+3162104|Sao Gotardo
+3168903|Tiros
+3111101|Campina Verde
+3114550|Carneirinho
+3116902|Comendador Gomes
+3127008|Fronteira
+3127107|Frutal
+3133402|Itapagipe
+3134400|Iturama
+3138625|Limeira do Oeste
+3150703|Pirajuba
+3151602|Planura
+3161304|Sao Francisco de Sales
+3170438|Uniao de Minas
+3100708|Agua Comprida
+3111408|Campo Florido
+3117306|Conceicao das Alagoas
+3118205|Conquista
+3121258|Delta
+3170107|Uberaba
+3171105|Verissimo
+3104007|Araxa
+3111507|Campos Altos
+3129509|Ibia
+3145000|Nova Ponte
+3149200|Pedrinopolis
+3149804|Perdizes
+3153004|Pratinha
+3156908|Sacramento
+3157708|Santa Juliana
+3168101|Tapira
+3100203|Abaete
+3107000|Biquinhas
+3115607|Cedro do Abaete
+3143500|Morada Nova de Minas
+3146404|Paineiras
+3152006|Pompeu
+3169356|Tres Marias
+3104809|Augusto de Lima
+3109204|Buenopolis
+3119104|Corinto
+3120904|Curvelo
+3125705|Felixlandia
+3131109|Inimutaba
+3136405|Joaquim Felicio
+3142502|Monjolos
+3143609|Morro da Garca
+3153202|Presidente Juscelino
+3160603|Santo Hipolito
+3103900|Araujos
+3107406|Bom Despacho
+3123205|Dores do Indaia
+3124708|Estrela do Indaia
+3135308|Japaraiba
+3137205|Lagoa da Prata
+3138302|Leandro Ferreira
+3138807|Luz
+3140506|Martinho Campos
+3142403|Moema
+3153707|Quartel Geral
+3166600|Serra da Saudade
+3103207|Aracai
+3105004|Baldim
+3109600|Cachoeira da Prata
+3109907|Caetanopolis
+3112505|Capim Branco
+3118908|Cordisburgo
+3126406|Fortuna de Minas
+3127206|Funilandia
+3131000|Inhauma
+3134608|Jaboticatubas
+3135704|Jequitiba
+3139706|Maravilhas
+3141108|Matozinhos
+3146909|Papagaios
+3147402|Paraopeba
+3149606|Pequi
+3153608|Prudente de Morais
+3158508|Santana de Pirapama
+3159001|Santana do Riacho
+3167202|Sete Lagoas
+3102407|Alvorada de Minas
+3117504|Conceicao do Mato Dentro
+3118106|Congonhas do Norte
+3122603|Dom Joaquim
+3132800|Itambe do Mato Dentro
+3143708|Morro do Pilar
+3147501|Passabem
+3156007|Rio Vermelho
+3160207|Santo Antonio do Itambe
+3160504|Santo Antonio do Rio Abaixo
+3164803|Sao Sebastiao do Rio Preto
+3166501|Serra Azul de Minas
+3167103|Serro
+3126000|Florestal
+3145802|Onca de Pitangui
+3147105|Para de Minas
+3151404|Pitangui
+3163102|Sao Jose da Varginha
+3106200|Belo Horizonte
+3106705|Betim
+3109006|Brumadinho
+3110004|Caete
+3117876|Confins
+3118601|Contagem
+3124104|Esmeraldas
+3129806|Ibirite
+3130101|Igarape
+3136652|Juatuba
+3137601|Lagoa Santa
+3140159|Mario Campos
+3140704|Mateus Leme
+3144805|Nova Lima
+3149309|Pedro Leopoldo
+3153905|Raposos
+3154606|Ribeirao das Neves
+3154804|Rio Acima
+3156700|Sabara
+3157807|Santa Luzia
+3162922|Sao Joaquim de Bicas
+3162955|Sao Jose da Lapa
+3165537|Sarzedo
+3171204|Vespasiano
+3102308|Alvinopolis
+3105400|Barao de Cocais
+3106002|Bela Vista de Minas
+3107703|Bom Jesus do Amparo
+3115359|Catas Altas
+3121803|Dionisio
+3125903|Ferros
+3131703|Itabira
+3136207|Joao Monlevade
+3136603|Nova Uniao
+3144706|Nova Era
+3155702|Rio Piracicaba
+3157203|Santa Barbara
+3158003|Santa Maria de Itabira
+3161007|Sao Domingos do Prata
+3161908|Sao Goncalo do Rio Abaixo
+3163409|Sao Jose do Goiabal
+3168309|Taquaracu de Minas
+3106408|Belo Vale
+3108107|Bonfim
+3120607|Crucilandia
+3132206|Itaguara
+3133709|Itatiaiucu
+3135407|Jeceaba
+3142304|Moeda
+3150406|Piedade dos Gerais
+3155306|Rio Manso
+3121704|Diogo de Vasconcelos
+3131901|Itabirito
+3140001|Mariana
+3146107|Ouro Preto
+3114907|Casa Grande
+3115409|Catas Altas da Noruega
+3118007|Congonhas
+3118304|Conselheiro Lafaiete
+3120409|Cristiano Otoni
+3121407|Desterro de Entre Rios
+3123908|Entre Rios de Minas
+3133907|Itaverava
+3145901|Ouro Branco
+3153806|Queluzito
+3159100|Santana dos Montes
+3160900|Sao Bras do Suacui
+3108800|Braunas
+3113800|Carmesia
+3116803|Coluna
+3122207|Divinolandia de Minas
+3123106|Dores de Guanhaes
+3127503|Gonzaga
+3128006|Guanhaes
+3140605|Materlandia
+3148400|Paulistas
+3156809|Sabinopolis
+3157500|Santa Efigenia de Minas
+3162807|Sao Joao Evangelista
+3165503|Sardoa
+3166105|Senhora do Porto
+3171808|Virginopolis
+3100609|Agua Boa
+3112059|Cantagalo
+3126950|Frei Lagonegro
+3136553|Jose Raydan
+3148608|Pecanha
+3158201|Santa Maria do Suacui
+3163508|Sao Jose do Jacuri
+3164100|Sao Pedro do Suacui
+3164506|Sao Sebastiao do Maranhao
+3101805|Alpercata
+3110806|Campanario
+3112653|Capitao Andrade
+3119203|Coroaci
+3122108|Divino das Laranjeiras
+3123700|Engenheiro Caldas
+3125804|Fernandes Tourinho
+3126901|Frei Inocencio
+3127305|Galileia
+3127701|Governador Valadares
+3132701|Itambacuri
+3133204|Itanhomi
+3135076|Jampruca
+3140100|Marilac
+3144201|Nacip Raydan
+3144904|Nova Modica
+3150000|Pescador
+3161601|Sao Geraldo da Piedade
+3161650|Sao Geraldo do Baixio
+3163003|Sao Jose da Safira
+3163300|Sao Jose do Divino
+3167707|Sobralia
+3169505|Tumiritinga
+3171501|Mathias Lobato
+3171907|Virgolandia
+3115706|Central de Minas
+3131802|Itabirinha
+3139607|Mantena
+3141504|Mendes Pimentel
+3144672|Nova Belem
+3161056|Sao Felix de Minas
+3162575|Sao Joao do Manteninha
+3100500|Acucena
+3103009|Antonio Dias
+3106309|Belo Oriente
+3119401|Coronel Fabriciano
+3131307|Ipatinga
+3135001|Jaguaracu
+3136108|Joanesia
+3140308|Marlieria
+3141702|Mesquita
+3144359|Naque
+3149952|Periquito
+3158953|Santana do Paraiso
+3168705|Timoteo
+3107802|Bom Jesus do Galho
+3109253|Bugre
+3113404|Caratinga
+3120003|Corrego Novo
+3122504|Dom Cavati
+3123858|Entre Folhas
+3129301|Iapu
+3130556|Imbe de Minas
+3130903|Inhapim
+3131158|Ipaba
+3150158|Piedade de Caratinga
+3150539|Pingo-d'Agua
+3157252|Santa Barbara do Leste
+3159357|Santa Rita de Minas
+3160959|Sao Domingos das Dores
+3162609|Sao Joao do Oriente
+3164472|Sao Sebastiao do Anta
+3168408|Tarumirim
+3170057|Ubaporanga
+3170578|Vargem Alegre
+3101102|Aimores
+3102209|Alvarenga
+3117405|Conceicao de Ipanema
+3118403|Conselheiro Pena
+3120839|Cuparaque
+3127370|Goiabeira
+3131208|Ipanema
+3134103|Itueta
+3144003|Mutum
+3151909|Pocrane
+3154309|Resplendor
+3159506|Santa Rita do Itueto
+3168051|Taparuba
+3105103|Bambui
+3119807|Corrego Danta
+3123403|Doresopolis
+3130309|Iguatama
+3141306|Medeiros
+3151503|Piumhi
+3164308|Sao Roque de Minas
+3168200|Tapirai
+3170602|Vargem Bonita
+3114204|Carmo do Cajuru
+3116605|Claudio
+3117603|Conceicao do Para
+3122306|Divinopolis
+3130200|Igaratinga
+3133808|Itauna
+3145208|Nova Serrana
+3149705|Perdigao
+3160405|Santo Antonio do Monte
+3161809|Sao Goncalo do Para
+3164605|Sao Sebastiao do Oeste
+3104205|Arcos
+3110400|Camacho
+3119955|Corrego Fundo
+3126109|Formiga
+3133501|Itapecerica
+3146503|Pains
+3148905|Pedra do Indaia
+3150505|Pimenta
+3100807|Aguanil
+3111200|Campo Belo
+3111903|Cana Verde
+3112000|Candeias
+3120201|Cristais
+3149903|Perdoes
+3158805|Santana do Jacare
+3108008|Bom Sucesso
+3114006|Carmo da Mata
+3114501|Carmopolis de Minas
+3130002|Ibituruna
+3145604|Oliveira
+3147709|Passa Tempo
+3150604|Piracema
+3159902|Santo Antonio do Amparo
+3161205|Sao Francisco de Paula
+3101904|Alpinopolis
+3107604|Bom Jesus da Penha
+3112406|Capetinga
+3112802|Capitolio
+3115102|Cassia
+3116407|Claraval
+3121209|Delfinopolis
+3126307|Fortaleza de Minas
+3129707|Ibiraci
+3133758|Itau de Minas
+3147907|Passos
+3152907|Pratapolis
+3162203|Sao Joao Batista do Gloria
+3162948|Sao Jose da Barra
+3104106|Arceburgo
+3109501|Cabo Verde
+3128303|Guaranesia
+3128709|Guaxupe
+3132909|Itamogi
+3134806|Jacui
+3136900|Juruaia
+3143005|Monte Belo
+3143203|Monte Santo de Minas
+3144102|Muzambinho
+3145109|Nova Resende
+3163904|Sao Pedro da Uniao
+3164704|Sao Sebastiao do Paraiso
+3165107|Sao Tomas de Aquino
+3101607|Alfenas
+3102001|Alterosa
+3104304|Areado
+3114402|Carmo do Rio Claro
+3114709|Carvalhopolis
+3117108|Conceicao da Aparecida
+3122405|Divisa Nova
+3125200|Fama
+3139003|Machado
+3147204|Paraguacu
+3151701|Poco Fundo
+3166907|Serrania
+3107109|Boa Esperanca
+3110905|Campanha
+3111309|Campo do Meio
+3111606|Campos Gerais
+3113909|Carmo da Cachoeira
+3118700|Coqueiral
+3123601|Eloi Mendes
+3128105|Guape
+3130507|Ilicinea
+3142601|Monsenhor Paulo
+3158300|Santana da Vargem
+3160801|Sao Bento Abade
+3165206|Sao Thome das Letras
+3169307|Tres Coracoes
+3169406|Tres Pontas
+3170701|Varginha
+3101409|Albertina
+3102605|Andradas
+3105301|Bandeira do Sul
+3108404|Botelhos
+3110301|Caldas
+3111002|Campestre
+3129905|Ibitiura de Minas
+3130606|Inconfidentes
+3134905|Jacutinga
+3143401|Monte Siao
+3146008|Ouro Fino
+3151800|Pocos de Caldas
+3159209|Santa Rita de Caldas
+3107901|Bom Repouso
+3108305|Borda da Mata
+3109105|Bueno Brandao
+3110509|Camanducaia
+3110608|Cambui
+3117900|Congonhal
+3119906|Corrego do Bom Jesus
+3124401|Espirito Santo do Dourado
+3124500|Estiva
+3125101|Extrema
+3127404|Goncalves
+3131505|Ipuiuna
+3133600|Itapeva
+3143807|Munhoz
+3152501|Pouso Alegre
+3165404|Sapucai-Mirim
+3165578|Senador Amaral
+3165800|Senador Jose Bento
+3169059|Tocos do Moji
+3169109|Toledo
+3109709|Cachoeira de Minas
+3113602|Careacu
+3117207|Conceicao das Pedras
+3117801|Conceicao dos Ouros
+3119005|Cordislandia
+3129202|Heliodora
+3144409|Natercia
+3149101|Pedralva
+3159605|Santa Rita do Sapucai
+3162005|Sao Goncalo do Sapucai
+3162302|Sao Joao da Mata
+3163201|Sao Jose do Alegre
+3164407|Sao Sebastiao da Bela Vista
+3167400|Silvianopolis
+3169802|Turvolandia
+3101300|Alagoa
+3104908|Baependi
+3110707|Cambuquira
+3114105|Carmo de Minas
+3115508|Caxambu
+3117702|Conceicao do Rio Verde
+3133006|Itamonte
+3133105|Itanhandu
+3135902|Jesuania
+3137809|Lambari
+3145505|Olimpio Noronha
+3147600|Passa Quatro
+3152600|Pouso Alto
+3163706|Sao Lourenco
+3164902|Sao Sebastiao do Rio Verde
+3167806|Soledade de Minas
+3101201|Aiuruoca
+3102803|Andrelandia
+3103603|Arantina
+3107208|Bocaina de Minas
+3107505|Bom Jardim de Minas
+3114808|Carvalhos
+3120805|Cruzilia
+3138500|Liberdade
+3141900|Minduri
+3147808|Passa-Vinte
+3165305|Sao Vicente de Minas
+3166402|Seritinga
+3167004|Serranos
+3108909|Brasopolis
+3118502|Consolacao
+3120508|Cristina
+3121100|Delfim Moreira
+3122801|Dom Vicoso
+3132404|Itajuba
+3139904|Maria da Fe
+3140407|Marmelopolis
+3147303|Paraisopolis
+3150901|Pirangucu
+3151008|Piranguinho
+3171709|Virginia
+3172202|Wenceslau Braz
+3114600|Carrancas
+3130408|Ijaci
+3130804|Ingai
+3134301|Itumirim
+3134509|Itutinga
+3138203|Lavras
+3138708|Luminarias
+3144607|Nepomuceno
+3154705|Ribeirao Vermelho
+3115201|Conceicao da Barra de Minas
+3119708|Coronel Xavier Chaves
+3123007|Dores de Campos
+3137403|Lagoa Dourada
+3139102|Madre de Deus de Minas
+3144508|Nazareno
+3150307|Piedade do Rio Grande
+3152709|Prados
+3154200|Resende Costa
+3156106|Ritapolis
+3157336|Santa Cruz de Minas
+3158706|Santana do Garambeu
+3162500|Sao Joao del Rei
+3165008|Sao Tiago
+3168804|Tiradentes
+3101631|Alfredo Vasconcelos
+3102902|Antonio Carlos
+3105608|Barbacena
+3105905|Barroso
+3112208|Capela Nova
+3113107|Caranaiba
+3113206|Carandai
+3121506|Desterro do Melo
+3129400|Ibertioga
+3154408|Ressaquinha
+3157302|Santa Barbara do Tugurio
+3166204|Senhora dos Remedios
+3100401|Acaiaca
+3105707|Barra Longa
+3122702|Dom Silverio
+3128204|Guaraciaba
+3135506|Jequeri
+3145851|Oratorios
+3150208|Piedade de Ponte Nova
+3152105|Ponte Nova
+3154002|Raul Soares
+3154903|Rio Casca
+3155009|Rio Doce
+3157401|Santa Cruz do Escalvado
+3160108|Santo Antonio do Grama
+3164001|Sao Pedro dos Ferros
+3165560|Sem-Peixe
+3166303|Sericita
+3170503|Urucania
+3171154|Vermelho Novo
+3100302|Abre Campo
+3102050|Alto Caparao
+3112109|Caparao
+3112901|Caputira
+3116001|Chale
+3123528|Durande
+3137700|Lajinha
+3138674|Luisburgo
+3139409|Manhuacu
+3139508|Manhumirim
+3140530|Martins Soares
+3140902|Matipo
+3148756|Pedra Bonita
+3153509|Alto Jequitiba
+3154150|Reduto
+3157906|Santa Margarida
+3158904|Santana do Manhuacu
+3162559|Sao Joao do Manhuacu
+3163607|Sao Jose do Mantimento
+3167608|Simonesia
+3102100|Alto Rio Doce
+3102506|Amparo do Serra
+3103702|Araponga
+3108701|Bras Pires
+3110202|Cajuri
+3111705|Canaa
+3116308|Cipotanea
+3116704|Coimbra
+3124005|Ervalia
+3137908|Lamim
+3148301|Paula Candido
+3148806|Pedra do Anta
+3150802|Piranga
+3152303|Porto Firme
+3153103|Presidente Bernardes
+3155207|Rio Espera
+3163805|Sao Miguel do Anta
+3166006|Senhora de Oliveira
+3168507|Teixeiras
+3171303|Vicosa
+3103108|Antonio Prado de Minas
+3105509|Barao de Monte Alto
+3110103|Caiana
+3113305|Carangola
+3122009|Divino
+3124203|Espera Feliz
+3124906|Eugenopolis
+3125309|Faria Lemos
+3125952|Fervedouro
+3142106|Miradouro
+3142205|Mirai
+3143906|Muriae
+3145877|Orizania
+3148202|Patrocinio do Muriae
+3149002|Pedra Dourada
+3156452|Rosario da Limeira
+3161403|Sao Francisco do Gloria
+3164431|Sao Sebastiao da Vargem Alegre
+3169208|Tombos
+3171402|Vieiras
+3104601|Astolfo Dutra
+3121902|Divinesia
+3123304|Dores do Turvo
+3128402|Guarani
+3128808|Guidoval
+3129004|Guiricema
+3141603|Merces
+3151305|Pirauba
+3155801|Rio Pomba
+3156304|Rodeiro
+3161502|Sao Geraldo
+3165701|Senador Firmino
+3167301|Silveirania
+3167905|Tabuleiro
+3169000|Tocantins
+3169901|Uba
+3172004|Visconde do Rio Branco
+3103306|Aracitaba
+3106101|Belmiro Braga
+3106804|Bias Fortes
+3106903|Bicas
+3115904|Chacara
+3116209|Chiador
+3119609|Coronel Pacheco
+3121308|Descoberto
+3125002|Ewbank da Camara
+3127388|Goiana
+3128501|Guarara
+3136702|Juiz de Fora
+3138609|Lima Duarte
+3139805|Mar de Espanha
+3140209|Maripa de Minas
+3140803|Matias Barbosa
+3145406|Olaria
+3145703|Oliveira Fortes
+3146602|Paiva
+3149408|Pedro Teixeira
+3149507|Pequeri
+3150109|Piau
+3155405|Rio Novo
+3155900|Rio Preto
+3156205|Rochedo de Minas
+3157278|Santa Barbara do Monte Verde
+3158607|Santana do Deserto
+3159308|Santa Rita de Jacutinga
+3159407|Santa Rita de Ibitipoca
+3160702|Santos Dumont
+3162906|Sao Joao Nepomuceno
+3165602|Senador Cortes
+3167509|Simao Pereira
+3101508|Alem Paraiba
+3104403|Argirita
+3115300|Cataguases
+3122900|Dona Eusebia
+3124609|Estrela Dalva
+3132602|Itamarati de Minas
+3138005|Laranjal
+3138401|Leopoldina
+3146701|Palma
+3151107|Pirapetinga
+3154101|Recreio
+3158409|Santana de Cataguases
+3160009|Santo Antonio do Aventureiro
+3172103|Volta Grande

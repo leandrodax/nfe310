@@ -1,0 +1,808 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+ 
+  <link href="../css/internet.css" type="text/css" rel="stylesheet">
+
+ 
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+  
+  
+  <title>Cadastro - Cliente - Preenchimento de Campos</title>
+</head>
+
+
+<body>
+
+
+<span class="titulo_sistema">Software Emissor NF-e</span><br>
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+<span class="titulo">Cadastro de Clientes</span><br>
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+
+
+Preenchimento de Campos
+para Cadastro de Cliente<br>
+<br>
+
+
+
+
+<span style="font-weight: bold;"><a name="Identificacao"></a>Identifica&ccedil;&atilde;o</span><br>
+
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+
+
+<span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="7" cellspacing="0">
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Obrigat&oacute;rio</th>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Tipo de&nbsp;dado</th>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 40%;">Observa&ccedil;&otilde;es</th>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><span style="font-weight: bold;">Tipo de Documento</span></td>
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+      <td>Sele&ccedil;&atilde;o
+entre:<br>
+
+
+
+
+&nbsp;- CNPJ<br>
+
+
+
+
+&nbsp;- CPF<br>
+
+
+
+
+      </td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">CNPJ/CPF</span></td>
+
+
+
+
+      <td style="height: 40px; text-align: center;">Sim</td>
+
+
+
+
+      <td style="height: 40px;">Num&eacute;rico</td>
+
+
+
+
+      <td style="height: 40px;">CNPJ:
+14 d&iacute;gitos com
+formato: <br>
+
+
+
+
+      DD.DDD.DDD/DDDD-DD<br>
+
+
+
+
+      <br>
+
+
+
+
+      CPF: 11
+d&iacute;gitos com
+formato: <br>
+
+
+
+
+      DDD.DDD.DDD-DD </td>
+
+
+
+
+      <td style="height: 40px;">-<br>
+
+
+
+
+       </td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><span style="font-weight: bold;">Raz&atilde;o Social</span></td>
+
+
+
+
+      <td style="text-align: center;">Sim</td>
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+      <td>1 a 60 caracteres</td>
+
+
+
+
+      <td>Raz&atilde;o Social
+(caso pessoa jur&iacute;dica) ou o nome&nbsp;(caso pessoa f&iacute;sica) do destinat&aacute;rio da NF-e.</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="font-weight: bold;">Inscri&ccedil;&atilde;o
+Estadual</td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+      <td>At&eacute; 14
+d&iacute;gitos da IE</td>
+
+
+
+
+      <td>Informar a IE quando o
+destinat&aacute;rio for contribuinte do ICMS.<br>
+
+
+
+
+Selecionar&nbsp; ISENTO quando o destinat&aacute;rio for
+contribuinto do ICMS, mas n&atilde;o estiver obrigado &agrave;
+inscri&ccedil;&atilde;o no cadastro de contribuintes do ICMS.<br>
+
+
+
+
+N&atilde;o informar se o destinat&aacute;rio n&atilde;o for
+contribuinte do ICMS.</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="font-weight: bold;">Inscri&ccedil;&atilde;o
+Suframa</td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+      <td>At&eacute; 9
+d&iacute;gitos</td>
+
+
+
+
+      <td>Obrigat&oacute;rio nas
+opera&ccedil;&otilde;es que se beneficiam de incentivos fiscais
+existentes nas &aacute;reas sob controle da SUFRAMA. A
+omiss&atilde;o da Inscri&ccedil;&atilde;o SUFRAMA impede o
+processamento da opera&ccedil;&atilde;o pelo Sistema de
+Mercadoria Nacional da SUFRAMA e a libera&ccedil;&atilde;o da
+Declara&ccedil;&atilde;o de Ingresso, prejudicando a
+comprova&ccedil;&atilde;o do ingresso/internamento da
+mercadoria nas &aacute;reas sob controle da SUFRAMA.</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+<br>
+
+
+
+
+<br>
+
+
+
+
+<span style="font-weight: bold;"><a name="Endereco"></a>Endere&ccedil;o<br>
+
+
+
+
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span><br>
+
+
+
+
+<span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="7" cellspacing="0">
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Obrigat&oacute;rio</th>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Tipo de&nbsp;dado</th>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 40%;">Observa&ccedil;&otilde;es</th>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">Logradouro</span></td>
+
+
+
+
+      <td style="height: 40px; text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td style="height: 40px;">Caractere
+e/ou
+n&uacute;mero</td>
+
+
+
+
+      <td style="height: 40px;">1
+a 60 caracteres</td>
+
+
+
+
+      <td style="height: 40px;">-<br>
+
+
+
+
+       </td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><span style="font-weight: bold;">N&uacute;mero</span></td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+      <td>2&nbsp;a 60 caracteres</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="font-weight: bold;"><span style="font-weight: bold;">Complemento</span></td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+      <td>2&nbsp;a 60 caracteres</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="font-weight: bold;">Bairro</td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+
+
+      <td>1 a 60 caracteres</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="font-weight: bold;">CEP</td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+      <td>8&nbsp;d&iacute;gitos
+do CEP em formato:<br>
+
+
+
+
+DDDDD-DDD</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="font-weight: bold;">Pa&iacute;s</td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+      <td>Escolher o pa&iacute;s
+atrav&eacute;s da lista</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="font-weight: bold;">UF</td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+      <td>Ap&oacute;s a escolha
+do pa&iacute;s, escolher
+a UF atrav&eacute;s da lista.<br>
+
+
+
+
+Caso seja opera&ccedil;&atilde;o com o exterior, informar "EX".</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><span style="font-weight: bold;">Munic&iacute;pio</span></td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+      <td>Ap&oacute;s a escolha
+da UF, escolher o Munic&iacute;pio do cliente na lista.<br>
+
+
+
+
+      Caso seja
+opera&ccedil;&atilde;o com o exterior, informar "EX".</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><span style="font-weight: bold;">Fone</span></td>
+
+
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+
+
+      <td>Num&eacute;rico</td>
+
+
+
+
+      <td>10 d&iacute;gitos:<br>
+
+
+
+
+2 d&iacute;gitos para DDD<br>
+
+
+
+
+8 d&iacute;gitos para o telefone</td>
+
+
+
+
+      <td>-</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+
+
+
+
+
+
+</body>
+</html>

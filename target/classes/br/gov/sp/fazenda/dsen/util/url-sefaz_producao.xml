@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NFeURLSefaz xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="url-sefaz.xsd">
+
+<uf sigla="AC">	
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="AL">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="AM">	
+	<NfeRecepcao2>https://nfe.sefaz.am.gov.br/services2/services/NfeRecepcao2</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefaz.am.gov.br/services2/services/NfeRetRecepcao2</NfeRetRecepcao2> 
+	<NfeCancelamento2>https://nfe.sefaz.am.gov.br/services2/services/NfeCancelamento2</NfeCancelamento2> 
+	<NfeInutilizacao2>https://nfe.sefaz.am.gov.br/services2/services/NfeInutilizacao2</NfeInutilizacao2> 
+	<NfeStatusServico2>https://nfe.sefaz.am.gov.br/services2/services/NfeStatusServico2</NfeStatusServico2> 
+	<NfeConsulta2>https://nfe.sefaz.am.gov.br/services2/services/NfeConsulta2</NfeConsulta2> 
+	<CadConsultaCadastro2>https://nfe.sefaz.am.gov.br/services2/services/cadconsultacadastro2</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefaz.am.gov.br/services2/services/RecepcaoEvento</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.sefaz.am.gov.br/services2/services/NfeAutorizacao</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.sefaz.am.gov.br/services2/services/NfeRetAutorizacao</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="AP">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="BA">
+	<NfeRecepcao2>https://nfe.sefaz.ba.gov.br/webservices/nfenw/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.sefaz.ba.gov.br/webservices/nfenw/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefaz.ba.gov.br/webservices/nfenw/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefaz.ba.gov.br/webservices/nfenw/NfeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefaz.ba.gov.br/webservices/nfenw/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefaz.ba.gov.br/webservices/nfenw/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.sefaz.ba.gov.br/webservices/nfenw/CadConsultaCadastro2.asmx</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefaz.ba.gov.br/webservices/sre/RecepcaoEvento.asmx</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.sefaz.ba.gov.br/webservices/NfeAutorizacao/NfeAutorizacao.asmx</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.sefaz.ba.gov.br/webservices/NfeRetAutorizacao/NfeRetAutorizacao.asmx</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="CE">
+	<NfeRecepcao2>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeRecepcao2</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeRetRecepcao2</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeCancelamento2</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeInutilizacao2</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeStatusServico2</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeConsulta2</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.sefaz.ce.gov.br/nfe2/services/CadConsultaCadastro2</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefaz.ce.gov.br/nfe2/services/RecepcaoEvento</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeAutorizacao</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeRetAutorizacao</NfeRetAutorizacao>
+	<NfeDownloadNF>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeDownloadNF</NfeDownloadNF>
+	<NfeConsultaDest>https://nfe.sefaz.ce.gov.br/nfe2/services/NfeConsultaDest</NfeConsultaDest>	
+</uf>
+
+<uf sigla="DF">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="ES">	
+	<NfeRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NFeRetRecepcao2/NFeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://www.sefazvirtual.fazenda.gov.br/NFeCancelamento2/NFeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao2/NFeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico2/NFeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://www.sefazvirtual.fazenda.gov.br/nfeconsulta2/nfeconsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2>https://app.sefaz.es.gov.br/ConsultaCadastroService/CadConsultaCadastro2.asmx</CadConsultaCadastro2>
+	<RecepcaoEvento>https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="GO">
+	<NfeRecepcao2>https://nfe.sefaz.go.gov.br/nfe/services/v2/NfeRecepcao2</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.sefaz.go.gov.br/nfe/services/v2/NfeRetRecepcao2</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefaz.go.gov.br/nfe/services/v2/NfeCancelamento2</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefaz.go.gov.br/nfe/services/v2/NfeInutilizacao2?wsdl</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefaz.go.gov.br/nfe/services/v2/NfeStatusServico2?wsdl</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefaz.go.gov.br/nfe/services/v2/NfeConsulta2?wsdl</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.sefaz.go.gov.br/nfe/services/v2/CadConsultaCadastro2?wsdl</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefaz.go.gov.br/nfe/services/v2/RecepcaoEvento</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.sefaz.go.gov.br/nfe/services/v2/NfeAutorizacao?wsdl</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.sefaz.go.gov.br/nfe/services/v2/NfeRetAutorizacao?wsdl</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="MA">
+	<NfeRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NFeRetRecepcao2/NFeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://www.sefazvirtual.fazenda.gov.br/NFeCancelamento2/NFeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao2/NFeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico2/NFeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://www.sefazvirtual.fazenda.gov.br/nfeconsulta2/nfeconsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="MG">
+	<NfeRecepcao2>https://nfe.fazenda.mg.gov.br/nfe2/services/NfeRecepcao2</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.fazenda.mg.gov.br/nfe2/services/NfeRetRecepcao2</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.fazenda.mg.gov.br/nfe2/services/NfeCancelamento2</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.fazenda.mg.gov.br/nfe2/services/NfeInutilizacao2</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.fazenda.mg.gov.br/nfe2/services/NfeStatusServico2</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.fazenda.mg.gov.br/nfe2/services/NfeConsulta2</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.fazenda.mg.gov.br/nfe2/services/cadconsultacadastro2</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.fazenda.mg.gov.br/nfe2/services/RecepcaoEvento</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.fazenda.mg.gov.br/nfe2/services/NfeAutorizacao</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.fazenda.mg.gov.br/nfe2/services/NfeRetAutorizacao</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="MS">
+	<NfeRecepcao2>https://nfe.fazenda.ms.gov.br/producao/services2/NfeRecepcao2</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.fazenda.ms.gov.br/producao/services2/NfeRetRecepcao2</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.fazenda.ms.gov.br/producao/services2/NfeCancelamento2</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.fazenda.ms.gov.br/producao/services2/NfeInutilizacao2</NfeInutilizacao2>					   
+	<NfeStatusServico2>https://nfe.fazenda.ms.gov.br/producao/services2/NfeStatusServico2</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.fazenda.ms.gov.br/producao/services2/NfeConsulta2	</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.fazenda.ms.gov.br/producao/services2/CadConsultaCadastro2</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.fazenda.ms.gov.br/producao/services2/RecepcaoEvento</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.fazenda.ms.gov.br/producao/services2/NfeAutorizacao</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.fazenda.ms.gov.br/producao/services2/NfeRetAutorizacao</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="MT">
+	<NfeRecepcao2>https://nfe.sefaz.mt.gov.br/nfews/v2/services/NfeRecepcao2</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.sefaz.mt.gov.br/nfews/v2/services/NfeRetRecepcao2</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefaz.mt.gov.br/nfews/v2/services/NfeCancelamento2</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefaz.mt.gov.br/nfews/v2/services/NfeInutilizacao2?wsdl</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefaz.mt.gov.br/nfews/v2/services/NfeStatusServico2?wsdl</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefaz.mt.gov.br/nfews/v2/services/NfeConsulta2?wsdl</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.sefaz.mt.gov.br/nfews/v2/services/CadConsultaCadastro2?wsdl</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefaz.mt.gov.br/nfews/v2/services/RecepcaoEvento?wsdl</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.sefaz.mt.gov.br/nfews/v2/services/NfeAutorizacao?wsdl</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.sefaz.mt.gov.br/nfews/v2/services/NfeRetAutorizacao?wsdl</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="PA">
+	<NfeRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NFeRetRecepcao2/NFeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://www.sefazvirtual.fazenda.gov.br/NFeCancelamento2/NFeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao2/NFeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico2/NFeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://www.sefazvirtual.fazenda.gov.br/nfeconsulta2/nfeconsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="PB">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="PE">
+	<NfeRecepcao2>https://nfe.sefaz.pe.gov.br/nfe-service/services/NfeRecepcao2</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.sefaz.pe.gov.br/nfe-service/services/NfeRetRecepcao2</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefaz.pe.gov.br/nfe-service/services/NfeCancelamento2</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefaz.pe.gov.br/nfe-service/services/NfeInutilizacao2</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefaz.pe.gov.br/nfe-service/services/NfeStatusServico2</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefaz.pe.gov.br/nfe-service/services/NfeConsulta2</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.sefaz.pe.gov.br/nfe-service/services/CadConsultaCadastro2</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefaz.pe.gov.br/nfe-service/services/RecepcaoEvento</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.sefaz.pe.gov.br/nfe-service/services/NfeAutorizacao?wsdl</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.sefaz.pe.gov.br/nfe-service/services/NfeRetAutorizacao?wsdl</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="PI">
+	<NfeRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NFeRetRecepcao2/NFeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://www.sefazvirtual.fazenda.gov.br/NFeCancelamento2/NFeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao2/NFeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico2/NFeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://www.sefazvirtual.fazenda.gov.br/nfeconsulta2/nfeconsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="PR">
+	<NfeRecepcao2>https://nfe2.fazenda.pr.gov.br/nfe/NFeRecepcao2</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe2.fazenda.pr.gov.br/nfe/NFeRetRecepcao2</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe2.fazenda.pr.gov.br/nfe/NFeCancelamento2</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.fazenda.pr.gov.br/nfe/NFeInutilizacao3?wsdl</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.fazenda.pr.gov.br/nfe/NFeStatusServico3?wsdl</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.fazenda.pr.gov.br/nfe/NFeConsulta3?wsdl</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.fazenda.pr.gov.br/nfe/CadConsultaCadastro2?wsdl</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.fazenda.pr.gov.br/nfe/NFeRecepcaoEvento?wsdl</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.fazenda.pr.gov.br/nfe/NFeAutorizacao3?wsdl</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.fazenda.pr.gov.br/nfe/NFeRetAutorizacao3?wsdl</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="RJ">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="RN">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2>https://webservice.set.rn.gov.br/projetonfeprod/set_nfe/servicos/CadConsultaCadastroWS.asmx</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+		
+	<!-- REMOVIDO EM 03/05/2013 - NAKIBA 
+	<NfeRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://www.sefazvirtual.fazenda.gov.br/NFeRetRecepcao2/NFeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://www.sefazvirtual.fazenda.gov.br/NFeCancelamento2/NFeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao2/NFeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico2/NFeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://www.sefazvirtual.fazenda.gov.br/nfeconsulta2/nfeconsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento> -->
+</uf>
+
+<uf sigla="RO">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="RR">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="RS">
+	<NfeRecepcao2>https://nfe.sefaz.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.sefaz.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefaz.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefaz.rs.gov.br/ws/NfeInutilizacao/NfeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefaz.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefaz.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2>https://sef.sefaz.rs.gov.br/ws/cadconsultacadastro/cadconsultacadastro2.asmx</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefaz.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.sefaz.rs.gov.br/ws/NfeAutorizacao/NFeAutorizacao.asmx</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.sefaz.rs.gov.br/ws/NfeRetAutorizacao/NFeRetAutorizacao.asmx</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="SC">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="SE">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="SP">
+	<NfeRecepcao2>https://nfe.fazenda.sp.gov.br/nfeWEB/services/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.fazenda.sp.gov.br/nfeWEB/services/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.fazenda.sp.gov.br/nfeWEB/services/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.fazenda.sp.gov.br/ws/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.fazenda.sp.gov.br/ws/nfestatusservico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.fazenda.sp.gov.br/ws/nfeconsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2>https://nfe.fazenda.sp.gov.br/ws/cadconsultacadastro2.asmx</CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.fazenda.sp.gov.br/ws/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.fazenda.sp.gov.br/ws/nfeautorizacao.asmx</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.fazenda.sp.gov.br/ws/nferetautorizacao.asmx</NfeRetAutorizacao>
+</uf>
+
+<uf sigla="SU">
+	<NfeRecepcao2></NfeRecepcao2>
+	<NfeRetRecepcao2></NfeRetRecepcao2>
+	<NfeCancelamento2></NfeCancelamento2>
+	<NfeInutilizacao2></NfeInutilizacao2>
+	<NfeStatusServico2></NfeStatusServico2>
+	<NfeConsulta2></NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento></RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="TO">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2> 
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+
+<uf sigla="RFB">
+	<NfeRecepcao2>https://www.scan.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://www.scan.fazenda.gov.br/NfeRetRecepcao2/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2>https://www.scan.fazenda.gov.br/NfeCancelamento2/NfeCancelamento2.asmx</NfeCancelamento2>
+	<NfeInutilizacao2>https://www.scan.fazenda.gov.br/NfeInutilizacao2/NfeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://www.scan.fazenda.gov.br/NfeStatusServico2/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://www.scan.fazenda.gov.br/NfeConsulta2/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<!-- <RecepcaoEvento>https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento> -->
+	<RecepcaoEvento>https://www.scan.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+</uf>
+<uf sigla="SVCRS">
+	<NfeRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2></NfeCancelamento2>
+	<NfeInutilizacao2></NfeInutilizacao2>
+	<NfeStatusServico2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</RecepcaoEvento>
+	<NfeAutorizacao>https://nfe.sefazvirtual.rs.gov.br/ws/NfeAutorizacao/NFeAutorizacao.asmx</NfeAutorizacao>
+	<NfeRetAutorizacao>https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetAutorizacao/NFeRetAutorizacao.asmx</NfeRetAutorizacao>
+</uf>
+<uf sigla="SVCAN">
+	<NfeRecepcao2>https://www.svc.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx</NfeRecepcao2>
+	<NfeRetRecepcao2>https://www.svc.fazenda.gov.br/NfeRetRecepcao2/NfeRetRecepcao2.asmx</NfeRetRecepcao2>
+	<NfeCancelamento2></NfeCancelamento2>
+	<NfeInutilizacao2>https://www.svc.fazenda.gov.br/NfeInutilizacao2/NfeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeStatusServico2>https://www.svc.fazenda.gov.br/NfeStatusServico2/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeConsulta2>https://www.svc.fazenda.gov.br/NfeConsulta2/NfeConsulta2.asmx</NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://www.svc.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento>	
+	<NfeAutorizacao>https://www.svc.fazenda.gov.br/NfeAutorizacao/NfeAutorizacao.asmx</NfeAutorizacao>
+	<NfeRetAutorizacao>https://www.svc.fazenda.gov.br/NfeRetAutorizacao/NfeRetAutorizacao.asmx</NfeRetAutorizacao>
+</uf>
+<uf sigla="AN">
+	<NfeRecepcao2></NfeRecepcao2>
+	<NfeRetRecepcao2></NfeRetRecepcao2>
+	<NfeCancelamento2></NfeCancelamento2>
+	<NfeInutilizacao2></NfeInutilizacao2>
+	<NfeStatusServico2></NfeStatusServico2>
+	<NfeConsulta2></NfeConsulta2>
+	<CadConsultaCadastro2></CadConsultaCadastro2>
+	<RecepcaoEvento>https://www.nfe.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx</RecepcaoEvento>
+	<NfeAutorizacao></NfeAutorizacao>
+	<NfeRetAutorizacao></NfeRetAutorizacao>
+	<NfeConsultaDest>https://www.nfe.fazenda.gov.br/NFeConsultaDest/NFeConsultaDest.asmx</NfeConsultaDest>
+	<NfeDownloadNF>https://www.nfe.fazenda.gov.br/NfeDownloadNF/NfeDownloadNF.asmx</NfeDownloadNF>
+</uf>
+<uf sigla="SCAN">
+
+	<NfeInutilizacao2>https://www.scan.fazenda.gov.br/NfeInutilizacao2/NfeInutilizacao2.asmx</NfeInutilizacao2>
+	<NfeConsulta2>https://www.scan.fazenda.gov.br/NfeConsulta2/NfeConsulta2.asmx</NfeConsulta2>
+	<NfeStatusServico2>https://www.scan.fazenda.gov.br/NfeStatusServico2/NfeStatusServico2.asmx</NfeStatusServico2>
+	<NfeAutorizacao>https://www.scan.fazenda.gov.br/NfeAutorizacao/NfeAutorizacao.asmx</NfeAutorizacao>
+	<NfeRetAutorizacao>https://www.scan.fazenda.gov.br/NfeRetAutorizacao/NfeRetAutorizacao.asmx</NfeRetAutorizacao>
+
+</uf>
+
+</NFeURLSefaz>

@@ -1,0 +1,1423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <link href="../css/internet.css" type="text/css" rel="stylesheet">
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  
+  <title>NF-e - Campos - Aba Transporte</title>
+</head>
+
+
+<body>
+
+<span class="titulo_sistema">Software Emissor NF-e</span><br>
+
+<hr style="width: 100%; height: 2px;"><br>
+
+
+<span class="titulo">Transporte</span><br>
+<hr style="width: 100%; height: 2px;"><br>
+
+
+Compreende as informa&ccedil;&otilde;es de
+Totais&nbsp;da Nota Fiscal.<br>
+
+
+Dividido nas abas de Transportador, Reten&ccedil;&atilde;o de
+ICMS, Ve&iacute;culo, Reboque e Volumes.<br>
+
+
+
+<ul>
+
+
+  <li><a href="#Aba_Transportador">Transportador</a></li>
+
+
+  <br>
+
+
+  <li><a href="#Retencao_do_ICMS">Reten&ccedil;&atilde;o&nbsp;ICMS</a></li>
+
+
+  <br>
+
+
+  <li><font><a href="#Veiculo">Ve&iacute;culo</a></li>
+
+  <br>
+
+
+  <li><font><font><a href="#Reboque">Reboque</a></li>
+
+  <br>
+
+
+  <li><font><font><a href="#AbaVolumes">Volumes</a></li>
+
+
+</ul>
+
+
+<br>
+
+
+<img style="width: 735px; height: 411px;" alt="Aba transporte" src="imagens/Aba_transporte.JPG"><br>
+
+
+<span style="text-decoration: underline;"><br>
+
+
+<br>
+
+
+</span><font style="font-weight: bold;" size="-1">Campo
+de Modalidade, para definir a modalidade de transporte:<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="5" cellspacing="0">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Obrigat&oacute;rio</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Tipo de&nbsp;dado</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Observa&ccedil;&otilde;es</th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">Modalidade do frete</span></td>
+
+
+      <td style="height: 40px; text-align: center;">Sim</td>
+
+
+      <td style="height: 40px;">-</td>
+
+
+      <td style="height: 40px;">-</td>
+
+
+      <td style="height: 40px;">Sele&ccedil;&atilde;o
+pela lista:<br>
+
+
+&nbsp;0 - por conta do emitente;<br>
+
+
+&nbsp;1 - por conta do destinat&aacute;rio; </td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="Aba_Transportador"></a>Aba Transportador<br>
+
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>O transportador poder&aacute; ser carregado do
+Cadastro de Transportadoras mediante a Pesquisa. Para isso, clicar em <span style="font-weight: bold;">Pesquisar</span>, realizar
+a busca pela transportadora desejada e clicar em <span style="font-weight: bold;">Carregar</span> para
+trazermos dados da transportadora selecionada para a NF-e.<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="5" cellspacing="0">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Obrigat&oacute;rio</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Tipo de&nbsp;dado</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 30%;">Observa&ccedil;&otilde;es</th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">Tipo de documento</span></td>
+
+
+      <td style="height: 40px; text-align: center;">N&atilde;o<br>
+
+
+      </td>
+
+
+      <td style="height: 40px;">-</td>
+
+
+      <td style="height: 40px;">-</td>
+
+
+      <td style="height: 40px;">Sele&ccedil;&atilde;o
+pela lista entre:<br>
+
+
+&nbsp;-CPF<br>
+
+
+&nbsp;-CNPJ<br>
+
+
+       </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">CPF/CNPJ do transportador</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Num&eacute;rico</td>
+
+
+      <td>Se o Tipo de Documento for
+CPF: DDD.DDD.DDD-DD<br>
+
+
+      <br>
+
+
+Se o Tipo de Documento for CNPJ: DD.DDD.DDD/DDDD-DD</td>
+
+
+      <td>Obrigat&oacute;rio se
+o Tipo de documento for informado.</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Raz&atilde;o Social/Nome</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+      <td>1 a 60 caracteres</td>
+
+
+      <td>-</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Inscri&ccedil;&atilde;o
+Estadual</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Num&eacute;rico</td>
+
+
+      <td>At&eacute; 14 d&iacute;gitos</td>
+
+
+      <td>Caso informado,
+dever&aacute; ser informado a UF</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Endere&ccedil;o Completo</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+      <td>1 a 60 caracteres</td>
+
+
+      <td>-<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">UF</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>-</td>
+
+
+      <td>-</td>
+
+
+      <td>Sele&ccedil;&atilde;o
+atrav&eacute;s da lista</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Munic&iacute;pio</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+      <td>1 a 60 caracteres</td>
+
+
+      <td>-<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<br>
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="Retencao_do_ICMS"></a></span><span style="font-weight: bold;">Aba </span><span style="font-weight: bold;">Reten&ccedil;&atilde;o
+do ICMS<br>
+
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span>O&nbsp;valor do ICMS do
+servi&ccedil;o de transporte retido.<br>
+
+
+Uma vez informado qualquer um dos campos deste grupo, todos os demais
+tornam-se <span style="font-weight: bold;">Obrigat&oacute;rios</span><br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="5" cellspacing="0">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Obrigat&oacute;rio</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Tipo de&nbsp;dado</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Observa&ccedil;&otilde;es</th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">Base de c&aacute;lculo</span></td>
+
+
+      <td style="height: 40px; text-align: center;">N&atilde;o</td>
+
+
+      <td style="height: 40px;">Moeda</td>
+
+
+      <td style="height: 40px;">At&eacute;
+15 d&iacute;gitos, sendo 2 d&iacute;gitos para os centavos</td>
+
+
+      <td style="height: 40px;">Calculado
+pelo Software </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Al&iacute;quota</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Num&eacute;rico</td>
+
+
+      <td>-</td>
+
+
+      <td>Calculado pelo Software</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Valor do Servi&ccedil;o</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Moeda</td>
+
+
+      <td>At&eacute; 15
+d&iacute;gitos, sendo 2 d&iacute;gitos para os centavos</td>
+
+
+      <td>-</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">UF</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>-<br>
+
+
+      </td>
+
+
+      <td>-</td>
+
+
+      <td>Sele&ccedil;&atilde;o
+atrav&eacute;s da lista</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Munic&iacute;pio</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>-</td>
+
+
+      <td>-</td>
+
+
+      <td>Sele&ccedil;&atilde;o
+atrav&eacute;s da lista, ap&oacute;s a escolha da UF</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">CFOP</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>-</td>
+
+
+      <td>-</td>
+
+
+      <td></td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">ICMS retido</span></td>
+
+
+      <td style="text-align: center;">-</td>
+
+
+      <td>-</td>
+
+
+      <td>-</td>
+
+
+      <td>Calculado pelo Software</td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<br>
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="Veiculo"></a></span><span style="font-weight: bold;">Aba </span><span style="font-weight: bold;">Ve&iacute;culo<br>
+
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span>O&nbsp;valor do ICMS do
+servi&ccedil;o de transporte retido.<br>
+
+
+Uma vez informado qualquer um dos campos deste grupo, todos os demais
+tornam-se <span style="font-weight: bold;">Obrigat&oacute;rios</span><br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="5" cellspacing="0">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Obrigat&oacute;rio</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Tipo de&nbsp;dado</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Observa&ccedil;&otilde;es</th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">Placa</span></td>
+
+
+      <td style="height: 40px; text-align: center;">N&atilde;o</td>
+
+
+      <td style="height: 40px;">Caractere
+e/ou n&uacute;mero</td>
+
+
+      <td style="height: 40px;">1
+a 8 caracteres</td>
+
+
+      <td style="height: 40px;">Caso
+informado, dever&aacute; ser informado a UF </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">RNTC</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+      <td>1 a 20 caracteres</td>
+
+
+      <td>Registro Nacional de
+Transportador de Carga</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">UF</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>-<br>
+
+
+      </td>
+
+
+      <td>-</td>
+
+
+      <td>Sele&ccedil;&atilde;o
+atrav&eacute;s da lista.<br>
+
+
+      Caso informado,
+dever&aacute; ser informado a Placa</td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="Reboque"></a></span><span style="font-weight: bold;">Aba </span><span style="font-weight: bold;">Reboque<br>
+
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span>At&eacute; 2 itens de
+reboque s&atilde;o permitidos.<br>
+
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="Listagem_de_Reboque"></a>Listagem
+de Reboque</span><span style="font-weight: bold;"></span><br>
+
+
+<br>
+
+
+
+A listagem de todos os
+reboques&nbsp;s&atilde;o apresentados com as colunas de:<br>
+
+
+
+<ul>
+
+
+  <li>Placa;</li>
+
+
+  <li>RNTC;</li>
+
+
+  <li>UF;</li>
+
+
+</ul>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="Incluindo_de_Reboque"></a>Incluindo
+um&nbsp;</span><span style="font-weight: bold;">Reboque</span><span style="font-weight: bold;"></span>
+
+<ol>
+
+
+  <li><span style="font-weight: bold;"></span>Na tela da listagem
+de&nbsp;reboque, preencher
+corretamente os campos da&nbsp;reboque</li>
+
+
+  <br>
+
+
+  <li>Ap&oacute;s o
+preenchimento dos campos corretamente,&nbsp;clicar em&nbsp; <span style="font-weight: bold;">Incluir</span>. O&nbsp;reboque ser&aacute;
+apresentado na listagem</li>
+
+
+</ol>
+
+
+<span style="font-weight: bold;"><br>
+
+
+<a name="Detalhamento_de_Reboque"></a>Detalhamento/Edi&ccedil;&atilde;o
+de&nbsp;</span><span style="font-weight: bold;">Reboque</span>
+<ol>
+
+
+  <li><span style="font-weight: bold;"></span>Na tela de&nbsp;listagem
+de&nbsp;reboque,
+selecionar da lista o&nbsp;reboque, para
+Edi&ccedil;&atilde;o.<span style="font-weight: bold;"></span></li>
+
+
+  <br>
+
+
+  <li>Clicar em <span style="font-weight: bold;">Editar</span>  </li>
+
+
+  <br>
+
+
+  <li>Ap&oacute;s a
+modifica&ccedil;&atilde;o dos&nbsp;campos
+necess&aacute;rios,&nbsp;selecionar a
+op&ccedil;&atilde;o<span style="font-weight: bold;">&nbsp;</span><span style="font-weight: bold;">Incluir</span></li>
+
+
+</ol>
+
+
+<span style="font-weight: bold;"><br>
+
+
+<a name="Exclusao_de_Reboque"></a>Exclus&atilde;o&nbsp;</span><span style="font-weight: bold;">
+de&nbsp;</span><span style="font-weight: bold;">Reboque</span><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+
+<ol>
+
+
+  <li>Na tela de
+Inclus&atilde;o/Edi&ccedil;&atilde;o
+de&nbsp;reboque,
+selecionar os&nbsp;reboques, a serem exclu&iacute;dos<span style="font-weight: bold;"></span></li>
+
+
+  <br>
+
+
+  <li>Clicar em <span style="font-weight: bold;">Excluir</span><br>
+
+
+     </li>
+
+
+</ol>
+
+
+
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"><br>
+
+
+</span><span style="font-weight: bold;"><a name="Preenchimento_Reboque"></a>Preenchimento
+dos campos de&nbsp;</span><span style="font-weight: bold;"></span><span style="font-weight: bold;">Reboque</span><span style="font-weight: bold;"></span><br>
+
+
+<span style="font-weight: bold;"></span><br>
+
+
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="5" cellspacing="0">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Obrigat&oacute;rio</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Tipo de&nbsp;dado</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Observa&ccedil;&otilde;es</th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">Placa</span></td>
+
+
+      <td style="height: 40px; text-align: center;">N&atilde;o</td>
+
+
+      <td style="height: 40px;">Caractere
+e/ou n&uacute;mero</td>
+
+
+      <td style="height: 40px;">1
+a 8 caracteres</td>
+
+
+      <td style="height: 40px;">Caso
+informado, dever&aacute; ser informado a UF </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">RNTC</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+      <td>1 a 20 caracteres</td>
+
+
+      <td>Registro Nacional de
+Transportador de Carga</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">UF</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>-<br>
+
+
+      </td>
+
+
+      <td>-</td>
+
+
+      <td>Sele&ccedil;&atilde;o
+atrav&eacute;s da lista.<br>
+
+
+      Caso informado,
+dever&aacute; ser informado a Placa</td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="AbaVolumes"></a>Aba </span><span style="font-weight: bold;">Volumes<br>
+
+</span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span><br>
+
+
+<span style="font-weight: bold;"><a name="Listagem_de_Volume"></a>Listagem
+de Volumes</span><span style="font-weight: bold;"></span><br>
+
+
+<br>
+
+
+<img style="width: 733px; height: 406px;" alt="Volumes - listagem" src="imagens/Aba_transporte-volumes_listagem.JPG"><br>
+
+
+<br>
+
+
+
+A listagem de todos os
+volumes s&atilde;o apresentados com as colunas de:<br>
+
+
+
+<ul>
+
+
+  <li>Qtde. Vol.;</li>
+
+
+  <li>Esp&eacute;cie;</li>
+
+
+  <li>Marca;</li>
+
+
+  <li>N&uacute;mero Vol.;</li>
+
+
+  <li>Peso L&iacute;quido;</li>
+
+
+  <li>Peso Bruto;</li>
+
+
+</ul>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><a name="Incluindo_de_Volume"></a>Incluindo
+um Volume</span><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+
+<ol>
+
+
+  <li><span style="font-weight: bold;"></span>Na tela da listagem
+de volumes,&nbsp;clicar em <span style="font-weight: bold;">Incluir</span></li>
+
+
+  <br>
+
+
+  <li>A tela de
+inclus&atilde;o de Volumes ser&aacute; apresentada. Preencher
+os campos corretamente.</li>
+
+
+  <br>
+
+
+  <li>Ap&oacute;s o
+preenchimento dos campos corretamente,&nbsp;clicar em&nbsp; <span style="font-weight: bold;">OK</span>. O volume ser&aacute;
+apresentado na listagem de Volumes da tela anterior</li>
+
+
+</ol>
+
+
+<span style="font-weight: bold;"><img style="width: 786px; height: 482px;" alt="Volumes - inclus&atilde;o" src="imagens/Aba_transporte-volumes_inclusao.JPG"><br>
+
+
+<br>
+
+
+<br>
+
+
+<a name="Detalhamento_de_Volume"></a>Detalhamento/Edi&ccedil;&atilde;o
+de&nbsp;</span><span style="font-weight: bold;">Volume</span><span style="font-weight: bold;"></span>
+<ol>
+
+
+  <li><span style="font-weight: bold;"></span>Na tela de&nbsp;listagem
+de volumes, selecionar da
+lista o&nbsp;volume para
+Edi&ccedil;&atilde;o.<span style="font-weight: bold;"></span></li>
+
+
+  <br>
+
+
+  <li>Clicar em <span style="font-weight: bold;">Detalhar</span></li>
+
+
+  <br>
+
+
+  <li>Na tela de
+Detalhamento/Edi&ccedil;&atilde;o de volumes, realizar
+as&nbsp;modifica&ccedil;&atilde;o dos&nbsp;campos
+necess&aacute;rios.</li>
+
+
+  <br>
+
+
+  <li>Ap&oacute;s a
+modifica&ccedil;&atilde;o, clicar em <span style="font-weight: bold;">OK</span>. O volume alterado ser&aacute;
+apresentado na listagem de Volumes da tela anterior</li>
+
+
+</ol>
+
+
+<span style="font-weight: bold;"><br>
+
+
+<a name="Exclusao_de_Volume"></a>Exclus&atilde;o&nbsp;</span><span style="font-weight: bold;">
+de&nbsp;</span><span style="font-weight: bold;">Volume</span><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+
+<ol>
+
+
+  <li>Na tela de
+lsitagem&nbsp;de volumes,&nbsp;selecionar
+os volumes a serem exclu&iacute;dos<span style="font-weight: bold;"></span></li>
+
+
+  <br>
+
+
+  <li>Clicar em <span style="font-weight: bold;">Excluir</span><br>
+
+
+     </li>
+
+
+</ol>
+
+
+
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"><br>
+
+
+</span><span style="font-weight: bold;"><a name="Preenchimento_Volume"></a>Preenchimento
+dos campos de&nbsp;</span><span style="font-weight: bold;"></span><span style="font-weight: bold;">Volume</span><span style="font-weight: bold;"></span><br>
+
+
+<span style="font-weight: bold;"></span><br>
+
+
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="5" cellspacing="0">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Obrigat&oacute;rio</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Tipo de&nbsp;dado</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Observa&ccedil;&otilde;es</th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">Quantidade</span></td>
+
+
+      <td style="height: 40px; text-align: center;">N&atilde;o</td>
+
+
+      <td style="height: 40px;">Num&eacute;rico</td>
+
+
+      <td style="height: 40px;">1
+a 15 d&iacute;gitos</td>
+
+
+      <td style="height: 40px;">- </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Esp&eacute;cie</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+      <td>1 a 60 caracteres</td>
+
+
+      <td>-</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Marca</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+      <td>1 a 60 caracteres</td>
+
+
+      <td>-</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Numera&ccedil;&atilde;o</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Caractere e/ou
+n&uacute;mero</td>
+
+
+      <td>1 a 60 caracteres</td>
+
+
+      <td>-</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Peso L&iacute;quido (kg)</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Num&eacute;rico</td>
+
+
+      <td>At&eacute; 15
+d&iacute;gitos, sendo 3 d&iacute;gitos decimais</td>
+
+
+      <td>-</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td><span style="font-weight: bold;">Peso Bruto (kg)</span></td>
+
+
+      <td style="text-align: center;">N&atilde;o</td>
+
+
+      <td>Num&eacute;rico</td>
+
+
+      <td>At&eacute; 15
+d&iacute;gitos, sendo 3 d&iacute;gitos decimais</td>
+
+
+      <td>-</td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<span style="font-weight: bold;"><br>
+
+<br>
+
+<a name="Aba_Lacres"></a>Aba Lacres<br>
+
+
+</span>
+<hr style="width: 100%; height: 2px;">Cada Volume poder&aacute; conter Lacres, que s&atilde;o
+informados atrav&eacute;s do &uacute;nico campo
+N&uacute;mero do Lacre.<br>
+
+
+Para a inser&ccedil;&atilde;o de um novo lacre no Volume,
+informar o n&uacute;mero do lacre e clicar em <span style="font-weight: bold;">Incluir</span>.<br>
+
+
+Para a edi&ccedil;&atilde;o, selecionar o lacre desejado e
+clicar em <span style="font-weight: bold;">Editar</span>.
+Ap&oacute;s a modifica&ccedil;&atilde;o, clicar em <span style="font-weight: bold;">Incluir</span>.<span style="font-weight: bold;"><br>
+
+
+</span>Para a
+exclus&atilde;o, selecionar os lacres a serem exclu&iacute;dos
+e&nbsp;clicar em <span style="font-weight: bold;">Excluir</span>.<br>
+
+
+<br>
+
+
+O campos de Lacre &eacute;:<br>
+
+
+<span style="font-weight: bold;"></span><span style="font-weight: bold;"></span>
+<table style="text-align: left; width: 100%; height: 76px;" border="1" cellpadding="5" cellspacing="0">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Campo</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Obrigat&oacute;rio</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 10%;">Tipo de&nbsp;dado</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236); width: 20%;">Formato e Tamanho</th>
+
+
+      <th style="height: 30px; background-color: rgb(237, 239, 236);">Observa&ccedil;&otilde;es</th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="height: 40px;"><span style="font-weight: bold;">N&uacute;mero do Lacre</span></td>
+
+
+      <td style="height: 40px; text-align: center;">Sim</td>
+
+
+      <td style="height: 40px;">Caractere
+e/ou
+n&uacute;mero</td>
+
+
+      <td style="height: 40px;">1
+a 60 caracteres</td>
+
+
+      <td style="height: 40px;">- </td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+<img style="width: 746px; height: 289px;" alt="Volumes - lacres" src="imagens/Aba_transporte-volumes-lacres.JPG"><br>
+
+
+<br>
+
+
+<br>
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  <!DOCTYPE reports PUBLIC "-//Prodesp//DTD Reports 1.0//EN" "/br/gov/sp/fazenda/dsge/report/resources/reports_1_0.dtd"> -->
+
+<reports>
+	<report-location>/br/gov/sp/fazenda/dsen/report</report-location>
+	<datasource-param-suffix>_datasource</datasource-param-suffix>
+	<subreport-param-suffix>_subreport</subreport-param-suffix>
+
+	<!-- ========== -->
+	<!-- Parametros -->
+	<!-- ========== -->
+	<report-parameter>
+		<parameter-name>BRASAO</parameter-name>
+		<parameter-value>br/gov/sp/fazenda/dsen/report/brasao.gif</parameter-value>
+	</report-parameter>
+
+	<!-- ============================= -->
+	<!-- DANFE - orientação retrato A4 -->
+	<!-- ============================= -->
+    <report name="ImpressaoDanfeRetratoA4Report">
+		<report-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeRD</report-data>
+		<subreport name="ImpressaoDanfeItemRetratoA4Report">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeItemRD</subreport-data>
+		</subreport>
+		<subreport name="ImpressaoDanfeInfComplRetratoA4Report">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeInfComplRD</subreport-data>
+		</subreport>
+	</report>
+
+	<!-- ============================== -->
+	<!-- DANFE - orientação paisagem A4 -->
+	<!-- ============================== -->    
+    <report name="ImpressaoDanfePaisagemA4Report">
+		<report-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeRD</report-data>
+		<subreport name="ImpressaoDanfeItemPaisagemA4Report">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeItemRD</subreport-data>
+		</subreport>
+		<subreport name="ImpressaoDanfeInfComplPaisagemA4Report">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeInfComplRD</subreport-data>
+		</subreport>
+	</report>
+	
+	<!-- =================================== -->
+	<!-- DANFE - orientação retrato Oficio 2 -->
+	<!-- =================================== -->
+    <report name="ImpressaoDanfeRetratoOFICIO2Report">
+		<report-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeRD</report-data>
+		<subreport name="ImpressaoDanfeItemRetratoOFICIO2Report">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeItemRD</subreport-data>
+		</subreport>
+		<subreport name="ImpressaoDanfeInfComplRetratoOFICIO2Report">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeInfComplRD</subreport-data>
+		</subreport>
+	</report>
+
+	<!-- ==================================== -->
+	<!-- DANFE - orientação paisagem Oficio 2 -->
+	<!-- ==================================== -->    
+    <report name="ImpressaoDanfePaisagemOFICIO2Report">
+		<report-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeRD</report-data>
+		<subreport name="ImpressaoDanfeItemPaisagemOFICIO2Report">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeItemRD</subreport-data>
+		</subreport>
+		<subreport name="ImpressaoDanfeInfComplPaisagemOFICIO2Report">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.ImpressaoDanfeInfComplRD</subreport-data>
+		</subreport>
+	</report>
+
+   	<!-- =================== -->
+	<!-- Relatorio Gerencial -->
+	<!-- =================== -->
+	<report name="RelatorioGerencialRetratoReport">
+		<report-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialRD</report-data>
+        <subreport name="RelatorioGerencialAutorizadasReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialCanceladasReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialDenegadasReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialRejeitadasReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialEmProcessamentoReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialProblemaTransmissaoReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialValidadaReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialAssinadaReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialEmDigitacaoReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+		<subreport name="RelatorioGerencialInutilizadaReport">
+			<subreport-data>br.gov.sp.fazenda.dsen.reportdata.RelatorioGerencialDetalheRD</subreport-data>
+		</subreport>
+	</report>
+	    	
+</reports>

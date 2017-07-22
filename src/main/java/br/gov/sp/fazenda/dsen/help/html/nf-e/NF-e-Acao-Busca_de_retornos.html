@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <link href="../css/internet.css" type="text/css" rel="stylesheet">    
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>NF-e - A&ccedil;&atilde;o - Busca de retornos</title>
+</head>
+
+
+<body>
+
+<span class="titulo_sistema">Software Emissor NF-e</span><br>
+<hr style="width: 100%; height: 2px;"><br>
+
+<span class="titulo">Busca pelos retornos na SEFAZ</span><br>
+<hr style="width: 100%; height: 2px;"><br>
+
+
+A busca pelos retornos na SEFAZ &eacute; o processo que o Software
+Emissor executa para pesquisar o resultado do processamento das NF-e's
+enviadas, verificando se a nota foi autorizada, denegada ou rejeitada
+pela SEFAZ.<br>
+
+
+A busca pelos retornos &eacute; disparada de forma autom&aacute;tica
+pelo Software ap&oacute;s qualquer transmiss&atilde;o de NF-e com
+sucesso para a SEFAZ.<br>
+
+
+Ap&oacute;s o t&eacute;rmino da busca, um bal&atilde;o informativo aparecer&aacute; no <span style="font-style: italic;">system tray</span>
+para avisar o usu&aacute;rio que a busca foi conclu&iacute;da.
+Tamb&eacute;m ficar&aacute; dispon&iacute;vel um pequeno &iacute;cone
+na barra de <span style="font-style: italic;">status</span> do aplicativo. Clicando no &iacute;cone, o Software ir&aacute; apresentar o resultado da busca de cada uma das NF-e's.<br>
+
+
+O&nbsp;software tamb&eacute;m ir&aacute; atualizar a
+situa&ccedil;&atilde;o de cada uma das NF-e's buscadas na SEFAZ. Tais
+NF-e's poder&atilde;o ser consultadas pela fun&ccedil;&atilde;o de
+gerenciamento de notas.<br>
+
+
+<br>
+
+<br>
+
+Ap&oacute;s o t&eacute;rmino da Busca, o Software informar&aacute; atrav&eacute;s de Aviso pelo <span style="font-style: italic;">System Tray</span> (em caso de uso do Sistema Operacional <span style="font-style: italic;">Windows</span>)<br>
+
+<img style="width: 292px; height: 88px;" alt="NFe - Busca retorno - system tray" src="imagens/NFe-busca_retorno-system_tray.JPG"><br>
+
+<br>
+
+<br>
+
+E apresentar&aacute; o &iacute;cone de informa&ccedil;&otilde;es da Busca na barra de <span style="font-style: italic;">status</span> (barra inferior do Software):<br>
+
+<img style="width: 771px; height: 127px;" alt="NFe - Busca retorno - info icone" src="imagens/NFe-busca_retorno-icone_info.JPG"><br>
+
+<br>
+<br>
+
+<br>
+Clicanco no &iacute;cone, uma janela com as informa&ccedil;&otilde;es
+dos retornos &eacute; apresentada, mostrando se as NF-e's foram
+autorizadas:<br>
+<img style="width: 768px; height: 576px;" alt="NFe - Busca retorno - info" src="imagens/NFe-busca_retorno-info_sucesso.JPG"><br>
+<br>
+
+
+<span style="font-weight: bold;"><br>
+<br>
+
+
+Iniciando a busca de retornos manualmente</span><br>
+
+
+Caso existam NF-e's com situa&ccedil;&atilde;o
+"Em
+processamento na SEFAZ" ou "Com problemas na
+transmiss&atilde;o/pendente" e a busca n&atilde;o estiver em
+execu&ccedil;&atilde;o ou agendada, o usu&aacute;rio poder&aacute;
+inici&aacute;-la manualmente da seguinte maneira:<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;">
+Pr&eacute;-condi&ccedil;&atilde;o</span>:<br>
+
+
+
+&nbsp;&nbsp;&nbsp; -Um emitente
+dever&aacute; estar previamente iniciado.<br>
+
+
+
+&nbsp;&nbsp;&nbsp; -Pelo menos uma NF-e deve estar "Em
+processamento na SEFAZ" ou "Com problemas na
+transmiss&atilde;o/pendente"<br>
+
+
+
+<ol>
+
+
+  <li>Acesso ao menu <span style="font-weight: bold;">Notas Fiscais -&gt; Consultar
+Pend&ecirc;ncias na SEFAZ</span><br>
+
+
+
+     </li>
+
+
+  <br>
+
+
+
+  <li>Na tela de
+pend&ecirc;ncias de buscas, caso existam NF-e's a em processamento
+na SEFAZ ou com problemas na transmiss&atilde;o, o bot&atilde;o
+de <span style="font-weight: bold;">Iniciar Busca</span>
+estar&aacute; habilitado. Para iniciar a busca na SEFAZ, clicar no
+bot&atilde;o.</li>
+
+
+  <br>
+
+
+  <li>Na janela de
+sele&ccedil;&atilde;o de Certificado Digital, escolher o
+Arquivo&nbsp;(para
+Certificado tipo A1), informando a senha, ou Reposit&oacute;rio
+(para Certificado tipo A3)<br>
+
+
+
+  </li>
+
+
+  <br>
+
+
+  <li>Ap&oacute;s a
+sele&ccedil;&atilde;o, clicar em Selecionar.<br>
+
+
+
+  </li>
+
+
+  <br>
+
+
+  <li>O Software ir&aacute;
+iniciar a busca pelas pend&ecirc;ncias na SEFAZ (ou seja, os
+respectivos protocolos das NF-e's em Processamento na SEFAZ e a
+situa&ccedil;&atilde;o das NF-e's com problemas na
+transmiss&atilde;o) e informar&aacute; quando esta busca for
+conclu&iacute;da.</li>
+
+
+</ol>
+
+
+<span style="font-weight: bold;">Importante:</span> Em toda a busca de retorno,&nbsp;TODAS as NF-e's em <span style="font-weight: bold;">processamento na SEFAZ pendentes</span> ou <span style="font-weight: bold;">com problemas na transmiss&atilde;o</span> ser&atilde;o pesquisadas na SEFAZ.<br>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;">Agendamento de buscas</span><br>
+
+
+<br>
+
+
+
+O agendamento das buscas de retorno da SEFAZ ocorre quando, ap&oacute;s
+uma primeira busca pelos protocolos, as NF-e's ainda encontram-se <span style="font-weight: bold;">Em processamento na SEFAZ</span>,
+ou seja, as Notas enviadas ainda n&atilde;o terminaram de ser
+processadas pela SEFAZ e necessita-se de mais um per&iacute;odo de
+tempo para a conclus&atilde;o e disponibiliza&ccedil;&atilde;o da
+resposta.<br>
+
+
+Caso ocorra esta situa&ccedil;&atilde;o, o Software Emissor NF-e realizar&aacute; automaticamente um <span style="font-weight: bold;">Agendamento</span> de uma nova busca na SEFAZ ap&oacute;s o per&iacute;odo de tempo definido no par&acirc;metro de sistema <span style="font-weight: bold;">Intervalo entre consultas de processamentos pendentes</span>.
+Caso ap&oacute;s esta nova busca a NF-e ainda encontre-se em
+processamento na SEFAZ, um novo agendamento ser&aacute; realizado
+at&eacute; que todas as NF-e's tenham a respectiva resposta da SEFAZ.<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;">Exemplo</span>:<br>
+
+
+Ap&oacute;s a transmiss&atilde;o de 10 NF-e's para a SEFAZ, estas ficam com a situa&ccedil;&atilde;o <span style="font-weight: bold;">Em processamento na SEFAZ</span>.<br>
+
+
+Logo a seguir, a <span style="font-weight: bold;">Busca pelos retornos</span> destas NF-e's na SEFAZ &eacute; iniciado pelo Software Emissor.<br>
+
+
+Depois desta primeira busca, temos que 5 das NF-e's ainda encontram-se
+em Processamento na SEFAZ, e as outras 5 j&aacute; receberam a resposta
+(autoriza&ccedil;&atilde;o, denega&ccedil;&atilde;o
+ou&nbsp;rejei&ccedil;&atilde;o)<br>
+
+
+Como ainda temos NF-e's com a situa&ccedil;&atilde;o Em processamento
+na SEFAZ, o Software realizar&aacute; um agendamento da Busca pelos
+retornos.<br>
+
+
+O tempo de espera at&eacute; esta nova busca &eacute; definida no par&acirc;metro <span style="font-weight: bold;">Intervalo entre consultas de processamentos pendentes</span>, que est&aacute; em 10 segundos.<br>
+
+
+Assim, passados 10 segundos, uma nova busca ser&aacute; realizada.<br>
+
+
+<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;">Parando o Agendamento manualmente</span><br>
+
+
+Caso exista um agendamento, o usu&aacute;rio poder&aacute; termin&aacute;-lo.<br>
+
+
+<br>
+
+
+<span style="font-weight: bold;">
+Pr&eacute;-condi&ccedil;&atilde;o</span>:<br>
+
+
+
+&nbsp;&nbsp;&nbsp; -Um emitente
+dever&aacute; estar previamente iniciado.<br>
+
+
+<ol>
+
+
+  <li>Acessar&nbsp;o menu <span style="font-weight: bold;">Notas Fiscais -&gt; Consultar
+Pend&ecirc;ncias na SEFAZ</span><br>
+
+
+
+     </li>
+
+
+  <br>
+
+
+
+  <li>Na tela de
+pend&ecirc;ncias de buscas, clicar no bot&atilde;o <span style="font-weight: bold;">Parar Agendamento</span>.</li>
+
+
+</ol>
+
+
+<span style="font-weight: bold;"><br>
+
+
+Importante:</span> Na pr&oacute;xima <span style="font-weight: bold;">Busca de retornos</span>, TODAS as NF-e's em <span style="font-weight: bold;">processamento na SEFAZ pendentes</span> que deixaram de ser&nbsp;consultadas pelo agendamento ser&atilde;o pesquisadas na SEFAZ.<br>
+<br>
+<br>
+<br>
+Tela de Busca de Retornos pendentes - apresenta
+o hist&oacute;rico de Autoriza&ccedil;&otilde;es,
+Denega&ccedil;&otilde;es e Cancelamentos:<br>
+<img style="width: 768px; height: 576px;" alt="NFe - consulta pend&ecirc;ncias" src="imagens/NFe-consulta_pendencias_sefaz.JPG"><br>
+
+
+<span style="font-weight: bold;"><br>
+
+
+</span>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRODUTO>
+	<A tagXml="sistema" min="1" max="*">
+		<tag nome="det" registros="I,M" xmlPos="0"/>
+		<campo xmlType="attrib" nome="versao">
+			<tipoValidacao>
+				<notNull message="produto.notNull"/>
+			</tipoValidacao>
+		</campo>
+		<campo xmlType="attrib" nome="xmlns" xmlOnly="true" fixedValue="http://www.portalfiscal.inf.br/nfe"/>
+		<I tagXml="prod" xmlPos="1" min="1" max="*">
+			<campo xmlType="tag" nome="cProd" xmlPos="1">
+				<tipoValidacao>
+					<notNull message="produto.notNull"/>
+					<pattern regex="[ -ÿ]{0,}" message="produto.contemCaracteresEspeciais" />
+					<length min="1" max="60" message="produto.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xProd" xmlPos="3">
+				<tipoValidacao>
+					<notNull message="produto.notNull"/>
+					<pattern regex="[ -ÿ]{0,}" message="produto.contemCaracteresEspeciais" />
+					<length min="1" max="120" message="produto.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="cEAN" xmlPos="2">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|[0-9]{8}|[0-9]{12,14}" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="NCM" xmlPos="4">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|[0-9]{2}|[0][1-9][0-9]{6}|[1-9][0-9]{7}" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="EXTIPI" xmlPos="5">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|[0-9]{2,3}" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="genero" xmlPos="6">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|[0-9]{1,2}" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="uCom" xmlPos="7">
+				<tipoValidacao>
+					<pattern regex="[ -ÿ]{0,}" message="produto.contemCaracteresEspeciais" />
+					<length min="1" max="6" message="produto.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="vUnCom" xmlPos="11">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|0|0\.[0-9]{4}|[1-9]{1}[0-9]{0,11}(\.[0-9]{4})?" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="cEANTrib" xmlPos="8">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|[0-9]{8}|[0-9]{12,14}" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="uTrib" xmlPos="9">
+				<tipoValidacao>
+					<pattern regex="[ -ÿ]{0,}" message="produto.contemCaracteresEspeciais" />
+					<length min="1" max="6" message="produto.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="vUnTrib" xmlPos="12">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|0|0\.[0-9]{4}|[1-9]{1}[0-9]{0,11}(\.[0-9]{4})?" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="qTrib" xmlPos="10">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|0|0\.[0-9]{1,4}|[1-9]{1}[0-9]{0,14}|[1-9]{1}[0-9]{0,14}(\.[0-9]{1,4})?" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+		</I>
+		<M tagXml="imposto" xmlPos="2" min="0" max="1">
+			<campo nome="mIPI" valueExp="#O">
+				<tipoValidacao>
+					<notNull message="produto.notNull"/>
+					<validValues values="0,1" message="produto.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo nome="qtdeN" valueExp="#N">
+				<tipoValidacao>
+					<notNull message="produto.notNull"/>
+					<pattern regex="[0-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-4]{1}" message="notafiscal.valorInvalido" />
+				</tipoValidacao>
+			</campo>
+			<N tagXml="ICMS" xmlPos="1" min="0" max="*">
+				<campo xmlType="tag" nome="CST" xmlPos="2">
+					<tipoValidacao>
+						<notNull message="produto.notNull"/>
+						<validValues values="00,10,10_Part,20,30,40,41,41_ST,50,51,60,70,90,90_Part,101,102,103,201,202,203,300,400,500,900" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="orig" xmlPos="1">
+					<tipoValidacao>
+						<validValues values=",0,1,2,3,4,5,6,7,8" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="modBC" xmlPos="3">
+					<tipoValidacao>
+						<validValues values=",0,1,2,3" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="pICMS" xmlPos="5">
+					<tipoValidacao>
+						<pattern regex="0\.[0-9]{1}[1-9]{1}|0\.[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="pRedBC" xmlPos="4">
+					<tipoValidacao>
+						<pattern regex="0\.[0-9]{1}[1-9]{1}|0\.[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="modBCST" xmlPos="7">
+					<tipoValidacao>
+						<validValues values=",0,1,2,3,4,5" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="pICMSST" xmlPos="6">
+					<tipoValidacao>
+						<pattern regex="0\.[0-9]{1}[1-9]{1}|0\.[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="pRedBCST" xmlPos="9">
+					<tipoValidacao>
+						<pattern regex="0\.[0-9]{1}[1-9]{1}|0\.[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="pMVAST" xmlPos="8">
+					<tipoValidacao>
+						<pattern regex="0\.[0-9]{1}[1-9]{1}|0\.[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="motDesICMS" xmlPos="10">
+					<tipoValidacao>
+						<validValues values=",1,2,3,4,5,6,7,9" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="pBCOp" xmlPos="11">
+					<tipoValidacao>
+						<pattern regex="0\.[0-9]{1}[1-9]{1}|0\.[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="UFST" xmlPos="12">
+					<tipoValidacao>
+						<validValues values=",AC,AL,AM,AP,BA,CE,DF,ES,GO,MA,MG,MS,MT,PA,PB,PE,PI,PR,RJ,RN,RO,RR,RS,SC,SE,SP,TO,EX" message="notafiscal.valorInvalido" />
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="pCredSN" xmlPos="13">
+					<tipoValidacao>
+						<pattern regex="0\.[0-9]{1}[1-9]{1}|0\.[1-9]{1}[0-9]{1}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2})?" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+			</N>
+			<O tagXml="IPI" xmlPos="2" min="0" max="1">
+				<campo xmlType="tag" nome="clEnq" xmlPos="1">
+					<tipoValidacao>
+						<pattern regex="[ -ÿ]{0,}" message="produto.contemCaracteresEspeciais" />
+						<length min="1" max="5" message="produto.tamanhoInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="CNPJProd" xmlPos="2">
+					<tipoValidacao>
+						<pattern regex="[0-9]{14}" message="produto.valorInvalido"/>
+					</tipoValidacao>
+				</campo>
+				<campo xmlType="tag" nome="cEnq" xmlPos="3">
+					<tipoValidacao>
+						<pattern regex="[ -ÿ]{0,}" message="produto.contemCaracteresEspeciais" />
+						<length min="1" max="3" message="produto.tamanhoInvalido"/>
+					</tipoValidacao>
+				</campo>
+			</O>
+		</M>
+	</A>
+</PRODUTO>
+

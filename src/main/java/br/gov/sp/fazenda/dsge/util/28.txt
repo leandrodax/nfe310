@@ -1,0 +1,75 @@
+2801207|Caninde de Sao Francisco
+2802205|Feira Nova
+2802403|Gararu
+2802601|Gracho Cardoso
+2803104|Itabi
+2804201|Monte Alegre de Sergipe
+2804508|Nossa Senhora da Gloria
+2805406|Poco Redondo
+2805604|Porto da Folha
+2801405|Carira
+2802304|Frei Paulo
+2804458|Nossa Senhora Aparecida
+2805000|Pedra Mole
+2805208|Pinhao
+2806008|Ribeiropolis
+2800209|Aquidaba
+2801900|Cumbe
+2803807|Malhada dos Bois
+2804300|Muribeca
+2804607|Nossa Senhora das Dores
+2807006|Sao Miguel do Aleixo
+2800506|Areia Branca
+2801009|Campo do Brito
+2802908|Itabaiana
+2803708|Macambira
+2803906|Malhador
+2804102|Moita Bonita
+2806800|Sao Domingos
+2805505|Poco Verde
+2807105|Simao Dias
+2807402|Tobias Barreto
+2803500|Lagarto
+2805802|Riachao do Dantas
+2800100|Amparo de Sao Francisco
+2800704|Brejo Grande
+2801108|Canhoba
+2801603|Cedro de Sao Joao
+2802700|Ilha das Flores
+2804409|Neopolis
+2804706|Nossa Senhora de Lourdes
+2805703|Propria
+2806404|Santana do Sao Francisco
+2807303|Telha
+2801306|Capela
+2802007|Divina Pastora
+2806503|Santa Rosa de Lima
+2807204|Siriri
+2803302|Japaratuba
+2803401|Japoata
+2804904|Pacatuba
+2805307|Pirambu
+2806909|Sao Francisco
+2801504|Carmopolis
+2802502|General Maynard
+2803609|Laranjeiras
+2804003|Maruim
+2805901|Riachuelo
+2806107|Rosario do Catete
+2806602|Santo Amaro das Brotas
+2800308|Aracaju
+2800605|Barra dos Coqueiros
+2804805|Nossa Senhora do Socorro
+2806701|Sao Cristovao
+2800407|Araua
+2800670|Boquim
+2801702|Cristinapolis
+2803005|Itabaianinha
+2805109|Pedrinhas
+2806206|Salgado
+2807501|Tomar do Geru
+2807600|Umbauba
+2802106|Estancia
+2802809|Indiaroba
+2803203|Itaporanga d'Ajuda
+2806305|Santa Luzia do Itanhy

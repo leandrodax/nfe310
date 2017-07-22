@@ -1,0 +1,665 @@
+/**
+ * 
+ */
+package br.gov.sp.fazenda.dsen.model.business;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStreamReader;
+import java.security.PrivateKey;
+import java.security.cert.X509Certificate;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
+import br.gov.sp.fazenda.dsen.common.enumeration.AppContextEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.DSENSchemaTypeEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.ExtensaoArquivoEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.GrupoNotificacaoEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.ServicoSefazEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.SituacaoNFeEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.TipoEmissaoEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.WSStatusRetorno;
+import br.gov.sp.fazenda.dsen.common.to.CertificadoTO;
+import br.gov.sp.fazenda.dsen.common.to.EmitenteTO;
+import br.gov.sp.fazenda.dsen.common.to.InutilizacaoTO;
+import br.gov.sp.fazenda.dsen.common.to.PesquisaRelatorioGerencialTO;
+import br.gov.sp.fazenda.dsen.common.util.DSENMessageConstants;
+import br.gov.sp.fazenda.dsen.common.util.DSENProperties;
+import br.gov.sp.fazenda.dsen.common.util.DocumentoUtil;
+import br.gov.sp.fazenda.dsen.common.util.ErroXmlResposta;
+import br.gov.sp.fazenda.dsen.model.business.factory.BusinessFactory;
+import br.gov.sp.fazenda.dsen.model.business.util.ConsultaStatusServicoHelper;
+import br.gov.sp.fazenda.dsen.model.business.util.DSENBusinessConverter;
+import br.gov.sp.fazenda.dsen.model.business.util.ScanHelper;
+import br.gov.sp.fazenda.dsen.model.dao.InutilizacaoDAO;
+import br.gov.sp.fazenda.dsen.model.entity.EmitenteEntity;
+import br.gov.sp.fazenda.dsen.model.entity.InutilizacaoEntity;
+import br.gov.sp.fazenda.dsen.model.exception.DSENBusinessException;
+import br.gov.sp.fazenda.dsen.model.exception.DSENConverterException;
+import br.gov.sp.fazenda.dsen.model.exception.DSENDAOException;
+import br.gov.sp.fazenda.dsen.util.DSENUtilHelper;
+import br.gov.sp.fazenda.dsge.certif.Certificado;
+import br.gov.sp.fazenda.dsge.common.app.AppContext;
+import br.gov.sp.fazenda.dsge.common.app.Notificador;
+import br.gov.sp.fazenda.dsge.common.enumeration.ProblemaConexaoAcao;
+import br.gov.sp.fazenda.dsge.common.exception.exportacao.CancelarExportacaoException;
+import br.gov.sp.fazenda.dsge.common.util.StringHelper;
+import br.gov.sp.fazenda.dsge.common.util.exportacao.ExportacaoHelper;
+import br.gov.sp.fazenda.dsge.model.dao.util.DSGETransaction;
+import br.gov.sp.fazenda.dsge.model.exception.DSGEDAOException;
+import br.gov.sp.fazenda.dsge.util.EstadoTO;
+import br.gov.sp.fazenda.dsge.util.exception.DSGEUtilException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGEConnectionClientException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGEConnectionServerException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGEProxyException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGESocketException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGETimeoutException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGEWebServiceException;
+
+/** 
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @author hfgonzalez
+ * 
+ * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ */
+public class InutilizacaoBusiness {
+
+	private NotaFiscalBusiness notaFiscalBusiness;
+	private WSBusiness wSBusiness;
+	private Log log = LogFactory.getLog(InutilizacaoBusiness.class);
+	private InutilizacaoDAO inutilizacaoDAO = new InutilizacaoDAO();
+
+	/**
+	 * 
+	 * @param pesquisaInutilizacaoTO
+	 * @return
+	 */
+	public InutilizacaoTO validarFiltroPesquisarFaixasParaInutilizar(InutilizacaoTO pesquisaInutilizacaoTO){
+		int numeroInicial = !StringHelper.isBlankOrNull(pesquisaInutilizacaoTO.getNumeroInicial())?Integer.parseInt(pesquisaInutilizacaoTO.getNumeroInicial()):-1;
+		int numeroFinal = !StringHelper.isBlankOrNull(pesquisaInutilizacaoTO.getNumeroFinal())?Integer.parseInt(pesquisaInutilizacaoTO.getNumeroFinal()):-1;
+		if(numeroFinal!=-1 && numeroInicial!=-1 && !(numeroFinal>=numeroInicial))
+			pesquisaInutilizacaoTO.addError(DSENMessageConstants.MSG_FILTRO_INUTILIZACAO_FIM_MENOR_INICIO);
+		return pesquisaInutilizacaoTO;
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Obtem a lista de faixa que podem ser inutilizadas a partir do filtro informado
+	 * @param pesquisaInutilizacaoTO 
+	 * @return 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public HashMap<String,List<InutilizacaoTO>> obterFaixasParaInutilizar(InutilizacaoTO pesquisaInutilizacaoTO) throws DSENBusinessException {
+		// begin-user-code
+
+		HashMap<String,List<InutilizacaoTO>> inutilizadasMap = new HashMap<String, List<InutilizacaoTO>>();
+
+		List<SituacaoNFeEnum> situacoes = new ArrayList<SituacaoNFeEnum>();
+		situacoes.add(SituacaoNFeEnum.CANCELADA);
+		situacoes.add(SituacaoNFeEnum.AUTORIZADA);
+		situacoes.add(SituacaoNFeEnum.DENEGADA);
+		situacoes.add(SituacaoNFeEnum.CANCELADA_EVENTO);
+		
+		List<Object[]> seriesNumerosList= getNotaFiscalBusiness().getSerieNumeroAnoPorSituacoes(pesquisaInutilizacaoTO.getEmitenteTO().getIdEmitente(), pesquisaInutilizacaoTO.getSerie(), pesquisaInutilizacaoTO.getNumeroInicial(),"",situacoes );
+
+		int numeroInicial = !StringHelper.isBlankOrNull(pesquisaInutilizacaoTO.getNumeroInicial())?Integer.parseInt(pesquisaInutilizacaoTO.getNumeroInicial()):1;
+
+		LinkedHashMap<String,List<InutilizacaoTO>> seriesInutilizacoesMap = new LinkedHashMap<String, List<InutilizacaoTO>>();
+		String serieAtual="";
+		List<InutilizacaoTO> listaInutilizacaoAtual=new ArrayList<InutilizacaoTO>();
+		int numeroInicialAtual=-1;
+		int primeiroNumeroUtilizadoSerie=-1;
+		boolean terminouSerie=false;
+		for(Object[] obj: seriesNumerosList){
+			String serie = obj[0].toString();
+			String numero=obj[1].toString();
+			String ano=obj[2].toString();
+			if(!serie.equals(serieAtual)){
+				//trocou de série -> adicionar uma nova chave no mapa e zerar o numeroInicial
+				listaInutilizacaoAtual=new ArrayList<InutilizacaoTO>();
+				seriesInutilizacoesMap.put(serie,listaInutilizacaoAtual);
+				numeroInicialAtual=numeroInicial;
+				serieAtual=serie;
+				primeiroNumeroUtilizadoSerie=Integer.parseInt(numero);
+				terminouSerie=false;
+			}else{
+				if(terminouSerie)
+					continue;
+				primeiroNumeroUtilizadoSerie=-1;
+			}
+			int numeroFinalAtual =  Integer.parseInt(numero)-1;
+			if(!StringHelper.isBlankOrNull(pesquisaInutilizacaoTO.getNumeroFinal()) && Integer.parseInt(pesquisaInutilizacaoTO.getNumeroFinal())<primeiroNumeroUtilizadoSerie){
+				//caso especial onde o primeiro numero utilizado na série é maior que o numero final que o usuário deseja inutilizar, então retorna a faixa inteira
+				numeroInicialAtual=numeroInicial;
+				numeroFinalAtual=Integer.parseInt(pesquisaInutilizacaoTO.getNumeroFinal());
+			}
+			if(!StringHelper.isBlankOrNull(pesquisaInutilizacaoTO.getNumeroFinal()) && numeroFinalAtual>Integer.parseInt(pesquisaInutilizacaoTO.getNumeroFinal())){
+				numeroFinalAtual=Integer.parseInt(pesquisaInutilizacaoTO.getNumeroFinal());
+				terminouSerie=true; //limitou pelo final da faixa de pesquisa
+			}
+			if(numeroFinalAtual>=numeroInicialAtual){
+				InutilizacaoTO inutTO = new InutilizacaoTO();
+				inutTO.setSerie(serie);
+				inutTO.setNumeroInicial(StringHelper.completaComZerosAEsquerda(Integer.toString(numeroInicialAtual),9));
+				inutTO.setNumeroFinal(StringHelper.completaComZerosAEsquerda(Integer.toString(numeroFinalAtual),9));
+				inutTO.setAno(ano);
+				inutTO.setEmitenteTO(pesquisaInutilizacaoTO.getEmitenteTO());
+				//verificar se existe faixa inutilizada colidindo com essa faixa
+				List<InutilizacaoTO> inutilizadasList = inutilizadasMap.get(serie);
+				if(inutilizadasList==null){
+					//pesquisa as inutilizacoes para aquela série
+					InutilizacaoTO pesquisaInutilizacaoSerieTO = new InutilizacaoTO();
+					pesquisaInutilizacaoSerieTO.setSerie(serie);
+					pesquisaInutilizacaoSerieTO.setEmitenteTO(pesquisaInutilizacaoTO.getEmitenteTO());
+					pesquisaInutilizacaoSerieTO.setNumeroInicial(pesquisaInutilizacaoTO.getNumeroInicial());
+					pesquisaInutilizacaoSerieTO.setNumeroFinal(pesquisaInutilizacaoTO.getNumeroFinal());
+					inutilizadasList = obterFaixasInutilizadas(pesquisaInutilizacaoSerieTO);
+					if(inutilizadasList==null)
+						inutilizadasList=new ArrayList<InutilizacaoTO>();
+					inutilizadasMap.put(serie,inutilizadasList);
+				}
+				listaInutilizacaoAtual.addAll(verificarColisoesCriarFaixas(inutTO,inutilizadasList));
+			}
+			numeroInicialAtual=Integer.parseInt(numero)+1;
+		}
+
+		return seriesInutilizacoesMap;
+
+
+		// end-user-code
+	}
+
+	/**
+	 * 
+	 * @param novaInutilizacaoTO
+	 * @param inutilizadasList uma lista de inutilizacoes ordenadas pelo inicio e fim
+	 * @return
+	 */
+	private Collection<? extends InutilizacaoTO> verificarColisoesCriarFaixas(InutilizacaoTO novaInutilizacaoTO, List<InutilizacaoTO> inutilizadasList) {
+		List<InutilizacaoTO> resultList = new ArrayList<InutilizacaoTO>();
+		if(inutilizadasList==null || inutilizadasList.size()==0){
+			//caso trivial onde não existem faixas já inutilizadas que colidem com a nova faixa
+			resultList.add(novaInutilizacaoTO);
+			return resultList;
+		}else{
+			int indicePrimeiraColisao=0; //primeiro indice onde a faixa inutilizada colide com a nova faixa
+			for(int i=0;i<inutilizadasList.size();i++){
+				InutilizacaoTO inutilizadaTO=inutilizadasList.get(i);
+				int numeroInicialInutilizada = Integer.parseInt(inutilizadaTO.getNumeroInicial());
+				int numeroFinalInutilizada = Integer.parseInt(inutilizadaTO.getNumeroFinal());
+				int numeroInicialNova = Integer.parseInt(novaInutilizacaoTO.getNumeroInicial());
+				int numeroFinalNova = Integer.parseInt(novaInutilizacaoTO.getNumeroFinal());
+				if(numeroFinalInutilizada<numeroInicialNova || numeroInicialInutilizada > numeroFinalNova){
+					indicePrimeiraColisao++;
+					if(indicePrimeiraColisao==inutilizadasList.size()){
+						//não houve colisão, então adiciona a faixa inteira e retorna;
+						resultList.add(novaInutilizacaoTO);
+					}else
+						continue;
+				}
+				if(numeroInicialInutilizada<=numeroInicialNova && numeroFinalInutilizada>=numeroFinalNova){
+					//caso onde a faixa que está inutilizada é maior ou igual que a faixa nova
+					return resultList;
+				}
+				if(numeroInicialInutilizada<numeroInicialNova && numeroFinalInutilizada>=numeroInicialNova){
+					//caso onde o final da faixa inutilizada colide com o inicio da nova faixa
+					int inicio = numeroFinalInutilizada+1;
+					int fim;
+					if(i<inutilizadasList.size()-1){
+						InutilizacaoTO proximaInutilizada = inutilizadasList.get(i+1);
+						fim = Integer.parseInt(proximaInutilizada.getNumeroInicial())-1;
+						if(fim>numeroFinalNova)
+							fim = numeroFinalNova;
+					}else{
+						fim = numeroFinalNova;
+					}
+					if(fim>=inicio){
+						resultList.add(getInutilizacaoTO(novaInutilizacaoTO.getSerie(), inicio, fim, novaInutilizacaoTO.getAno(), novaInutilizacaoTO.getEmitenteTO()));
+					}
+				}else if(numeroInicialInutilizada>=numeroInicialNova && numeroFinalInutilizada<=numeroFinalNova){
+					//caso onde a faixa inutilizada está no meio da nova faixa
+					int inicio;
+					int fim;
+					if(i==indicePrimeiraColisao){
+						inicio = numeroInicialNova;
+						fim= numeroInicialInutilizada-1;
+						if(fim>=inicio){
+							resultList.add(getInutilizacaoTO(novaInutilizacaoTO.getSerie(), inicio, fim, novaInutilizacaoTO.getAno(), novaInutilizacaoTO.getEmitenteTO()));
+						}
+					}
+					inicio = numeroFinalInutilizada+1;
+					if(i<inutilizadasList.size()-1){
+						InutilizacaoTO proximaInutilizada = inutilizadasList.get(i+1);
+						fim = Integer.parseInt(proximaInutilizada.getNumeroInicial())-1;
+						if(fim>numeroFinalNova)
+							fim = numeroFinalNova;
+					}else{
+						fim = numeroFinalNova;
+					}
+					if(fim>=inicio){
+						resultList.add(getInutilizacaoTO(novaInutilizacaoTO.getSerie(), inicio, fim, novaInutilizacaoTO.getAno(), novaInutilizacaoTO.getEmitenteTO()));
+					}					
+				}else if(numeroInicialInutilizada>=numeroInicialNova && numeroFinalInutilizada>numeroFinalNova){
+					//caso onde o inicio da faixa inutilizada colide com o final da nova faixa
+					int inicio;
+					int fim;
+					if(i==indicePrimeiraColisao){
+						inicio = numeroInicialNova;
+						fim = numeroInicialInutilizada-1;
+						if(fim>=inicio){
+							resultList.add(getInutilizacaoTO(novaInutilizacaoTO.getSerie(), inicio, fim, novaInutilizacaoTO.getAno(), novaInutilizacaoTO.getEmitenteTO()));
+						}					
+					}
+				}
+			}
+		}
+		return resultList;
+	}
+
+	private InutilizacaoTO getInutilizacaoTO(String serie, int inicio, int fim, String ano,EmitenteTO emitenteTO){
+		InutilizacaoTO inutTO = new InutilizacaoTO();
+		inutTO.setSerie(serie);
+		inutTO.setNumeroInicial(StringHelper.completaComZerosAEsquerda(Integer.toString(inicio),9));
+		inutTO.setNumeroFinal(StringHelper.completaComZerosAEsquerda(Integer.toString(fim),9));
+		inutTO.setAno(ano);
+		inutTO.setEmitenteTO(emitenteTO);
+		return inutTO;
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param inutilizacaoTO
+	 * @param emitenteTO
+	 * @param certificadoInfoTO
+	 * @param justificativa
+	 * @throws DSENBusinessException
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public List<InutilizacaoTO> assinarFaixasParaInutilizar(List<InutilizacaoTO> listaInutilizacaoTO, EmitenteTO emitenteTO, CertificadoTO certificadoTO, String justificativa) throws DSENBusinessException {
+		// begin-user-code
+		for (InutilizacaoTO inutilizacaoTO : listaInutilizacaoTO) {
+			try {
+				EstadoTO estadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(inutilizacaoTO.getEmitenteTO().getUf());
+				inutilizacaoTO.setCodigoUf(estadoTO.getCodigo());
+				String xmlString = DocumentoUtil.criarDocumentoXmlInutilizacaoFaixasNFe(inutilizacaoTO, justificativa);
+				inutilizacaoTO.setDocXmlString(xmlString);
+				Certificado certificado = new Certificado();
+				String referenceURI = DocumentoUtil.criarIdDocumentoInutilizacao(inutilizacaoTO);
+				
+				String xmlAssinado = certificado.assinarXML(certificadoTO.getX509Certificate(), certificadoTO.getPrivateKey(), referenceURI, xmlString, inutilizacaoTO.getEmitenteTO().getNrDocumento());
+				inutilizacaoTO.setDocXmlString(xmlAssinado);
+
+			} catch (Throwable e) {
+				log.error(e);
+				throw new DSENBusinessException(e, e.getMessage());
+			} 
+		}
+
+		return listaInutilizacaoTO;
+
+		// end-user-code
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Retorna InutilizacaoDAO. Cria a mesma, se ela não tiver sido criada.
+	 * @return 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private InutilizacaoDAO getInutilizacaoDAO() throws DSENBusinessException {
+		// begin-user-code
+
+		if(inutilizacaoDAO == null){
+			inutilizacaoDAO = new InutilizacaoDAO();
+		}
+
+		return inutilizacaoDAO;
+
+		// end-user-code
+	}
+
+
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Seleciona todas as faixas inutilizadas conforme a série passada como parâmetro
+	 * @return 
+	 * @param serie 
+	 * @throws DSENConverterException 
+	 * @throws DSENDAOException 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public List<InutilizacaoTO> obterFaixasInutilizadas(InutilizacaoTO inutilizacaoTO) throws DSENBusinessException {
+		// begin-user-code
+		try{
+			List<InutilizacaoEntity> listaInutilizacaoEntity = getInutilizacaoDAO().pesquisarFaixasInutilizadas(DSENBusinessConverter.getInutilizacaoEntity(inutilizacaoTO));
+
+			if (listaInutilizacaoEntity == null) {
+				return null;
+			}
+
+			List<InutilizacaoTO> listaInutilizacaoTO = new ArrayList<InutilizacaoTO>();
+
+			for (InutilizacaoEntity inutilizacaoEntity : listaInutilizacaoEntity) {
+				listaInutilizacaoTO.add(DSENBusinessConverter.getInutilizacaoTO(inutilizacaoEntity));
+			}
+
+			return listaInutilizacaoTO;
+		}catch(Exception e){
+			throw new DSENBusinessException(e,e.getMessage());
+		}
+		// end-user-code
+	}
+
+	/**
+	 * Inutiliza a faixa de numeração de nota fiscal identificado pelo parâmetro inutilizacaoTO 
+	 * Envia solicitação de inutilização de faixas para SEFAZ e, em caso de sucesso, salva a 
+	 * faixa inutilizada na base de dados e deleta as notas fiscais "Em Digitação", "Validadas", 
+	 * "Assinadas" ou "Rejeitadas". 
+	 * Quando a solicitação de inutilização à SEFAZ retorna um erro, armazena no to a mensagem de erro 
+	 * retornada pela SEFAZ.
+	 * Este método deve ser public.
+	 * @param estadoTO2 
+	 * @param inutilizacaoTO faixa de numeração a ser inutilizada
+	 * @return a faixa de inutilização salva na base de dados, ou, em caso de erros, a inutilização recebida 
+	 *  como parâmetro com a respectiva mensagem do erro
+	 */
+	@DSGETransaction
+	public InutilizacaoTO inutilizarFaixa(EstadoTO emitenteEstadoTO,EstadoTO estadoTO, InutilizacaoTO inutilizacaoTO,CertificadoTO certificadoTO,boolean isSefaz) throws Throwable {
+		String docXML =  inutilizacaoTO.getDocXmlString();
+		String inutilizacaoRetorno = getWSBusiness().servico(
+				DocumentoUtil.criarCabecalhoMensagem(ServicoSefazEnum.Inutilizacao,emitenteEstadoTO.getCodigo(),DSENProperties.getInstance().getVersaoSchemaInutilizacao()), 
+				docXML, 
+				estadoTO, 
+				ServicoSefazEnum.Inutilizacao,
+				certificadoTO.getX509Certificate(),
+				certificadoTO.getPrivateKey()
+		);
+
+		WSStatusRetorno statusRetorno = DocumentoUtil.validarXmlRetornoInutilizacao(inutilizacaoRetorno, inutilizacaoTO);
+
+		switch (statusRetorno) {
+		case NOK:
+			inutilizacaoTO.addError(MessageFormat.format(DSENMessageConstants.FAIXA_NAO_INUTILIZADA_REJEICAO, inutilizacaoTO.getCErro(), inutilizacaoTO.getMensagemErro()));
+			break;
+		case XML_INVALIDO:
+			String urlSefaz = DSENUtilHelper.getInstance().getURLPorUF(estadoTO, ServicoSefazEnum.Inutilizacao);
+			Notificador.getInstance().notificar(new Object[]{new ErroXmlResposta(ServicoSefazEnum.Inutilizacao, urlSefaz, docXML, inutilizacaoRetorno,isSefaz?DSENMessageConstants.MSG_WS_SEFAZ:DSENMessageConstants.MSG_WS_RFB),inutilizacaoTO}, isSefaz?GrupoNotificacaoEnum.ERRO_RESPOSTA_SEFAZ_INUTILIZACAO:GrupoNotificacaoEnum.ERRO_RESPOSTA_SCAN_INUTILIZACAO);
+			inutilizacaoTO.addError(MessageFormat.format(DSENMessageConstants.MSG_WS_RETORNO_INVALIDO,isSefaz?DSENMessageConstants.MSG_WS_SEFAZ:DSENMessageConstants.MSG_WS_RFB));
+			break;
+		default:
+			InutilizacaoEntity inutilizacaoEntity = DSENBusinessConverter.getInutilizacaoEntity(inutilizacaoTO);
+		getInutilizacaoDAO().insert(inutilizacaoEntity);
+		inutilizacaoTO = DSENBusinessConverter.getInutilizacaoTO(inutilizacaoEntity);
+		getNotaFiscalBusiness().excluirNotasFiscaisInutilizadas(inutilizacaoTO);
+		inutilizacaoTO.addMessage(DSENMessageConstants.FAIXA_INUTILIZADA_COM_SUCESSO);
+		}
+		return inutilizacaoTO;
+	}
+
+	/**
+	 * Inutiliza faixas de notas fiscais representadas por listaInutilizacaoTO. 
+	 * Notifica a camada de apresentação a cada inutilização realizada.
+	 * @param emitenteTO o emitente das faixas de numeração a serem inutilizadas
+	 * @param listaInutilizacaoTO lista de faixas de numeração a serem inutilizadas
+	 * @return lista de #InutilizacaoTO com o resultado da inutilização
+	 * @throws DSGEUtilException 
+	 * @see GrupoNotificacaoEnum#INUTILIZACAO
+	 * @see #inutilizarFaixa(InutilizacaoTO, X509Certificate, PrivateKey)
+	 */
+	public void inutilizarFaixas(EmitenteTO emitenteTO,List<InutilizacaoTO> listaInutilizacaoTO,CertificadoTO certTO) throws DSENBusinessException {
+		try{
+			EstadoTO emitenteEstadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(emitenteTO.getUf());
+			if (DSENUtilHelper.getInstance().isEstadoEspecifico(emitenteEstadoTO)){                                    
+				Notificador.getInstance().notificar(MessageFormat.format(DSENMessageConstants.UF_NAO_HABILITADA,emitenteEstadoTO.getSigla()), GrupoNotificacaoEnum.UF_NAO_HABILITADA);
+				return ;
+			}
+
+
+			ScanHelper scanHelper = new ScanHelper();
+			Map<TipoEmissaoEnum, List<InutilizacaoTO>> inutMap = scanHelper.agruparInutilizacaoPorSerie(listaInutilizacaoTO);
+			List<InutilizacaoTO> inutSefazList = inutMap.get(TipoEmissaoEnum.NORMAL);
+			List<InutilizacaoTO> inutReceitaList = inutMap.get(TipoEmissaoEnum.CONTINGENCIA_SCAN);
+
+			if (inutSefazList != null && !inutSefazList.isEmpty()) {
+				inutilizarFaixas(emitenteTO, inutSefazList,certTO,true);
+			}
+
+			if (inutReceitaList != null && !inutReceitaList.isEmpty()) {
+				inutilizarFaixas(emitenteTO, inutReceitaList,certTO,false);
+			}
+		}catch (Exception e) {
+			throw new DSENBusinessException(e,e.getMessage());
+		}
+
+	}
+
+	public List<InutilizacaoTO> inutilizarFaixas(EmitenteTO emitenteTO, List<InutilizacaoTO> listaInutilizacaoTO,CertificadoTO certificadoTO,boolean isSefaz){
+		EstadoTO emitenteEstadoTO=null;
+		String wsReceptor = isSefaz ? DSENMessageConstants.MSG_WS_SEFAZ : DSENMessageConstants.MSG_WS_RFB;
+		GrupoNotificacaoEnum notificacaoErroEnum = isSefaz ? GrupoNotificacaoEnum.INUTILIZACAO_ERRO_SEFAZ : GrupoNotificacaoEnum.INUTILIZACAO_ERRO_SCAN;
+
+
+		List<InutilizacaoTO> naoEnviadas = new ArrayList<InutilizacaoTO>(listaInutilizacaoTO.size());
+		naoEnviadas.addAll(listaInutilizacaoTO);
+		try{
+			emitenteEstadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(emitenteTO.getUf());
+
+			ScanHelper scanHelper = new ScanHelper();
+			EstadoTO estadoTO = scanHelper.getEstadoTO(emitenteEstadoTO, isSefaz);
+
+			ConsultaStatusServicoHelper consultaStatusServicoHelper = new ConsultaStatusServicoHelper();
+			boolean statusServicoOK = consultaStatusServicoHelper.consultarStatusServico(emitenteEstadoTO, certificadoTO.getX509Certificate(),certificadoTO.getPrivateKey(), ServicoSefazEnum.Inutilizacao,true);
+
+			if(statusServicoOK){
+				for (InutilizacaoTO inutilizacaoTO : listaInutilizacaoTO) {
+					InutilizacaoTO inutilizacaoTOAtualizado = inutilizarFaixa(emitenteEstadoTO,estadoTO,inutilizacaoTO, certificadoTO,isSefaz);
+					naoEnviadas.remove(inutilizacaoTO);
+					Notificador.getInstance().notificar(inutilizacaoTOAtualizado, GrupoNotificacaoEnum.INUTILIZACAO);    
+				}
+			}
+
+		} catch (DSGEConnectionClientException e) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_CLIENT, wsReceptor), naoEnviadas, notificacaoErroEnum);
+			reconectar(emitenteTO,naoEnviadas,certificadoTO,isSefaz);
+		} catch (DSGEConnectionServerException e) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_SERVER, wsReceptor), naoEnviadas, notificacaoErroEnum);
+			reconectar(emitenteTO,naoEnviadas,certificadoTO,isSefaz);
+		} catch (DSGETimeoutException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_CONEXAO_TIMEOUT, naoEnviadas, notificacaoErroEnum);
+			reconectar(emitenteTO,naoEnviadas,certificadoTO,isSefaz);
+		} catch (DSGESocketException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_SOCKET, naoEnviadas, notificacaoErroEnum);
+			reconectar(emitenteTO,naoEnviadas,certificadoTO,isSefaz);
+		} catch (DSGEProxyException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_PROXY, naoEnviadas, GrupoNotificacaoEnum.ERRO_FATAL);
+		} catch (DSENBusinessException e) {
+			notificarErro(e, naoEnviadas, GrupoNotificacaoEnum.EXCEPTION);
+		} catch (DSGEWebServiceException e) {
+			notificarErro(e, naoEnviadas, GrupoNotificacaoEnum.EXCEPTION);
+		} catch (Throwable e) {
+			notificarErro(e, naoEnviadas, GrupoNotificacaoEnum.EXCEPTION);
+		}
+		return listaInutilizacaoTO;
+	}
+
+	private void reconectar(EmitenteTO emitenteTO, List<InutilizacaoTO> listaInutilizacaoTO, CertificadoTO certificadoTO,boolean isSefaz) {
+		ProblemaConexaoAcao problemaConexaoAcao = AppContext.getInstance().getContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO, ProblemaConexaoAcao.class);
+		AppContext.getInstance().removeContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO);
+		if (problemaConexaoAcao == ProblemaConexaoAcao.RECONECTAR) {
+			inutilizarFaixas( emitenteTO,  listaInutilizacaoTO,  certificadoTO,isSefaz);
+		}
+	}
+
+	private void notificarErro(Object mensagemErro, List<InutilizacaoTO> inutTOList, GrupoNotificacaoEnum grupoNotificacaoEnum) {
+		Notificador.getInstance().notificar(new Object[]{mensagemErro, inutTOList, grupoNotificacaoEnum}, grupoNotificacaoEnum);
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private WSBusiness getWSBusiness() {
+		// begin-user-code
+
+		if(wSBusiness == null){
+			wSBusiness = new WSBusiness();
+		}
+
+		return wSBusiness;
+
+		// end-user-code
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return
+	 * @throws DSENBusinessException 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private NotaFiscalBusiness getNotaFiscalBusiness() throws DSENBusinessException {
+		// begin-user-code
+		try {
+			if (notaFiscalBusiness == null) {
+				notaFiscalBusiness = (NotaFiscalBusiness) BusinessFactory.create(NotaFiscalBusiness.class.getName());
+			}
+			return notaFiscalBusiness;
+		} catch (Exception ex) {
+			throw new DSENBusinessException(ex, ex.getMessage());
+		}
+		// end-user-code
+	}
+
+	public boolean numeroInutilizado(Integer idEmitente, String serie, String numero) throws  DSENBusinessException {
+		try {
+			return getInutilizacaoDAO().numeroInutilizado(idEmitente, serie, numero);
+		} catch (Exception ex) {
+			throw new DSENBusinessException(ex, ex.getMessage());
+		}
+	}
+
+	/**
+	 * Busca as faixas inutilizadas dentro de um período para determinado emitente.
+	 *
+	 * @param   pesquisaNotaFiscalTO   TO de pesquisa do relatório.
+	 * @return  List<InutilizacaoTO>  Lista de faixas inutilizadas dentro do período para o emitente.
+	 * @throws  DSENBusinessException
+	 */
+	public List<InutilizacaoTO> pesquisarInutilizacaoByData(PesquisaRelatorioGerencialTO pesquisaRelatorioGerencialTO) throws DSENBusinessException {
+		try {
+			EmitenteEntity emitenteEntity = DSENBusinessConverter.getEmitenteEntity(pesquisaRelatorioGerencialTO.getIdEmitente());
+			List<InutilizacaoEntity> inutilizacaoEntityList = getInutilizacaoDAO().selectInutilizacaoByIntervaloData(emitenteEntity, pesquisaRelatorioGerencialTO.getDataIni(), pesquisaRelatorioGerencialTO.getDataFim());
+			return DSENBusinessConverter.getInutilizacaoTO(inutilizacaoEntityList); 
+		} catch (DSENConverterException e) {
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSENDAOException e) {
+			throw new DSENBusinessException(e, e.getMessage());
+		}
+	}
+	
+	/**
+	 * Busca as faixas inutilizadas dentro de um período para determinado emitente.
+	 *
+	 * @param   pesquisaNotaFiscalTO   TO de pesquisa do relatório.
+	 * @return  List<InutilizacaoTO>  Lista de faixas inutilizadas dentro do período para o emitente.
+	 * @throws  DSENBusinessException
+	 */
+	public List<InutilizacaoTO> pesquisarInutilizacaoByChave(PesquisaRelatorioGerencialTO pesquisaRelatorioGerencialTO) throws DSENBusinessException {
+		try {
+			EmitenteEntity emitenteEntity = DSENBusinessConverter.getEmitenteEntity(pesquisaRelatorioGerencialTO.getIdEmitente());
+			List<InutilizacaoEntity> inutilizacaoEntityList = getInutilizacaoDAO().selectInutilizacaoByIntervaloData(emitenteEntity, pesquisaRelatorioGerencialTO.getDataIni(), pesquisaRelatorioGerencialTO.getDataFim());
+			return DSENBusinessConverter.getInutilizacaoTO(inutilizacaoEntityList); 
+		} catch (DSENConverterException e) {
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSENDAOException e) {
+			throw new DSENBusinessException(e, e.getMessage());
+		}
+	}
+
+	/**
+	 * 
+	 * @param listaInutilizacaoTO
+	 * @param extensaoArquivo
+	 * @param path
+	 * @return int
+	 * @throws DSENBusinessException
+	 */
+	public void exportarInutilizacao(List<InutilizacaoTO> listaInutilizacaoTO, String path) throws DSENBusinessException {
+
+		int totalRegistros = listaInutilizacaoTO.size();
+		int qtdeRegistrosExportados = 0;
+		int qtdeArquivosGerados = 0;
+
+		try {
+
+			for (InutilizacaoTO inutilizacaoTO : listaInutilizacaoTO) {
+				String xmlString = inutilizacaoTO.getProtocoloXmlString();
+				String nomeArquivo = !StringHelper.isBlankOrNull(inutilizacaoTO.getNomeArquivoXml())?DocumentoUtil.montaNomeArquivoXML(path,inutilizacaoTO.getNomeArquivoXml()):DocumentoUtil.montaNomeArquivoXML(path, inutilizacaoTO, ExtensaoArquivoEnum.XML, DSENSchemaTypeEnum.ProcInutNFe);
+				boolean ok = ExportacaoHelper.exportar(nomeArquivo, xmlString);
+				if (ok) {
+					qtdeRegistrosExportados++;
+					qtdeArquivosGerados++;
+				} 
+			}
+
+		} catch (CancelarExportacaoException e) {
+			throw new DSENBusinessException(e, e.getMessage());
+		}
+
+		Notificador.getInstance().notificar(
+				new int[]{totalRegistros, qtdeRegistrosExportados, qtdeArquivosGerados}, 
+					br.gov.sp.fazenda.dsge.common.enumeration.GrupoNotificacaoEnum.EXPORTACAO_TOTAIS);
+	}
+	
+	/**
+	 * Altera os dados da inutilizacao de um determinado emitente.
+	 * 
+	 * @param inutilizacaoTO
+	 * @return InutilizacaoTO
+	 * @throws DSENBusinessException
+	 */
+	@DSGETransaction
+	public InutilizacaoTO alterarInutilizacao(InutilizacaoTO inutilizacaoTO) throws DSENBusinessException {
+
+		try {
+			InutilizacaoEntity entity = DSENBusinessConverter.getInutilizacaoEntity(inutilizacaoTO);
+			entity = (InutilizacaoEntity) getInutilizacaoDAO().update(entity);
+			inutilizacaoTO = DSENBusinessConverter.getInutilizacaoTO(entity);
+			inutilizacaoTO.addMessage(MessageFormat.format(
+					DSENMessageConstants.ALTERADO_COM_SUCESSO, "Inutilização " + inutilizacaoTO.getIdInutilizacao()));
+		} catch (DSENConverterException ex) {
+			throw new DSENBusinessException(ex, ex
+					.getMessage());
+		} catch (DSGEDAOException ex) {
+			throw new DSENBusinessException(ex, ex
+					.getMessage());
+		}
+		return inutilizacaoTO;
+	}
+
+
+}
+
+

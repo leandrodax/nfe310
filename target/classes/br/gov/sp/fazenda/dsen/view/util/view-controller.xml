@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<nfe-emissior xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="view-controller.xsd">
+	
+	<!-- Transportadora -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.ManterTransportadoraGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.ManterTransportadoraController</name>
+		</controller>
+	</view>
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.PesquisarTransportadoraGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.PesquisarTransportadoraController</name>
+		</controller>
+	</view>
+	
+	<!-- Cliente -->
+		<view>
+		<name>br.gov.sp.fazenda.dsen.view.ManterClienteGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.ManterClienteController</name>
+		</controller>
+	</view>
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.PesquisarClienteGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.PesquisarClienteController</name>
+		</controller>
+	</view> 
+	
+	<!-- Emitente -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.ManterEmitenteGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.ManterEmitenteController</name>
+		</controller>
+	</view>
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.PesquisarEmitenteGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.PesquisarEmitenteController</name>
+		</controller>
+	</view>
+	
+	<!-- Produto -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.ManterProdutoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.ManterProdutoController</name>
+		</controller>
+	</view>
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.PesquisarProdutoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.PesquisarProdutoController</name>
+		</controller>
+	</view>
+        	<!-- Avisos -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.AvisoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.AvisoController</name>
+		</controller>
+	</view>
+        
+        <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.EnderecoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.EnderecoController</name>
+		</controller>
+	</view>
+        
+        <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.ManterNotaFiscalGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.ManterNotaFiscalController</name>
+		</controller>
+	</view>
+        
+    <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.NotaReferenciadaGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.NotaReferenciadaController</name>
+		</controller>
+	</view>
+        
+    <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.NotaReferenciadaProdutorGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.NotaReferenciadaProdutorController</name>
+		</controller>
+	</view>
+    
+    <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.ECFReferenciadoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.ECFReferenciadoController</name>
+		</controller>
+	</view>
+
+    <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.PesquisarClienteNotaGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.PesquisarClienteNotaController</name>
+		</controller>
+	</view>
+        
+        <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.PesquisarProdutoNotaGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.PesquisarProdutoNotaController</name>
+		</controller>
+	</view>	     
+		   
+        <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.PesquisarTransportadoraNotaGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.PesquisarTransportadoraNotaController</name>
+		</controller>
+	</view>
+        
+        <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.ProdutoNotaGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.ProdutoNotaController</name>
+		</controller>
+	</view>
+	      
+        <view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.VolumeGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.VolumeController</name>
+		</controller>
+	</view>
+        	<!-- Importacao -->        
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.ImportacaoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.ImportacaoController</name>
+		</controller>
+	</view>	
+        	<!-- Exportacao -->          
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.ExportacaoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.ExportacaoController</name>
+		</controller>
+	</view> 
+        
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.message.DSENJProgressGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.DSENJProgressController</name>
+		</controller>
+	</view>   
+	
+	<!-- Backup/Restore -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.BackupGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.BackupController</name>
+		</controller>
+	</view>
+	
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.RestoreGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.RestoreController</name>
+		</controller>
+	</view>
+	
+        <!-- Danfe -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.EmitirDanfeGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.EmitirDanfeController</name>
+		</controller>
+	</view>
+        <!-- Relatório Gerencial -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.RelatorioGerencialGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.RelatorioGerencialController</name>
+		</controller>
+	</view>
+        
+  		<view>
+            <name>br.gov.sp.fazenda.dsen.view.PesquisarFaixaParaInutilizarGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.PesquisarFaixaParaInutilizarController</name>
+            </controller>
+        </view>
+        
+     	<view>
+            <name>br.gov.sp.fazenda.dsen.view.PesquisarFaixasInutilizadasGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.PesquisarFaixasInutilizadasController</name>
+            </controller>
+        </view>
+        
+        <view>
+		<name>br.gov.sp.fazenda.dsen.view.SelecionarCertificadoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.SelecionarCertificadoController</name>
+		</controller>
+	</view>
+        
+        
+        <!-- Cancelar Nota não registrada no software -->
+    <view>
+		<name>br.gov.sp.fazenda.dsen.view.CancelarNotaFiscalNaoCadastradaGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.CancelarNotaFiscalNaoCadastradaController</name>
+		</controller>
+	</view>
+	
+	<!-- Cancelar Nota não registrada no software por evento-->
+    <view>
+		<name>br.gov.sp.fazenda.dsen.view.CancelarNotaFiscalNaoCadastradaEventoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.CancelarNotaFiscaNaoCadastradalEventoController</name>
+		</controller>
+	</view>
+        
+      	<!-- Situacao Nota Fiscal -->        
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.ConsultarNotaFiscalGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.ConsultarNotaFiscalController</name>
+		</controller>
+	</view>
+
+        
+        <!-- Consultar Nota pela Chave de Acesso -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.ConsultarNotaFiscalNaoCadastradaGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.ConsultarNotaFiscalNaoCadastradaController</name>
+		</controller>
+	</view>
+               
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.SelecionarCertificadoLoteGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.SelecionarCertificadoLoteController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.InformacaoBuscaRetornoGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.InformacaoBuscaRetornoController</name>
+            </controller>
+        </view>
+        
+         <view>
+            <name>br.gov.sp.fazenda.dsen.view.PesquisarNotaFiscalGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.PesquisarNotaFiscalController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.BackupEmitenteGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.BackupEmitenteController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.IcmsGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.IcmsController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.nfe.ProdutoDeclaracaoImportacaoGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.nfe.ProdutoDeclaracaoImportacaoController</name>
+            </controller>
+        </view>
+        
+          
+		<view>
+		<name>br.gov.sp.fazenda.dsen.view.nfe.ProdutoExportacaoGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.nfe.ProdutoExportacaoController</name>
+		</controller>
+		</view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.ManterCertificadoGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.ManterCertificadoController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.VisualizarDPECsGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.VisualizarDPECsController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.DetalharDpecGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.DetalharDpecController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.GerarDpecGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.GerarDpecController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.TransmitirDpecGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.TransmitirDpecController</name>
+            </controller>
+        </view>
+        
+                <view>
+            <name>br.gov.sp.fazenda.dsen.view.ConsultarDpecGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.ConsultarDpecController</name>
+            </controller>
+        </view>
+        
+         <view>
+            <name>br.gov.sp.fazenda.dsen.view.InformacaoConsultaDpecGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.InformacaoConsultaDpecController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.InformacaoConsultaCadastroGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.InformacaoConsultaCadastroController</name>
+            </controller>
+        </view>
+        
+       <view>
+            <name>br.gov.sp.fazenda.dsen.view.ConsultaCadastroConfirmacaoGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.ConsultaCadastroConfirmacaoController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.nfe.DuplicarNFeGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.nfe.DuplicarNFeController</name>
+            </controller>
+        </view>
+        
+        <view>
+            <name>br.gov.sp.fazenda.dsen.view.nfe.AutorizacaoGUI</name>
+            <controller>
+                <name>br.gov.sp.fazenda.dsen.controller.nfe.AutorizacaoController</name>
+            </controller>
+        </view>
+        
+</nfe-emissior>
+

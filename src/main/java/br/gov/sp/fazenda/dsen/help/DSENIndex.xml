@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE index
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 2.0//EN"
+          "http://java.sun.com/products/javahelp/index_2_0.dtd">
+
+<index version="2.0">
+ 
+<indexitem text="Software Emissor NF-e" target="EmissorNFe-inicio"  />
+
+<indexitem text="Iniciando" target="Iniciando"  />
+
+<indexitem text="Menus" target="Menu"  />
+
+<indexitem text="Emitente" target="Emitente"  />
+<indexitem text="Iniciando um emitente" target="Emitente-Iniciando_um_Emitente"  />
+<indexitem text="Saída do emitente atual e seleção de outro emitente" target="Emitente-Saindo_e_selecionando_emitente"  />
+<indexitem text="Inclusão de emitente" target="Emitente-Inclusao"  />
+<indexitem text="Detalhamento e Edição de emitente" target="Emitente-Edicao"  />
+<indexitem text="Exclusão de emitente" target="Emitente-Exclusao"  />
+<indexitem text="Pesquisa de emitente" target="Emitente-Pesquisa"  />
+<indexitem text="Campos do emitente" target="Emitente-Campos"  />
+
+
+<indexitem text="Nota Fiscal eletrônica - Conceitos gerais" target="Conceitos_gerais"  />
+<indexitem text="Nota Fiscal eletrônica - Tipos" target="NF-e-Conceito-Tipos" />
+<indexitem text="Nota Fiscal eletrônica - Situações" target="NF-e-Conceito-Situacoes" />
+
+<indexitem text="Seqüência para emissão de NF-e" target="NF-e-Sequencia"  />
+<indexitem text="Gerenciamento de NF-e" target="NF-e-Acao-Gerenciamento_NF-e"  />
+<indexitem text="Geração de nova NF-e" target="NF-e-Acao-Gerando_NF-e"  />
+<indexitem text="Edição de NF-e" target="NF-e-Acao-Editando_NF-e"  />
+<indexitem text="Validação de NF-e" target="NF-e-Acao-Validando_NF-e"  />
+<indexitem text="Assinatura de NF-e" target="NF-e-Acao-Assinando_NF-e"  />
+<indexitem text="Transmissão de NF-e" target="NF-e-Acao-Transmitindo_NF-e"  />
+<indexitem text="Impressão de DANF-e" target="NF-e-Acao-Imprimindo_DANF-e"  />
+<indexitem text="Cancelamento de NF-e" target="NF-e-Acao-Cancelando_NF-e"  />
+<indexitem text="Exclusão de NF-e" target="NF-e-Acao-Excluindo_NF-e"  />
+<indexitem text="Consulta situação na SEFAZ" target="NF-e-Acao-Consultando_na_SEFAZ"  />
+<indexitem text="Busca dos retornos e pendências na SEFAZ" target="NF-e-Acao-Busca_de_retornos"  />
+<indexitem text="Histórico de retornos da SEFAZ" target="NF-e-Acao-Historico"  />
+<indexitem text="Outras funções" target="NF-e-Acao-Outras_funcoes"  />
+<indexitem text="Consulta de NF-e não cadastrada" target="NF-e-Acao-Consulta_NF-e_nao_cadastrada" />
+<indexitem text="Cancelamento de NF-e não cadastrada" target="NF-e-Acao-Cancelar_NF-e_nao_cadastrada" />
+
+<indexitem text="Aba Dados da NF-e" target="NF-e-Campos-Aba_Dados" />
+<indexitem text="Aba Emitente" target="NF-e-Campos-Aba_Emitente" />
+<indexitem text="Aba Destinatário/Remetente" target="NF-e-Campos-Aba_Destinatario" />
+<indexitem text="Aba Produtos e Serviços" target="NF-e-Campos-Aba_Produto" />
+<indexitem text="Aba Produto - Dados" target="NF-e-Campos-Aba_Produto-Dados" />
+<indexitem text="Aba Produto - Tributos" target="NF-e-Campos-Aba_Produto-Tributos" />
+<indexitem text="Aba Produto - Informações Adicionais" target="NF-e-Campos-Aba_Produto-Inf_Adicionais" />
+<indexitem text="Aba Produto - Declaração de Importação" target="NF-e-Campos-Aba_Produto-DI" />
+<indexitem text="Aba Produto - Veículo novo" target="NF-e-Campos-Aba_Produto-Veiculo_novo" />
+<indexitem text="Aba Produto - Medicamento" target="NF-e-Campos-Aba_Produto-Medicamento" />
+<indexitem text="Aba Produto - Armamento" target="NF-e-Campos-Aba_Produto-Armamento" />
+<indexitem text="Aba Produto - Combustível" target="NF-e-Campos-Aba_Produto-Combustivel" />
+
+<indexitem text="Aba Totais" target="NF-e-Campos-Aba_Totais" />
+<indexitem text="Aba Transporte" target="NF-e-Campos-Aba_Transporte" />
+<indexitem text="Aba Cobrança" target="NF-e-Campos-Aba_Cobranca" />
+<indexitem text="Aba Informações Adicionais" target="NF-e-Campos-Aba_Informacoes_Adicionais" />
+<indexitem text="Aba Exportação e Compras" target="NF-e-Campos-Aba_Exportacao_e_Compras" />
+<indexitem text="Aba Cana" target="NF-e-Campos-Aba_Cana" />
+<indexitem text="Aba Certificado Digital" target="NF-e-Campos-Aba_Certificado_Digital" />
+
+
+
+<indexitem text="Inutilização de faixas de numeração" target="Inutilizacao"  />
+
+<indexitem text="Aviso" target="Aviso"  />
+
+<indexitem text="Cliente" target="Cadastro-Cliente"  />
+<indexitem text="Inclusão de Cliente" target="Cadastro-Cliente-Inclusao" />
+<indexitem text="Detalhamento e Edição de Cliente" target="Cadastro-Cliente-Edicao" />
+<indexitem text="Exclusão de Cliente" target="Cadastro-Cliente-Exclusao" />
+<indexitem text="Pesquisa de Cliente" target="Cadastro-Cliente-Pesquisa" />
+<indexitem text="Campos do Cliente" target="Cadastro-Cliente-Campos" />
+  
+<indexitem text="Produto" target="Cadastro-Produto"  />
+<indexitem text="Inclusão de Produto" target="Cadastro-Produto-Inclusao" />
+<indexitem text="Detalhamento e Edição de Produto" target="Cadastro-Produto-Edicao" />
+<indexitem text="Exclusão de Produto" target="Cadastro-Produto-Exclusao" />
+<indexitem text="Pesquisa de Produto" target="Cadastro-Produto-Pesquisa" />
+<indexitem text="Campos do Produto" target="Cadastro-Produto-Campos" />
+  
+<indexitem text="Transportadora" target="Cadastro-Transportadora"  />
+<indexitem text="Inclusão de Transportadora" target="Cadastro-Transportadora-Inclusao" />
+<indexitem text="Detalhamento e Edição de Transportadora" target="Cadastro-Transportadora-Edicao" />
+<indexitem text="Exclusão de Transportadora" target="Cadastro-Transportadora-Exclusao" />
+<indexitem text="Pesquisa de Transportadora" target="Cadastro-Transportadora-Pesquisa" />
+<indexitem text="Campos do Transportadora" target="Cadastro-Transportadora-Campos" />
+
+
+<indexitem text="Importação de dados" target="Importacao"  />
+
+<indexitem text="Exportação de dados" target="Exportacao"  />
+
+<indexitem text="Relatório Gerencial" target="Relatorio_gerencial"  />
+
+<indexitem text="Parâmetros de configuração do Software" target="Parametros_do_Sistema"  />
+
+<indexitem text="Backup e Restauração dos dados" target="Backup_e_Restore"  />
+
+<indexitem text="Atualizações Automáticas" target="Atualizacao_automatica"  />
+	
+</index>

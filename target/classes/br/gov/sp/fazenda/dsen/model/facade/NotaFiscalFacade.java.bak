@@ -1,0 +1,948 @@
+package br.gov.sp.fazenda.dsen.model.facade;
+import java.math.BigInteger;
+import java.security.PrivateKey;
+import java.security.cert.X509Certificate;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import br.gov.sp.fazenda.dsen.common.enumeration.ExtensaoArquivoEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.SituacaoNFeEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.TipoConsultaDpecEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.TipoPapelImpressaoEnum;
+import br.gov.sp.fazenda.dsen.common.to.CertificadoLoteTO;
+import br.gov.sp.fazenda.dsen.common.to.CertificadoTO;
+import br.gov.sp.fazenda.dsen.common.to.DpecNotaFiscalTO;
+import br.gov.sp.fazenda.dsen.common.to.DpecTO;
+import br.gov.sp.fazenda.dsen.common.to.EmitenteTO;
+import br.gov.sp.fazenda.dsen.common.to.EventoTO;
+import br.gov.sp.fazenda.dsen.common.to.ImpressaoDanfeTO;
+import br.gov.sp.fazenda.dsen.common.to.InutilizacaoTO;
+import br.gov.sp.fazenda.dsen.common.to.NotaFiscalTO;
+import br.gov.sp.fazenda.dsen.common.to.NumeracaoTO;
+import br.gov.sp.fazenda.dsen.common.to.PesquisaNotaFiscalTO;
+import br.gov.sp.fazenda.dsen.common.to.PesquisaRelatorioGerencialTO;
+import br.gov.sp.fazenda.dsen.common.to.ProblemaDpecDanfeTO;
+import br.gov.sp.fazenda.dsen.common.to.RelatorioNotaFiscalTO;
+import br.gov.sp.fazenda.dsen.common.to.SelecaoDanfeTO;
+import br.gov.sp.fazenda.dsen.common.to.DpecTO.DpecStatus;
+import br.gov.sp.fazenda.dsen.common.to.importacao.ImportacaoResultadoTO;
+import br.gov.sp.fazenda.dsen.model.business.DanfeBusiness;
+import br.gov.sp.fazenda.dsen.model.business.DpecBusiness;
+import br.gov.sp.fazenda.dsen.model.business.InutilizacaoBusiness;
+import br.gov.sp.fazenda.dsen.model.business.NotaFiscalBusiness;
+import br.gov.sp.fazenda.dsen.model.business.NumeracaoBusiness;
+import br.gov.sp.fazenda.dsen.model.business.RelatorioBusiness;
+import br.gov.sp.fazenda.dsen.model.business.TransmissorBusiness;
+import br.gov.sp.fazenda.dsen.model.business.factory.BusinessFactory;
+import br.gov.sp.fazenda.dsen.model.exception.DSENBusinessException;
+import br.gov.sp.fazenda.dsen.model.queue.BuscaRetornoQueueItem;
+import br.gov.sp.fazenda.dsge.common.exception.DSGECommonException;
+import br.gov.sp.fazenda.dsge.common.to.BaseTO;
+import br.gov.sp.fazenda.dsge.common.to.OrdenacaoTO;
+import br.gov.sp.fazenda.dsge.util.exception.DSGEUtilException;
+
+public class NotaFiscalFacade {
+
+	private DanfeBusiness danfeBusiness;
+	private NotaFiscalBusiness notaFiscalBusiness;
+	private InutilizacaoBusiness inutilizacaoBusiness;
+	private RelatorioBusiness relatorioBusiness;
+	private TransmissorBusiness transmissorBusiness;
+	private NumeracaoBusiness numeracaoBusiness;
+	private DpecBusiness dpecBusiness;
+	
+	
+
+	/**
+	 * Retorna a instancia da classe NotaFiscalBusiness
+	 *
+	 * @return NotaFiscalBusiness
+	 * @throws DSENBusinessException
+	 */
+	private NotaFiscalBusiness getNotaFiscalBusiness() throws DSENBusinessException {
+		try {
+			if(notaFiscalBusiness == null){
+				notaFiscalBusiness = (NotaFiscalBusiness) BusinessFactory.create(NotaFiscalBusiness.class.getName());
+			}
+			return notaFiscalBusiness;
+		} catch (Exception ex) {
+			throw new DSENBusinessException(ex,ex.getMessage());
+		}
+	}
+
+	/**
+	 * Retorna a instancia da classe InutilizacaoBusiness
+	 */
+	private InutilizacaoBusiness getInutilizacaoBusiness() throws DSENBusinessException {
+		try {
+			if(inutilizacaoBusiness == null){
+				inutilizacaoBusiness = (InutilizacaoBusiness) BusinessFactory.create(InutilizacaoBusiness.class.getName());
+			}
+			return inutilizacaoBusiness;
+		}catch (Exception ex) {
+			throw new DSENBusinessException(ex,ex.getMessage());
+		}
+	}
+
+	/**
+	 * Retorna a instancia da classe InutilizacaoBusiness
+	 */
+	private NumeracaoBusiness getNumeracaoBusiness() throws DSENBusinessException {
+		try {
+			if(numeracaoBusiness == null){
+				numeracaoBusiness = (NumeracaoBusiness) BusinessFactory.create(NumeracaoBusiness.class.getName());
+			}
+			return numeracaoBusiness;
+		}catch (Exception ex) {
+			throw new DSENBusinessException(ex,ex.getMessage());
+		}
+	}
+
+	/**
+	 * 
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	private TransmissorBusiness getTransmissorBusiness() throws DSENBusinessException {
+		try {
+			if (transmissorBusiness == null) {
+				transmissorBusiness = (TransmissorBusiness) BusinessFactory.create(TransmissorBusiness.class.getName());
+			}
+			return transmissorBusiness;
+		}catch (Exception ex) {
+			throw new DSENBusinessException(ex,ex.getMessage());
+		}
+	}
+
+	/**
+	 * 
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	private DpecBusiness getDpecBusiness() throws DSENBusinessException {
+		try {
+			if (dpecBusiness == null) {
+				dpecBusiness = (DpecBusiness) BusinessFactory.create(DpecBusiness.class.getName());
+			}
+			return dpecBusiness;
+		}catch (Exception ex) {
+			throw new DSENBusinessException(ex,ex.getMessage());
+		}
+	}
+
+	/**
+	 * 
+	 * @param emitenteTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public PesquisaNotaFiscalTO carregarPesquisaNotaFiscal(EmitenteTO emitenteTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().carregarPesquisaNotaFiscal(emitenteTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public boolean validarDtAutorizacaoCartaCorrecao(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().validarDtAutorizacaoCartaCorrecao(notaFiscalTO);
+	}
+	
+	/**
+	 * 
+	 * @param pesquisaNotaFiscalTO
+	 * @param ordenacaoTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public Collection<NotaFiscalTO> pesquisarNotaFiscal(PesquisaNotaFiscalTO pesquisaNotaFiscalTO,OrdenacaoTO ordenacaoTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().pesquisarNotaFiscal(pesquisaNotaFiscalTO,ordenacaoTO);
+	}
+
+
+	/**
+	 * @param PesquisaNotaFiscalTO
+	 * @return Integer o número de notas retornados pela pesquisa
+	 *
+	 */
+	public Integer getCountNotaFiscal(PesquisaNotaFiscalTO pesquisaNotaFiscalTO) throws DSENBusinessException  {
+		return  getNotaFiscalBusiness().getCountNotaFiscal(pesquisaNotaFiscalTO) ;
+	}
+
+	/**
+	 * 
+	 * @param listaNotaFiscalTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public List<NotaFiscalTO> excluirNotaFiscal(List<NotaFiscalTO> listaNotaFiscalTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().excluir(listaNotaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param pesquisaNotaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void verificaPesquisaTO(PesquisaNotaFiscalTO pesquisaNotaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().verificaPesquisaTO(pesquisaNotaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param pesquisaNotaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void salvarPesquisaNotaFiscal(PesquisaNotaFiscalTO pesquisaNotaFiscalTO) throws DSENBusinessException{
+		getNotaFiscalBusiness().salvarPesquisaNotaFiscal(pesquisaNotaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NotaFiscalTO pesquisarPorId(NotaFiscalTO notaFiscalTO) throws DSENBusinessException{
+		return getNotaFiscalBusiness().pesquisarPorId(notaFiscalTO.getIdNotaFiscal());
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NotaFiscalTO salvarNotaFiscal(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().salvar(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NotaFiscalTO validarNotaFiscal(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().validar(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTOList
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public List<NotaFiscalTO> validarNotaFiscal(List<NotaFiscalTO> notaFiscalTOList) throws DSENBusinessException {
+		return getNotaFiscalBusiness().validar(notaFiscalTOList);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NotaFiscalTO detalharNotaFiscal(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().detalhar(notaFiscalTO);
+	}
+
+	//TODO @Moacir - Início
+	public List<NotaFiscalTO> detalhar(List<NotaFiscalTO> notaTOList) throws DSENBusinessException {
+		return getNotaFiscalBusiness().detalhar(notaTOList);
+	}
+	
+	/** 
+	 * Verifica se o estado do serviço da SEFAZ está ativo.
+	 * Caso contrário, disparar uma exeção de negócio que o sistema está inativo.
+	 * @return 
+	 * @throws DSENBusinessException 
+	 */
+	public boolean verificarStatusServicoAtivo(CertificadoLoteTO certificadoLoteTO, boolean isSefaz) throws DSENBusinessException {
+		return getTransmissorBusiness().verificarStatusServicoAtivo(certificadoLoteTO, isSefaz);
+	}
+	//TODO @Moacir - Fim
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NotaFiscalTO editarNotaFiscal(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().editar(notaFiscalTO);
+	}
+	
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @param novaSerie
+	 * @param novoNumero
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NotaFiscalTO duplicarNotaFiscal(NotaFiscalTO notaFiscalTO, String novaSerie, String novoNumero) throws DSENBusinessException {
+		return getNotaFiscalBusiness().duplicar(notaFiscalTO, novaSerie, novoNumero);
+	}
+
+	/**
+	 * 
+	 * @param emitenteTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NumeracaoTO pesquisarUltimoNumero(EmitenteTO emitenteTO) throws DSENBusinessException {
+		return getNumeracaoBusiness().pesquisarUltimoNumero(emitenteTO);
+	}
+	
+	/**
+	 * 
+	 * @param emitenteTO
+	 * @return
+	 * @throws DSENBusinessException
+	 * @throws DSGEUtilException
+	 */
+	public NotaFiscalTO obterRascunho(EmitenteTO emitenteTO) throws DSENBusinessException, DSGEUtilException {
+		return getNotaFiscalBusiness().obterRascunho(emitenteTO);
+	}
+
+	/**
+	 * 
+	 * @param emitenteTO
+	 * @param serie
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NumeracaoTO pesquisarUltimoNumero(EmitenteTO emitenteTO,String serie) throws DSENBusinessException {
+		return getNumeracaoBusiness().pesquisarUltimoNumero(emitenteTO,serie);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @param certificadoTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NotaFiscalTO assinarNotaFiscal(NotaFiscalTO notaFiscalTO,CertificadoTO certificadoTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().assinar(notaFiscalTO, certificadoTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTOList
+	 * @param certificadoTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public List<NotaFiscalTO> assinarNotaFiscal(List<NotaFiscalTO> notaFiscalTOList,CertificadoTO certificadoTO) throws DSENBusinessException{
+		return getNotaFiscalBusiness().assinar(notaFiscalTOList,certificadoTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorCOFINS(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorCOFINS(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorCOFINSST(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorCOFINSST(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorICMS(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorICMS(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorICMSST(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorICMSST(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorIPI(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorIPI(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorISSQN(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorISSQN(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorPIS(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorPIS(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorPISST(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorPISST(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorCIDE(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorCIDE(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularValorICMSTransporte(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularValorICMSTransporte(notaFiscalTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTO
+	 * @throws DSENBusinessException
+	 */
+	public void calcularNotaFiscalTotais(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		getNotaFiscalBusiness().calcularNotaFiscalTotais(notaFiscalTO);
+	}
+
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * Metodo responsável por inutilizar a(s) Faixa(s) 
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param emitenteTO
+	 * @param listaInutilizacaoTO
+	 * @param certificado
+	 * 
+	 * @throws DSENBusinessException
+	 * 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public void inutilizarFaixas(EmitenteTO emitenteTO, List<InutilizacaoTO> listaInutilizacaoTO, CertificadoTO certificado) throws DSENBusinessException {
+		// begin-user-code
+		getInutilizacaoBusiness().inutilizarFaixas(emitenteTO, listaInutilizacaoTO, certificado);
+		// end-user-code
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * Metodo responsável por assinar a(s) Faixa(s) que sera(ão) inutilizada(s)
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param emitenteTO
+	 * @param listaInutilizacaoTO
+	 * @param certificado
+	 * 
+	 * @return Lista com a(s) que serão inutilizadas
+	 * 
+	 * @throws DSENBusinessException
+	 * 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public List<InutilizacaoTO> assinarFaixasParaInutilizar(EmitenteTO emitenteTO, List<InutilizacaoTO> listaInutilizacaoTO, CertificadoTO certificado, String justificativa) throws DSENBusinessException {
+		// begin-user-code
+		return getInutilizacaoBusiness().assinarFaixasParaInutilizar(listaInutilizacaoTO, emitenteTO, certificado, justificativa);
+		// end-user-code
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Seleciona todas a faixa inutilizadas conforme a série passada como parâmetro
+	 * @return 
+	 * @param serie 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public List<InutilizacaoTO> obterFaixasInutilizadas(InutilizacaoTO inutilizacaoTO) throws DSENBusinessException {
+		// begin-user-code
+		return getInutilizacaoBusiness().obterFaixasInutilizadas(inutilizacaoTO);
+		// end-user-code
+	}	
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Obtem a lista de faixa que podem ser inutilizadas a partir do filtro informado
+	 * @param inutilizacaoTO 
+	 * @return 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public HashMap<String, List<InutilizacaoTO>> obterFaixasParaInutilizar(InutilizacaoTO inutilizacaoTO) throws DSENBusinessException {
+		// begin-user-code
+		return getInutilizacaoBusiness().obterFaixasParaInutilizar(inutilizacaoTO);
+		// end-user-code
+	}
+
+	/**
+	 * 
+	 * @param pesquisaInutilizacaoTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public InutilizacaoTO validarFiltroPesquisarFaixasParaInutilizar(InutilizacaoTO pesquisaInutilizacaoTO) throws DSENBusinessException{
+		return getInutilizacaoBusiness().validarFiltroPesquisarFaixasParaInutilizar(pesquisaInutilizacaoTO);
+	}
+	
+	/**
+	 * 
+	 * @param idEmitente
+	 * @param serie
+	 * @param numeroInicial
+	 * @param numeroFinal
+	 * @param situacoes
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public List getSerieNumeroAnoPorSituacoes(Integer idEmitente,String serie, String numeroInicial, String numeroFinal,List<SituacaoNFeEnum> situacoes) throws DSENBusinessException{
+		try{
+			return getNotaFiscalBusiness().getSerieNumeroAnoPorSituacoes(idEmitente, serie, numeroInicial, numeroFinal, situacoes);
+		} catch (Throwable e) {
+			throw new DSENBusinessException(e, e.getMessage());
+		}
+	}
+
+	/*
+	 * UC020 - Impressão de Danfe
+	 */
+
+	/**
+	 * Retorna a instancia da classe DanfeBusiness
+	 *
+	 * @param   Não ha.
+	 * @return  DanfeBusiness    Business para Impressão de Danfe.
+	 * @throws  DSENBusinessException
+	 */
+	private DanfeBusiness getDanfeBusiness() throws DSENBusinessException {
+		try {
+			if(danfeBusiness == null){
+				danfeBusiness = (DanfeBusiness) BusinessFactory.create(DanfeBusiness.class.getName());
+			}
+			return danfeBusiness;
+		} catch (Exception exception) {
+			throw new DSENBusinessException(exception,exception.getMessage());
+		}
+	}
+
+	/**
+	 * Carrega as opções se impressão de Danfe selecionadas pela última vez pelo usuário.
+	 *
+	 * @param   emitenteTO
+	 * @return  SelecaoDanfeTO  Opções de impressão de Danfe utilizadas pela última vez pelo usuário.
+	 * @throws  DSENBusinessException
+	 */
+	public SelecaoDanfeTO carregarSelecaoImpressaoDanfe(EmitenteTO emitenteTO) throws DSENBusinessException {
+		return getDanfeBusiness().carregarSelecaoImpressaoDanfe(emitenteTO);
+	}
+
+	/**
+	 * Atualiza as opções selecionadas pelo usuário para impressão de Danfe.
+	 *
+	 * @param   selecaoDanfeTO  Opções selecionadas para impressao de Danfe.
+	 * @throws  DSENBusinessException
+	 */
+	public void salvarSelecaoImpressaoDanfe(SelecaoDanfeTO selecaoDanfeTO) throws DSENBusinessException {
+		getDanfeBusiness().salvarSelecaoImpressaoDanfe(selecaoDanfeTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTOList
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	  public boolean isSelecaoValida(List<NotaFiscalTO> notaFiscalTOList) throws DSENBusinessException {
+		  return getDanfeBusiness().isSelecaoValida(notaFiscalTOList);
+	  }
+	  
+	  /**
+	   * 
+	   * @param notaFiscalTOList
+	   * @return
+	   * @throws DSENBusinessException
+	   */
+	  public boolean canSaveAndPrint(List<NotaFiscalTO> notaFiscalTOList)  throws DSENBusinessException{
+		  return getDanfeBusiness().canSaveAndPrint(notaFiscalTOList);
+	  }
+	
+	/**
+	 * Pega a lista de impressão de Danfe para a lista de notas fiscais.
+	 *
+	 * @param   notaFiscalTOList    Lista de notas fiscais.
+	 * @return  List<ImpressaoDanfeTO>  Lista de impressão de Danfe.
+	 * @throws  DSENBusinessException
+	 */
+	public List<ImpressaoDanfeTO> getImpressaoDanfeTOList(List<NotaFiscalTO> notaFiscalTOList, TipoPapelImpressaoEnum tipoPapel) throws DSENBusinessException {
+		return getDanfeBusiness().getImpressaoDanfeTOList(notaFiscalTOList, tipoPapel);
+	}
+
+	/*
+	 * UC027 - Gerar Relatório Gerencial
+	 */
+
+	/**
+	 * Retorna a instancia da classe RelatorioBusiness
+	 *
+	 * @param   Não ha.
+	 * @return  RelatorioBusiness    Business para Impressão do relatório gerencial.
+	 * @throws  DSENBusinessException
+	 */
+	private RelatorioBusiness getRelatorioBusiness() throws DSENBusinessException {
+		try {
+			if(relatorioBusiness == null){
+				relatorioBusiness = (RelatorioBusiness) BusinessFactory.create(RelatorioBusiness.class.getName());
+			}
+			return relatorioBusiness;
+		} catch (Exception exception) {
+			throw new DSENBusinessException(exception,exception.getMessage());
+		}
+	}
+
+	/**
+	 * Carrega os dados pré-selecionados para o filtro de geração do relatório gerencial realizado pela última vez pelo emitente.
+	 *
+	 * @param  emitenteTO
+	 * @return PesquisaRelatorioGerencialTO
+	 * @throws DSENBusinessException
+	 */
+	public PesquisaRelatorioGerencialTO carregarPesquisaRelatorioGerencial(EmitenteTO emitenteTO) throws DSENBusinessException {
+		return getRelatorioBusiness().carregarPesquisaRelatorioGerencial(emitenteTO);
+	}
+
+	/**
+	 * Salva os dados de cada campo utilizado como filtro na tela de relatorio gerencial
+	 * 
+	 * @param pesquisareRelatorioGerencialTO
+	 * @throws DSENBusinessException
+	 */
+	public void salvarPesquisaRelatorioGerencial(PesquisaRelatorioGerencialTO pesquisareRelatorioGerencialTO) throws DSENBusinessException{
+		getRelatorioBusiness().salvarPesquisaRelatorioGerencial(pesquisareRelatorioGerencialTO);
+	}
+
+	/**
+	 * Efetua a validação do filtro de nota fiscal selecionado pelo emitente para a geração do relatório gerencial.
+	 *
+	 * @param   pesquisaTO  TO contendo os filtros selecionados pelo emitente.
+	 * @return  PesquisaRelatorioGerencialTO - TO contendo os filtros selecionados bem como possíveis mensagens de erro relacionadas a validação.
+	 * @throws  DSENBusinessException
+	 */
+	public PesquisaRelatorioGerencialTO verificarFiltroNFRelatorioGerencial(PesquisaRelatorioGerencialTO pesquisaTO) throws DSENBusinessException {
+		return getRelatorioBusiness().verificarFiltroNFRelatorioGerencial(pesquisaTO);
+	}
+
+	/**
+	 * Efetua a pesquisa pelas notas fiscais que atendem ao filtro selecionado pelo emitente e retorna o resultado.
+	 *
+	 * @param   pesquisaTO  TO contendo os filtros selecionados pelo emitente.
+	 * @return  RelatorioNotaFiscalTO  TO de resultado da pesquisa onde os dados já estão formatados para exibição na tela/formulário.
+	 * @throws  DSENBusinessException
+	 */
+	public RelatorioNotaFiscalTO gerarRelatorioGerencialNF(PesquisaRelatorioGerencialTO pesquisaTO) throws DSENBusinessException {
+		return getRelatorioBusiness().gerarRelatorioGerencialNF(pesquisaTO);
+	}
+
+	/**
+	 *@throws DSGEUtilException 
+	 * @see CancelamentoBusiness#assinarCancelamentoNotaFiscal(List<NotaFiscalTO> list, String justificativaCanc,X509Certificate X509Certificate, PrivateKey privateKey)
+	 */
+	public void cancelarNotaFiscal(CertificadoTO certificadoTO, String justificativaCanc, List<NotaFiscalTO> list ) throws DSENBusinessException, DSGEUtilException {
+		//getNotaFiscalBusiness().cancelar(certificadoTO, justificativaCanc,list);
+	}
+
+	/**
+	 *@throws DSGEUtilException 
+	 * @see CancelamentoBusiness#assinarCancelamentoNotaFiscal(String chaveDeAcesso, BigInteger nProtocolo,String justificativaCanc, X509Certificate X509Certificate, PrivateKey privateKey)
+	 */
+	public void cancelarNFENaoCadastrada(String chaveDeAcesso, String nProtocolo, String justificativaCanc, EmitenteTO emitenteTO,CertificadoTO certificadoTO) throws DSENBusinessException, DSGEUtilException  {
+		//getNotaFiscalBusiness().cancelarNFENaoCadastrado(chaveDeAcesso, nProtocolo, justificativaCanc, emitenteTO,certificadoTO);        
+	}
+
+	/**
+	 * Atualiza a Nota Fiscal sinalizando a impressão do DANFE.
+	 *
+	 * @param   notaFiscalTO    Nota Fiscal para qual foi impresso o DANFE.
+	 * @return  NotaFiscalTO    Nota Fiscal atualizada.
+	 * @author  Gabriel Stelmach
+	 */
+	public NotaFiscalTO alterarImpressaoDanfe(NotaFiscalTO notaFiscalTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().acrescentarDadosDanfe(notaFiscalTO);
+	}
+
+	/**
+	 * Efetua a pesquisa pelos números inutilizados que atendem ao filtro selecionado pelo emitente e retorna uma lista contendo o resultado.
+	 *
+	 * @param   pesquisaTO  TO contendo os filtros selecionados pelo emitente.
+	 * @return  RelatorioNotaFiscalTO  TO de resultado da pesquisa onde os dados já estão formatados para exibição na tela/formulário.
+	 * @throws  DSENBusinessException
+	 */
+	public RelatorioNotaFiscalTO gerarRelatorioGerencialInutilizacao(PesquisaRelatorioGerencialTO pesquisaTO) throws DSENBusinessException {
+		return getRelatorioBusiness().gerarRelatorioGerencialInutilizacao(pesquisaTO);
+	}
+
+	/**
+	 * 
+	 * @param notaFiscalTOList
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 */
+	public void transmitirNotaFiscal(List<NotaFiscalTO> notaFiscalTOList,CertificadoTO certificadoTO) throws DSENBusinessException{        
+		getTransmissorBusiness().transmitir(notaFiscalTOList,certificadoTO);                 
+	}
+	
+	/**
+	 * 
+	 * @param eventoTO
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 */
+	public void enviarEvento(EventoTO eventoTO, CertificadoTO certificadoTO) throws DSENBusinessException{        
+		getTransmissorBusiness().enviarEvento(eventoTO,certificadoTO);                 
+	}
+
+	/**
+	 * 
+	 * @param listaNotaFiscal
+	 * @param emitenteTO
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 * @throws DSGEUtilException
+	 */
+	public void consultarSituacaoNFe(List<NotaFiscalTO> listaNotaFiscal, EmitenteTO emitenteTO, CertificadoTO certificadoTO) throws DSENBusinessException, DSGEUtilException {
+		getTransmissorBusiness ().consultarSituacaoNFe(listaNotaFiscal, emitenteTO, certificadoTO);
+	}
+
+	/**
+	 * 
+	 * @param chaveAcesso
+	 * @param emitenteTO
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 */
+	public void consultarSituacaoNFePorChaveAcesso(String chaveAcesso, EmitenteTO emitenteTO, CertificadoTO certificadoTO) throws DSENBusinessException {
+		getTransmissorBusiness ().consultarSituacaoNFePorChaveAcesso(chaveAcesso, emitenteTO, certificadoTO);
+	}
+
+	/**
+	 * 
+	 * @param listaNotaFiscalTO
+	 * @param tipoArquivoEnum
+	 * @param path
+	 * @throws DSENBusinessException
+	 */
+	public void exportarNotaFiscal(List<NotaFiscalTO> listaNotaFiscalTO, ExtensaoArquivoEnum tipoArquivoEnum, String path) throws DSENBusinessException {
+		getNotaFiscalBusiness().exportarNotaFiscal(listaNotaFiscalTO, tipoArquivoEnum, path);
+	}
+
+	/**
+	 * 
+	 * @param listaNotaFiscal
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 */
+	public void gerarDPEC(List<NotaFiscalTO> listaNotaFiscal, CertificadoTO certificadoTO) throws DSENBusinessException {
+		getDpecBusiness().gerarDPEC(listaNotaFiscal, certificadoTO);
+	}	
+
+	/**
+	 * Pesquisa os dpecs dos diretórios de gerados e de atualizados.
+	 * @return Map<DpecStatus, List<DpecTO>>
+	 * @throws DSENBusinessException 
+	 * 
+	 */
+	public Map<DpecStatus, List<DpecTO>> pesquisarDPEC() throws DSENBusinessException {
+		return getDpecBusiness().pesquisarDPEC();
+	}
+
+	public List<DpecTO> pesquisarDPEC(String dir, boolean autorizados) throws DSGECommonException, DSENBusinessException {
+		return getDpecBusiness().pesquisarDPEC(dir, autorizados);
+	}
+
+	/**
+	 * Pesquisa todas as informacoes do dpec no arquivo.
+	 * @param dpecTO
+	 * @param validarAssinatura
+	 * @throws DSENBusinessException
+	 * @throws DSGEUtilException 
+	 */
+	public void detalharDPEC(DpecTO dpecTO, boolean validarAssinatura) throws DSENBusinessException, DSGEUtilException {
+		getDpecBusiness().detalharDPEC(dpecTO, validarAssinatura);
+	}
+
+	/**
+	 * Exclui os arquivos de dpec's da lista.
+	 * @param listaDpecTO
+	 * @return numero de deletados
+	 * @throws DSENBusinessException 
+	 */
+	public int excluirDPEC(List<DpecTO> listaDpecTO) throws DSENBusinessException {
+		return getDpecBusiness().excluirDPEC(listaDpecTO);
+	}
+
+	/**
+	 * Pesquisa os objetos NotaFiscalTO referentes às notas fiscais do dpec selecionado na lista.
+	 * @param listaDpecNotaFiscalTO
+	 * @return ImportacaoResultadoTO
+	 * @throws DSENBusinessException
+	 */
+	public List<NotaFiscalTO> pesquisarNotaFiscalDPECNotaFiscal(List<DpecNotaFiscalTO> listaDpecNotaFiscalTO,List<ProblemaDpecDanfeTO> problemas) throws DSENBusinessException {
+		return getDpecBusiness().pesquisarNotaFiscalDPECNotaFiscal(listaDpecNotaFiscalTO,problemas);
+	}
+
+	/**
+	 * 
+	 * @param listaDpecTO
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 */
+	public void transmitirDPEC(List<DpecTO> listaDpecTO, CertificadoTO certificadoTO) throws DSENBusinessException {
+		getDpecBusiness().transmitirDPEC(listaDpecTO, certificadoTO);
+	}
+
+	/**
+	 * 
+	 * @param pathArquivo
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public ImportacaoResultadoTO importarDPEC(String pathArquivo) throws DSENBusinessException {
+		return getDpecBusiness().importarDPEC(pathArquivo);
+	}
+
+	/**
+	 * 
+	 * @param tipoConsultaDpecEnum
+	 * @param chaveConsulta
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 */	  
+	public void consultarDpec(TipoConsultaDpecEnum tipoConsultaDpecEnum, String chaveConsulta, CertificadoTO certificadoTO) throws DSENBusinessException {
+		getDpecBusiness().consultarDpec(tipoConsultaDpecEnum, chaveConsulta, certificadoTO);
+	}
+
+	/**
+	 * 
+	 * @param dpecTO
+	 * @throws DSENBusinessException
+	 */
+	public void gravarDpec(DpecTO dpecTO) throws DSENBusinessException {
+		getDpecBusiness().gravarDpec(dpecTO);
+	}
+
+	/**
+	 * 
+	 * @param chaveAcesso
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public NotaFiscalTO validarDadosParaConsultarNFENaoCadastrada(String chaveAcesso) throws DSENBusinessException {
+		return getNotaFiscalBusiness().validarDadosParaConsultarNFENaoCadastrada(chaveAcesso);
+	}
+
+	/**
+	 * 
+	 * @param chaveAcesso
+	 * @param protocolo
+	 * @param justificativa
+	 * @param emitenteTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public BaseTO validarCamposParaCancelarNFeNaoCadastrada(String chaveAcesso, String protocolo, String justificativa, EmitenteTO emitenteTO) throws DSENBusinessException {
+		return getNotaFiscalBusiness().validarCamposParaCancelarNFENaoCadastrado(chaveAcesso, protocolo, justificativa, emitenteTO);
+	}
+
+	/**
+	 * 
+	 * @param nfeTO
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 */
+	public void consultarSituacaoRecibo(NotaFiscalTO nfeTO, CertificadoTO certificadoTO) throws DSENBusinessException {
+		// begin-user-code
+		getTransmissorBusiness().consultarSituacaoRecibo(nfeTO, certificadoTO);
+		// end-user-code
+	}
+
+	/**
+	 * @param listaNotaFiscalTO
+	 * @param mapaCertificadoLoteTO
+	 * @throws DSENBusinessException
+	 */
+	public void agendarBuscaRetorno(List<NotaFiscalTO> listaNotaFiscalTO , Map<String, CertificadoLoteTO> mapaCertificadoLoteTO) throws DSENBusinessException {
+		// begin-user-code
+		getTransmissorBusiness().agendarBuscaRetorno(listaNotaFiscalTO, mapaCertificadoLoteTO);
+		// end-user-code
+	}
+
+	/**
+	 * 
+	 * @param item
+	 * @param tempoEspera
+	 * @throws DSENBusinessException
+	 */
+	public void reagendarBuscaRetorno(BuscaRetornoQueueItem item, long tempoEspera) throws DSENBusinessException {
+		// begin-user-code
+		getTransmissorBusiness().reagendarBuscaRetorno(item,tempoEspera);
+		// end-user-code
+	}
+
+	/**
+	 * verifica se o cte já esta na fila pela busca por retornos
+	 * 
+	 * @param nfeTO
+	 * @return a msg de erro se já estiver
+	 * @throws DSENBusinessException 
+	 */
+	public String verificarItemFilaBuscaRetorno(NotaFiscalTO nfeTO) throws DSENBusinessException{
+		return getTransmissorBusiness().verificarItemFilaBuscaRetorno(nfeTO);
+	}
+
+	/**
+     * 
+     * @param listaInutilizacaoTO
+     * @param tipoArquivoEnum
+     * @param path
+     * @return
+     * @throws DSENBusinessException
+     */
+	public void exportarInutilizacao(List<InutilizacaoTO> listaInutilizacaoTO, ExtensaoArquivoEnum tipoArquivoEnum, String path) throws DSENBusinessException {
+        getInutilizacaoBusiness().exportarInutilizacao(listaInutilizacaoTO, path);
+	}
+}

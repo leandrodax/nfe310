@@ -1,0 +1,55 @@
+/*
+ * TipoEmissaoEnum.java
+ *
+ * Created on June 25, 2007, 2:20 PM
+ */
+
+package br.gov.sp.fazenda.dsen.common.enumeration;
+
+
+/**
+ * Tipo de emissão da nota fiscal.
+ * @author gibrito
+ */
+public enum TipoEmissaoEnum {
+    NORMAL("1", "Normal", "Normal"),
+    CONTINGENCIA("2", "Contingência FS", "Cont. FS"),
+    CONTINGENCIA_SCAN("3","Contingência com SCAN", "Cont. SCAN"),
+    CONTINGENCIA_DPEC("4","Contingência via DPEC", "Cont. DPEC"),
+    CONTINGENCIA_FS_DA("5","Contingência FS-DA", "Cont. FS-DA");
+
+    private String codigo;
+    private String descricao;
+	private String descricaoRelatorio;
+    
+    /** Creates a new instance of TipoEmissaoEnum */
+    TipoEmissaoEnum (String codigo, String descricao, String descricaoRelatorio) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.descricaoRelatorio = descricaoRelatorio;
+    }
+    
+    public String getCodigo() {
+        return codigo;
+    }
+    
+    public String getDescricao() {
+        return descricao;
+    }
+    
+    public String toString() {
+        return getDescricao();
+    }
+    
+    public String getDescricaoRelatorio() {
+    	return descricaoRelatorio;
+    }
+    
+	public static TipoEmissaoEnum getEnumPeloCodigo(String string) {
+		for(TipoEmissaoEnum e:values()){
+			if(e.getCodigo().equals(string))
+				return e;
+		}
+		return null;
+	}
+}

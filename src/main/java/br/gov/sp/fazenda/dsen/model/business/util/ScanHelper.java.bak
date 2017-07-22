@@ -1,0 +1,86 @@
+package br.gov.sp.fazenda.dsen.model.business.util;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import br.gov.sp.fazenda.dsen.common.enumeration.TipoEmissaoEnum;
+import br.gov.sp.fazenda.dsen.common.to.InutilizacaoTO;
+import br.gov.sp.fazenda.dsen.common.to.NotaFiscalTO;
+import br.gov.sp.fazenda.dsge.common.util.DSGEConstants;
+import br.gov.sp.fazenda.dsge.util.EstadoTO;
+
+public class ScanHelper {
+
+    private static final int SERIE_INICIAL = 900;
+
+    /**
+     * Retorna um Map contendo uma lista de documentos agrupados por Serie
+     * serie entre 900 e 999 serao agrupadas como contigencia SCAN, o restante com contigencia normal
+     * @param notaFiscalTOList
+     * @return
+     */
+    public Map<TipoEmissaoEnum, List<NotaFiscalTO>>  agruparNotaFiscalPorSerie(Collection<NotaFiscalTO> notaFiscalTOList) {
+        List<NotaFiscalTO> scanList = new ArrayList<NotaFiscalTO>();
+        List<NotaFiscalTO> sefazList = new ArrayList<NotaFiscalTO>();
+        Map<TipoEmissaoEnum, List<NotaFiscalTO>> map = new HashMap<TipoEmissaoEnum, List<NotaFiscalTO>>();
+
+        for (NotaFiscalTO nfeTO : notaFiscalTOList) {
+            if (isSefaz(nfeTO)) {
+                sefazList.add(nfeTO);
+            } else {
+                scanList.add(nfeTO);
+            }
+        }
+
+        map.put(TipoEmissaoEnum.CONTINGENCIA_SCAN, scanList);
+        map.put(TipoEmissaoEnum.NORMAL, sefazList);
+
+        return map;
+    }
+    
+    public Map<TipoEmissaoEnum, List<InutilizacaoTO>>  agruparInutilizacaoPorSerie(Collection<InutilizacaoTO> notaFiscalTOList) {
+        List<InutilizacaoTO> scanList = new ArrayList<InutilizacaoTO>();
+        List<InutilizacaoTO> sefazList = new ArrayList<InutilizacaoTO>();
+        Map<TipoEmissaoEnum, List<InutilizacaoTO>> map = new HashMap<TipoEmissaoEnum, List<InutilizacaoTO>>();
+
+        for (InutilizacaoTO inutTO : notaFiscalTOList) {
+            if (isSefaz(inutTO)) {
+                sefazList.add(inutTO);
+            } else {
+                scanList.add(inutTO);
+            }
+        }
+
+        map.put(TipoEmissaoEnum.CONTINGENCIA_SCAN, scanList);
+        map.put(TipoEmissaoEnum.NORMAL, sefazList);
+
+        return map;
+    }
+    
+    /**
+     * Verifica se a serie do documento está entre 900 e 999,caso esteja, entao é uma emissao do tipo contigencia SCAN
+     * @param notaFiscalTO
+     * @return
+     */
+    public boolean isSefaz(NotaFiscalTO notaFiscalTO) {
+        int serie = Integer.valueOf(notaFiscalTO.getSerie());
+        return serie < SERIE_INICIAL;
+    }
+    
+    public boolean isSefaz(InutilizacaoTO inutTO) {
+        int serie = Integer.valueOf(inutTO.getSerie());
+        return serie < SERIE_INICIAL;
+    }
+
+    public EstadoTO getEstadoTO(EstadoTO emitenteEstadoTO, boolean isSefaz) {
+        EstadoTO estadoTO = emitenteEstadoTO;
+        if (!isSefaz) {
+            estadoTO = new EstadoTO(DSGEConstants.CODIGO_UF_RFB, DSGEConstants.SIGLA_UF_RFB, DSGEConstants.NOME_UF_RFB);
+        }
+        return estadoTO;
+    }
+
+}

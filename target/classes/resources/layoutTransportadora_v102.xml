@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANSPORTADORA>
+	<A tagXml="sistema" min="1" max="*">
+		<campo xmlType="attrib" nome="versao">
+			<tipoValidacao>
+				<notNull message="transportadora.notNull"/>
+			</tipoValidacao>
+		</campo>
+		<campo xmlType="attrib" nome="xmlns" xmlOnly="true" fixedValue="http://www.portalfiscal.inf.br/nfe"/>
+		<X tagXml="transporta" min="1" max="*">
+			<tag nome="$tpDoc" validNames="CNPJ,CPF" campos="nrDocumento" xmlPos="0" printIfEmpty="true"/>
+			<campo nome="tpDoc">
+				<tipoValidacao>
+					<validValues values="CNPJ,CPF" message="transportadora.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="text" nome="nrDocumento" xmlPos="1">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0}|[0-9]{14}|[0-9]{11}" message="transportadora.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xNome" xmlPos="2">
+				<tipoValidacao>
+					<notNull message="transportadora.notNull"/>
+					<length min="1" max="60" message="transportadora.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="IE" xmlPos="3">
+				<tipoValidacao>
+					<pattern regex="[0-9]{0,14}|ISENTO" message="cliente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xEnder" xmlPos="4">
+				<tipoValidacao>
+					<length min="1" max="60" message="transportadora.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xMun" xmlPos="5">
+				<tipoValidacao>
+					<length min="1" max="60" message="transportadora.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="UF" xmlPos="6">
+				<tipoValidacao>
+					<validValues values="AC,AL,AM,AP,BA,CE,DF,ES,GO,MA,MG,MS,MT,PA,PB,PE,PI,PR,RJ,RN,RO,RR,RS,SC,SE,SP,TO,EX" message="transportadora.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+		</X>
+	</A>
+</TRANSPORTADORA>

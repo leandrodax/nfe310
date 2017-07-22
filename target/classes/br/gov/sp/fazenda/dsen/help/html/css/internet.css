@@ -1,0 +1,185 @@
+.titulo_sistema {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+
+.titulo {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: left
+	text-decoration: underline;
+}
+
+.lei {
+	FONT-SIZE: 8px; MARGIN: 0px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+BODY {
+	FONT-SIZE: 10px; MARGIN: 0px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+DIV {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+P {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+TABLE {
+	FONT-SIZE: 10px; WIDTH: 100%; BORDER-TOP-STYLE: none; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-COLLAPSE: collapse; BORDER-BOTTOM-STYLE: none
+}
+IMG {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+TEXTAREA {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+SELECT {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+UNKNOWN {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+INPUT.text {
+	BORDER-RIGHT: #adadad 1px solid; BORDER-TOP: #adadad 1px solid; BORDER-LEFT: #adadad 1px solid; COLOR: #cc0000; BORDER-BOTTOM: #adadad 1px solid
+}
+TEXTAREA.text {
+	BORDER-RIGHT: #adadad 1px solid; BORDER-TOP: #adadad 1px solid; BORDER-LEFT: #adadad 1px solid; COLOR: #cc0000; BORDER-BOTTOM: #adadad 1px solid
+}
+SELECT.text {
+	BORDER-RIGHT: #adadad 1px solid; BORDER-TOP: #adadad 1px solid; BORDER-LEFT: #adadad 1px solid; COLOR: #cc0000; BORDER-BOTTOM: #adadad 1px solid
+}
+INPUT.button {
+	BORDER-RIGHT: #adadad 1px solid; BORDER-TOP: #adadad 1px solid; MARGIN: 2px; BORDER-LEFT: #adadad 1px solid; COLOR: #000000; BORDER-BOTTOM: #adadad 1px solid; BACKGROUND-COLOR: #cdcdcd
+}
+UNKNOWN {
+	BORDER-RIGHT: #adadad 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #adadad 1px solid; PADDING-LEFT: 6px; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: #adadad 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #adadad 1px solid; BACKGROUND-COLOR: #cdcdcd
+}
+OL.listaLetrasMinusculas {
+	
+}
+.tamanhoMax {
+	WIDTH: 100%
+}
+.alinharEsquerda {
+	TEXT-ALIGN: left
+}
+.alinharCentro {
+	TEXT-ALIGN: center
+}
+.alinharDireita {
+	TEXT-ALIGN: right
+}
+.alinharJustificado {
+	TEXT-ALIGN: justify
+}
+.negrito {
+	FONT-WEIGHT: bold
+}
+.fundoBranco {
+	BACKGROUND-COLOR: #ffffff
+}
+TABLE.gridView {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid
+}
+TH.gridViewTituloColuna {
+	FONT-WEIGHT: bold; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #bcbcbc; TEXT-ALIGN: center
+}
+TR.linhaAlternada {
+	BACKGROUND-COLOR: #dddddd
+}
+TR.gridViewEmptyMsg {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-WEIGHT: bold; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; TEXT-ALIGN: left
+}
+TR.gridViewPagerTemplate {
+	PADDING-RIGHT: 10px; BORDER-TOP: #000000 1px solid; TEXT-ALIGN: right
+}
+A.ocultarLink {
+	TEXT-DECORATION: none
+}
+A {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+A:hover {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+A {
+	COLOR: #cc0000
+}
+A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+H1#logo {
+	DISPLAY: inline; BACKGROUND: url(logo.gif) no-repeat; FLOAT: left; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 255px; HEIGHT: 65px
+}
+H1#logo A {
+	DISPLAY: block; WIDTH: 400px; TEXT-INDENT: -5000em; HEIGHT: 70px
+}
+
+DIV.menuSuperior {
+	LEFT: 10px; POSITION: absolute
+}
+TD.titulo_sistema {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+TD.titulo_pagina {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+TD.titulo_sistema {
+	PADDING-RIGHT: 20px; COLOR: #666666; TEXT-ALIGN: right
+}
+TD.titulo_pagina {
+	PADDING-LEFT: 20px; COLOR: #000000; TEXT-ALIGN: left
+}
+TR.cabecalhoMenu {
+	BACKGROUND-IMAGE: url(../../images/internet/fundo_preto3.gif); BACKGROUND-REPEAT: repeat; HEIGHT: 22px
+}
+TD.cabecalhoBotoes {
+	PADDING-RIGHT: 5px; TEXT-ALIGN: right
+}
+#footer {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 11px; PADDING-BOTTOM: 3px; MARGIN: 0px auto; COLOR: #ffffff; PADDING-TOP: 7px; HEIGHT: 30px; BACKGROUND-COLOR: #666666; TEXT-ALIGN: center
+}
+#footer P {
+	FONT-SIZE: 11px; MARGIN: 0px; COLOR: #ffffff; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+#footer ADDRESS {
+	FONT-SIZE: 11px; MARGIN: 0px; COLOR: #ffffff; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+TABLE.content {
+	MARGIN-BOTTOM: 8px
+}
+TD.contentLeftMargin {
+	HEIGHT: 510px
+}
+TD.contentMain {
+	VERTICAL-ALIGN: top; WIDTH: 100%; PADDING-TOP: 10px; TEXT-ALIGN: left
+}
+TD.cantoSupEsq {
+	BACKGROUND-IMAGE: url(../../images/internet/cantoSupEsq.gif); BACKGROUND-REPEAT: no-repeat
+}
+TD.cantoSupDir {
+	BACKGROUND-IMAGE: url(../../images/internet/cantoSupDir.gif); BACKGROUND-REPEAT: no-repeat
+}
+TD.cantoInfEsq {
+	BACKGROUND-IMAGE: url(../../images/internet/cantoInfEsq.gif); BACKGROUND-REPEAT: no-repeat
+}
+TD.cantoInfDir {
+	BACKGROUND-IMAGE: url(../../images/internet/cantoInfDir.gif); BACKGROUND-REPEAT: no-repeat
+}
+TD.linhaSuperior {
+	BACKGROUND-IMAGE: url(../../images/internet/linhaSuperior.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px
+}
+TD.linhaInferior {
+	BACKGROUND-IMAGE: url(../../images/internet/linhaInferior.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px
+}
+TD.linhaEsquerda {
+	BACKGROUND-IMAGE: url(../../images/internet/linhaEsquerda.gif); WIDTH: 7px; BACKGROUND-REPEAT: repeat-y
+}
+TD.linhaDireita {
+	BACKGROUND-IMAGE: url(../../images/internet/linhaDireita.gif); WIDTH: 7px; BACKGROUND-REPEAT: repeat-y
+}
+TD.NFEfundo {
+	BACKGROUND-COLOR: #e6e6e6
+}
+TD.NFEbotton {
+	BACKGROUND-COLOR: #f5f5f5
+}
+TD.formContent {
+	BACKGROUND-COLOR: #e6e6e6
+}

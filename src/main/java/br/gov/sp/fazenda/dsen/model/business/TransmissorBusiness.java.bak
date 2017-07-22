@@ -1,0 +1,1379 @@
+/**
+ * 
+ */
+package br.gov.sp.fazenda.dsen.model.business;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+
+import org.apache.axis.encoding.Base64;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
+import br.gov.sp.fazenda.dsen.common.enumeration.AppContextEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.GrupoNotificacaoEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.PropriedadeEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.ServicoSefazEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.SituacaoNFeEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.TipoEmissaoEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.TipoEventoEnum;
+import br.gov.sp.fazenda.dsen.common.enumeration.WSStatusRetorno;
+import br.gov.sp.fazenda.dsen.common.exception.DSENCommonException;
+import br.gov.sp.fazenda.dsen.common.to.CancelamentoTO;
+import br.gov.sp.fazenda.dsen.common.to.CertificadoLoteTO;
+import br.gov.sp.fazenda.dsen.common.to.CertificadoTO;
+import br.gov.sp.fazenda.dsen.common.to.ChaveAcessoTO;
+import br.gov.sp.fazenda.dsen.common.to.EmitenteTO;
+import br.gov.sp.fazenda.dsen.common.to.EventoTO;
+import br.gov.sp.fazenda.dsen.common.to.LoteTO;
+import br.gov.sp.fazenda.dsen.common.to.NotaFiscalTO;
+import br.gov.sp.fazenda.dsen.common.to.PropriedadeTO;
+import br.gov.sp.fazenda.dsen.common.util.ChaveAcessoUtil;
+import br.gov.sp.fazenda.dsen.common.util.DSENConstants;
+import br.gov.sp.fazenda.dsen.common.util.DSENMessageConstants;
+import br.gov.sp.fazenda.dsen.common.util.DSENProperties;
+import br.gov.sp.fazenda.dsen.common.util.DocumentoUtil;
+import br.gov.sp.fazenda.dsen.common.util.ErroXmlResposta;
+import br.gov.sp.fazenda.dsen.model.business.factory.BusinessFactory;
+import br.gov.sp.fazenda.dsen.model.business.util.ConsultaStatusServicoHelper;
+import br.gov.sp.fazenda.dsen.model.business.util.DSENBusinessConverter;
+import br.gov.sp.fazenda.dsen.model.business.util.ScanHelper;
+import br.gov.sp.fazenda.dsen.model.dao.CancelamentoDAO;
+import br.gov.sp.fazenda.dsen.model.dao.LoteDAO;
+import br.gov.sp.fazenda.dsen.model.dao.NotaFiscalDAO;
+import br.gov.sp.fazenda.dsen.model.entity.LoteEntity;
+import br.gov.sp.fazenda.dsen.model.entity.NotaFiscalEntity;
+import br.gov.sp.fazenda.dsen.model.exception.DSENBusinessException;
+import br.gov.sp.fazenda.dsen.model.exception.DSENConverterException;
+import br.gov.sp.fazenda.dsen.model.queue.BuscaRetornoQueueItem;
+import br.gov.sp.fazenda.dsen.schemas.nfe.v310.ProcEventoNFeDocument;
+import br.gov.sp.fazenda.dsen.schemas.nfe.v310.RetConsReciNFeDocument;
+import br.gov.sp.fazenda.dsen.schemas.nfe.v310.RetConsSitNFeDocument;
+import br.gov.sp.fazenda.dsen.schemas.nfe.v310.TProcEvento;
+import br.gov.sp.fazenda.dsen.schemas.nfe.v310.TProtNFe;
+import br.gov.sp.fazenda.dsen.schemas.nfe.v310.TRetCancNFe;
+import br.gov.sp.fazenda.dsen.schemas.nfe.v310.TRetConsReciNFe;
+import br.gov.sp.fazenda.dsen.schemas.nfe.v310.TRetConsSitNFe;
+import br.gov.sp.fazenda.dsen.util.DSENUtilHelper;
+import br.gov.sp.fazenda.dsge.certif.Certificado;
+import br.gov.sp.fazenda.dsge.certif.exception.DSGECertificadoException;
+import br.gov.sp.fazenda.dsge.common.app.AppContext;
+import br.gov.sp.fazenda.dsge.common.app.Notificador;
+import br.gov.sp.fazenda.dsge.common.enumeration.ProblemaConexaoAcao;
+import br.gov.sp.fazenda.dsge.common.exception.DSGEBaseException;
+import br.gov.sp.fazenda.dsge.common.util.DateHelper;
+import br.gov.sp.fazenda.dsge.common.util.StringHelper;
+import br.gov.sp.fazenda.dsge.common.util.XMLUtil;
+import br.gov.sp.fazenda.dsge.model.dao.util.DSGETransaction;
+import br.gov.sp.fazenda.dsge.model.exception.DSGEDAOException;
+import br.gov.sp.fazenda.dsge.model.queue.QueueManager;
+import br.gov.sp.fazenda.dsge.model.queue.QueueRetornoItem;
+import br.gov.sp.fazenda.dsge.util.EstadoTO;
+import br.gov.sp.fazenda.dsge.util.exception.DSGEUtilException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGEConnectionClientException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGEConnectionServerException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGEProxyException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGESocketException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGETimeoutException;
+import br.gov.sp.fazenda.dsge.ws.exception.DSGEWebServiceException;
+
+/** 
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @author rrvluiz
+ * 
+ * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+ */
+public class TransmissorBusiness {
+
+	private Log log = LogFactory.getLog(TransmissorBusiness.class);
+	private LoteDAO loteDao;
+	private NotaFiscalBusiness notaFiscalBusiness;
+	private NotaFiscalDAO notaFiscalDao;
+	private WSBusiness wSBusiness;
+	private CancelamentoDAO cancelamentoDAO;
+	private PropriedadeBusiness propriedadeBusiness;
+
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private ParametroBusiness parametroBusiness;
+
+
+	private NotaFiscalTO alterarNotaFiscal(LoteTO loteTO, SituacaoNFeEnum situacao, NotaFiscalTO nfeTO) throws DSGEUtilException, DSENBusinessException {
+		nfeTO.setLoteTO(loteTO);
+		nfeTO.setSituacao(situacao);
+		try {
+			getLoteDAO().update(DSENBusinessConverter.getLoteEntity(loteTO));
+		} catch (DSGEDAOException e) {
+			throw new DSENBusinessException(e,e.getMessage());
+		} catch (DSENConverterException e) {
+			throw new DSENBusinessException(e,e.getMessage());
+		}
+		return getNotaFiscalBusiness().alterarSemTransaction(nfeTO);
+
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private WSBusiness getWSBusiness() {
+		// begin-user-code
+
+		if(wSBusiness == null){
+			wSBusiness = new WSBusiness();
+		}
+
+		return wSBusiness;
+
+		// end-user-code
+	}
+
+	/**
+	 * 
+	 * @param item
+	 * @param tempoEspera
+	 */
+	public void reagendarBuscaRetorno(BuscaRetornoQueueItem item, long tempoEspera) {
+		BuscaRetornoQueueItem novoItem = new BuscaRetornoQueueItem(item.getId(), item,tempoEspera);
+		QueueManager.getInstance(BuscaRetornoQueueItem.class).push(novoItem);
+	}
+
+	/**
+	 * 
+	 * @param listNfeTO
+	 * @param certificadoTO
+	 * @param tempoEspera
+	 */
+	public void agendarBuscaRetorno(List<NotaFiscalTO> listNfeTO, CertificadoTO certificadoTO, long tempoEspera) {
+		// begin-user-code	
+		for(NotaFiscalTO nfeTO:listNfeTO)
+			agendarBuscaRetorno( nfeTO,  certificadoTO,  tempoEspera) ;
+		// end-user-code
+	}
+
+	/**
+	 * 
+	 * @param nfeTO
+	 * @param certificadoTO
+	 * @param tempoEspera
+	 */
+	public void agendarBuscaRetorno(NotaFiscalTO nfeTO, CertificadoTO certificadoTO, long tempoEspera) {
+		QueueManager.getInstance(BuscaRetornoQueueItem.class).push(new BuscaRetornoQueueItem(0, tempoEspera, nfeTO, certificadoTO));
+	}
+
+
+	/**
+	 * @param listaNotaFiscalBusca
+	 * @param mapaCertificadoLoteTO
+	 */
+	public void agendarBuscaRetorno(List<NotaFiscalTO> listaNotaFiscalBusca, Map<String, CertificadoLoteTO> mapaCertificadoLoteTO) {
+		for (NotaFiscalTO transporteTO : listaNotaFiscalBusca) {
+			CertificadoLoteTO certificadoLoteTO = mapaCertificadoLoteTO.get(transporteTO.getLoteTO().getCnpjTransmissao());
+			CertificadoTO certificadoTO = new CertificadoTO();
+			certificadoTO.setX509Certificate(certificadoLoteTO.getX509Certificate());
+			certificadoTO.setPrivateKey(certificadoLoteTO.getPrivateKey());
+			BuscaRetornoQueueItem item = new BuscaRetornoQueueItem(0, 0, transporteTO, certificadoTO);
+			QueueManager.getInstance(BuscaRetornoQueueItem.class).push(item);
+		}
+	}
+
+	/**
+	 * verifica se a nfe já esta na fila pela busca por retornos
+	 * 
+	 * @param nfeTO
+	 * @return a msg de erro se já estiver
+	 */
+	public String verificarItemFilaBuscaRetorno(NotaFiscalTO nfeTO){
+		BuscaRetornoQueueItem item = new BuscaRetornoQueueItem(1,0,nfeTO,null);
+		QueueRetornoItem itemFila = QueueManager.getInstance(BuscaRetornoQueueItem.class).getItem(item);
+		if(itemFila!=null){
+			Date data = new Date(itemFila.getTimeToGo());
+			return MessageFormat.format(DSENMessageConstants.MSG_NOTAS_JA_NA_FILA_AGENDAMENTO,nfeTO.getSerie(),nfeTO.getNumero(),nfeTO.getAno(),DateHelper.formataDataHora(data,DateHelper.TIME_FORMAT));
+		}
+		return null;
+
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * retornar uma instância de LoteDAO.
+	 * 
+	 * Se a instância já estiver criada, retornar ela mesmo, caso contrário, criar uma nova e retorná-la.
+	 * @return 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private LoteDAO getLoteDAO() throws DSENBusinessException {
+		// begin-user-code
+
+		if(loteDao == null){
+			loteDao = new LoteDAO();
+		}
+		return loteDao;
+
+		// end-user-code
+	}
+
+	/**
+	 * Consulta a situacao do recibo associado a um nfeTO
+	 * @param nfeTO
+	 * @param certificadoLoteTO
+	 * @throws DSENBusinessException
+	 */
+	@DSGETransaction
+	public void consultarSituacaoRecibo(NotaFiscalTO nfeTO,CertificadoTO certificadoTO) throws DSENBusinessException {
+		try{
+			boolean isSefaz = true;
+			ScanHelper scanHelper = new ScanHelper();
+			if (!scanHelper.isSefaz(nfeTO)) {
+				isSefaz = false;
+			}
+			String wsReceptor = isSefaz ? DSENMessageConstants.MSG_WS_SEFAZ : DSENMessageConstants.MSG_WS_RFB;
+			LoteTO loteTO = nfeTO.getLoteTO();
+			EstadoTO emitenteEstadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(nfeTO.getEmitenteTO().getUf());
+			EstadoTO estadoTO = scanHelper.getEstadoTO(emitenteEstadoTO, isSefaz);
+			String buscaRetornoCabecalho = DocumentoUtil.criarCabecalhoMensagem(ServicoSefazEnum.RetRecepcao, emitenteEstadoTO.getCodigo(), DSENProperties.getInstance().getVersaoSchemaConsRecibo());
+			String buscaRetornoEnvioXml =  DocumentoUtil.criarXmlConsultaReciboNFeDocument(loteTO.getNumRecibo());
+			String buscaRetornoResultadoXml = getWSBusiness().servico(buscaRetornoCabecalho, buscaRetornoEnvioXml, estadoTO, ServicoSefazEnum.RetRecepcao, certificadoTO.getX509Certificate(), certificadoTO.getPrivateKey());
+
+			RetConsReciNFeDocument document = null;
+			boolean valido;
+			try {
+				document = RetConsReciNFeDocument.Factory.parse(buscaRetornoResultadoXml);
+				valido= document.validate();
+			} catch (Throwable e) {
+				e.printStackTrace();
+				valido=false;
+			}
+
+			if(!valido){
+				//ERRO NA RESPOSTA DA SEFAZ, O XML RETORNADO PELA SEFAZ CONTEM ERROS DE SINTAXE
+				String urlSefaz = DSENUtilHelper.getInstance().getURLPorUF(estadoTO, ServicoSefazEnum.RetRecepcao);   		
+				nfeTO.setErroXmlResposta(new ErroXmlResposta(ServicoSefazEnum.RetRecepcao, urlSefaz, buscaRetornoEnvioXml, buscaRetornoResultadoXml,isSefaz?DSENMessageConstants.MSG_WS_SEFAZ:DSENMessageConstants.MSG_WS_RFB));
+				nfeTO.setCodigoErro(null);
+				nfeTO.setMensagemErro(MessageFormat.format(DSENMessageConstants.MSG_WS_RETORNO_INVALIDO, wsReceptor));
+				return;
+			}
+
+			loteTO.setDataProcessamento(new Date());
+
+			TRetConsReciNFe retConsReci =document.getRetConsReciNFe();
+			String codigoRetornoLote = retConsReci.getCStat();
+			String motivoRejeicaoLote = retConsReci.getXMotivo();
+
+			loteTO.setCodigoRetorno(codigoRetornoLote);
+
+			TProtNFe[] protNFesArray = retConsReci.getProtNFeArray();
+
+			if(!DSENConstants.CODIGO_LOTE_EM_PROCESSAMENTO.equals(codigoRetornoLote)){
+
+				if(DSENConstants.CODIGO_LOTE_PROCESSADO.equals(codigoRetornoLote)){
+					//Lote foi processado, olhar para a tag protNFe
+
+					if(protNFesArray==null || protNFesArray.length==0){
+						//Erro, servidor retornou o Código 104 sem o protNFe
+						nfeTO.setMensagemErro(MessageFormat.format(DSENMessageConstants.MSG_WS_RETORNO_LOTE_PROCESSADO_SEM_PROTNFE,wsReceptor));
+						return;
+					}
+
+					String[] protocoloNFeArray = DocumentoUtil.getProtocolosNfesArray(document);
+					for (int i = 0; i < protocoloNFeArray.length; i++) {
+						String protocolo = protocoloNFeArray[i];
+						String chaveAcesso = getChaveAcessoProtocoloNFe(protocolo);
+
+						if(!nfeTO.getChaveAcesso().equals(chaveAcesso) && (protocoloNFeArray.length>1))
+							continue;
+
+						Date dataProcessamento = XMLUtil.getXmlDate(XMLUtil.getTagConteudo(protocolo, "dhRecbto", false).get(0));
+						loteTO.setDataProcessamento(dataProcessamento);
+						loteTO.setXmlRetornoString(buscaRetornoResultadoXml);
+
+						DocumentoUtil.setProtocoloNFeRetornoConsultaSituacao(protocolo, nfeTO);
+
+						if (nfeTO.getSituacao() == SituacaoNFeEnum.CANCELADA) {
+							//RetCancNFeDocument retCancNFeDocument = DocumentoUtil.criarRetornoCancelamentoNFeDocument(nfeTO.getProtocoloString(),XMLUtil.getTagConteudo(protocolo, "cUF",false).get(0));
+
+							//CancelamentoTO cancelamentoTO = DocumentoUtil.getCancelamentoTO(nfeTO, retCancNFeDocument);
+							//alterarCancelamento(cancelamentoTO);
+							//getNotaFiscalBusiness().alterarSemTransaction(nfeTO);
+
+						} else if (nfeTO.getSituacao() != SituacaoNFeEnum.EM_PROCESSAMENTO_SEFAZ) {
+							getNotaFiscalBusiness().alterarSemTransaction(nfeTO);
+						}
+					}
+				}else if(DSENConstants.CODIGO_LOTE_NAO_LOCALIZADO.equals(codigoRetornoLote)){
+					//Tem que fazer a consulta individual pela chave de acesso
+					TRetConsSitNFe retConsSitNFe = consultarProtocolo(nfeTO, nfeTO.getEmitenteTO(), certificadoTO, isSefaz);
+					if(retConsSitNFe==null){
+						//ERRO NA RESPOSTA DA SEFAZ 
+						return;
+					}
+					atualizarSituacaoNfe(nfeTO, retConsSitNFe,true);
+
+				} else{
+					//rejeitou o lote inteiro
+					nfeTO.setSituacao(SituacaoNFeEnum.REJEITADA);
+					nfeTO.setCodigoErro(codigoRetornoLote);
+					nfeTO.setMensagemErro(motivoRejeicaoLote);
+					getNotaFiscalBusiness().alterarSemTransaction(nfeTO);
+
+				}
+
+				getLoteDAO().update(DSENBusinessConverter.getLoteEntity(loteTO));
+			}
+
+			atualizarPropriedadeDataUltimaBuscaSEFAZ( nfeTO.getEmitenteTO(),  new Date());
+		}catch(Throwable t){
+			log.error(t.getMessage());
+			nfeTO.setException(new DSGEBaseException(t,t.getMessage()));
+		}
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Verifica se o estado do serviço da SEFAZ está ativo.
+	 * <!-- end-user-doc --> 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 * @param certificadoLoteTO
+	 * @param isSefaz
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	public boolean verificarStatusServicoAtivo(CertificadoLoteTO certificadoLoteTO,boolean isSefaz) throws DSENBusinessException {
+		// begin-user-code
+
+		try {
+			ConsultaStatusServicoHelper consultaStatusServicoHelper = new ConsultaStatusServicoHelper();
+			EmitenteTO emitenteTO = AppContext.getInstance().getTO(AppContextEnum.EMITENTE, EmitenteTO.class);
+			EstadoTO estadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(emitenteTO.getUf());
+
+			return consultaStatusServicoHelper.consultarStatusServico(estadoTO, certificadoLoteTO.getX509Certificate(), certificadoLoteTO.getPrivateKey(), ServicoSefazEnum.StatusServico,isSefaz);
+		} catch (DSGEUtilException e) {
+			log.equals(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (Exception e) {
+			log.equals(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		}
+
+		// end-user-code
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public ParametroBusiness getParametroBusiness() {
+		// begin-user-code
+
+		if(parametroBusiness == null){
+			parametroBusiness = new ParametroBusiness();
+		}
+
+		return parametroBusiness;
+
+		// end-user-code
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return
+	 * @throws DSENBusinessException 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private CancelamentoDAO getCancelamentoDAO() throws DSENBusinessException {
+		// begin-user-code
+		try {
+			if (cancelamentoDAO == null) {
+				cancelamentoDAO = (CancelamentoDAO) BusinessFactory.create(CancelamentoDAO.class.getName());
+			}
+			return cancelamentoDAO;
+		} catch (Exception ex) {
+			throw new DSENBusinessException(ex, ex.getMessage());
+		}
+		// end-user-code
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return
+	 * @throws DSENBusinessException 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private NotaFiscalBusiness getNotaFiscalBusiness() throws DSENBusinessException {
+		// begin-user-code
+		try {
+			if (notaFiscalBusiness == null) {
+				notaFiscalBusiness = (NotaFiscalBusiness) BusinessFactory.create(NotaFiscalBusiness.class.getName());
+			}
+			return notaFiscalBusiness;
+		} catch (Exception ex) {
+			throw new DSENBusinessException(ex, ex.getMessage());
+		}
+		// end-user-code
+	}
+
+	private PropriedadeBusiness getPropriedadeBusiness() {
+		if (propriedadeBusiness == null) {
+			propriedadeBusiness = new PropriedadeBusiness();
+		}
+
+		return propriedadeBusiness;
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private NotaFiscalDAO getNotaFiscalDAO() {
+		// begin-user-code
+		if(notaFiscalDao == null){
+			notaFiscalDao = new NotaFiscalDAO();
+		}
+		return notaFiscalDao;
+
+		// end-user-code
+	}
+
+	/**
+	 * Consulta a situação das notas na SEFAZ. Realiza a consulta pela chave de acesso de cada nota.
+	 * Atualiza a situação de cada nota no banco.
+	 *
+	 * @param listaNotaFiscalTO lista de notas fiscais a serem consultadas.
+	 * @param emitenteTO emitente logado.
+	 * @param certificado para conexao
+	 * @throws DSGEUtilException 
+	 */
+	@DSGETransaction
+	public void consultarSituacaoNFe(List<NotaFiscalTO> listaNotaFiscalTO, EmitenteTO emitenteTO, CertificadoTO certificadoTO) throws DSENBusinessException {
+		ScanHelper scanHelper = new ScanHelper();
+		Map<TipoEmissaoEnum, List<NotaFiscalTO>> notaFiscalMap = scanHelper.agruparNotaFiscalPorSerie(listaNotaFiscalTO);
+		List<NotaFiscalTO> listaNotaFiscalTOSefaz = notaFiscalMap.get(TipoEmissaoEnum.NORMAL);
+		if (listaNotaFiscalTOSefaz != null && !listaNotaFiscalTOSefaz.isEmpty()) {
+			consultarSituacaoNFe(listaNotaFiscalTOSefaz, emitenteTO, certificadoTO, true);
+		}
+		List<NotaFiscalTO> listaNotaFiscalTOScan = notaFiscalMap.get(TipoEmissaoEnum.CONTINGENCIA_SCAN);
+		if (listaNotaFiscalTOScan != null && !listaNotaFiscalTOScan.isEmpty()) {
+			consultarSituacaoNFe(listaNotaFiscalTOScan, emitenteTO, certificadoTO, false);
+		}
+	}
+
+	/**
+	 * Consulta a situação das notas na SEFAZ. Realiza a consulta pela chave de acesso de cada nota. 
+	 * Atualiza a situação de cada nota no banco.
+	 * 
+	 * @param listaNotaFiscalTO lista de notas fiscais a serem consultadas.
+	 * @param emitenteTO emitente logado.
+	 * @param certificado para conexao
+	 * @param isSefaz se true o web service chamado sera o da SEFAZ, caso contrario, o web service chamado sera o SCAN
+	 * @throws DSENBusinessException 
+	 */
+	@DSGETransaction
+	public void consultarSituacaoNFe(List<NotaFiscalTO> listaNotaFiscal, EmitenteTO emitenteTO, CertificadoTO certificadoTO, boolean isSefaz) throws DSENBusinessException {
+		String wsReceptor = isSefaz ? DSENMessageConstants.MSG_WS_SEFAZ : DSENMessageConstants.MSG_WS_RFB;
+		GrupoNotificacaoEnum notificacaoErroConsulta = isSefaz ? GrupoNotificacaoEnum.CONSULTA_NOTA_FISCAL_ERRO_SEFAZ : GrupoNotificacaoEnum.CONSULTA_NOTA_FISCAL_ERRO_SCAN;
+		GrupoNotificacaoEnum notificacaoErroRespostaSEFAZ = isSefaz ? GrupoNotificacaoEnum.ERRO_RESPOSTA_SEFAZ_CONSULTA_NOTA_FISCAL : GrupoNotificacaoEnum.ERRO_RESPOSTA_SCAN_CONSULTA_NOTA_FISCAL;
+		List<NotaFiscalTO> naoProcessadas = new ArrayList<NotaFiscalTO>(listaNotaFiscal);
+
+		try {
+			EstadoTO emitenteEstadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(emitenteTO.getUf());
+			ConsultaStatusServicoHelper consultaStatusServicoHelper = new ConsultaStatusServicoHelper();
+			boolean statusServicoOK = consultaStatusServicoHelper.consultarStatusServico(emitenteEstadoTO, certificadoTO.getX509Certificate(), certificadoTO.getPrivateKey(), ServicoSefazEnum.ConsultaNf, isSefaz);
+
+			if (statusServicoOK) {
+				for (NotaFiscalTO nfeTO : listaNotaFiscal) {
+					TRetConsSitNFe retConsSitNFe = consultarProtocolo(nfeTO, emitenteTO, certificadoTO,isSefaz);
+					if(retConsSitNFe==null){
+						//	ERRO NA RESPOSTA DA SEFAZ
+						nfeTO.addError(MessageFormat.format(DSENMessageConstants.MSG_WS_RETORNO_INVALIDO, wsReceptor));
+						Notificador.getInstance().notificar(nfeTO.getErroXmlResposta(), notificacaoErroRespostaSEFAZ);
+						Notificador.getInstance().notificar(nfeTO, GrupoNotificacaoEnum.NOTA_FISCAL_CONSULTADA);
+						return;
+					}
+					atualizarSituacaoNfe(nfeTO, retConsSitNFe,true);
+					Notificador.getInstance().notificar(nfeTO, GrupoNotificacaoEnum.NOTA_FISCAL_CONSULTADA);
+					naoProcessadas.remove(nfeTO);
+				}
+			}
+		} catch (DSGEConnectionClientException ex) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_CLIENT, wsReceptor), naoProcessadas, notificacaoErroConsulta);
+			reconectarConsultaSituacaoNFe(naoProcessadas, emitenteTO, certificadoTO, isSefaz);
+		} catch (DSGEConnectionServerException ex) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_SERVER, wsReceptor), naoProcessadas, notificacaoErroConsulta);
+			reconectarConsultaSituacaoNFe(naoProcessadas, emitenteTO, certificadoTO, isSefaz);
+		} catch (DSGETimeoutException ex) {
+			notificarErro(DSENMessageConstants.MSG_WS_CONEXAO_TIMEOUT, naoProcessadas, notificacaoErroConsulta);
+			reconectarConsultaSituacaoNFe(naoProcessadas, emitenteTO, certificadoTO, isSefaz);
+		} catch (DSGESocketException ex) {
+			notificarErro(DSENMessageConstants.MSG_WS_SOCKET, naoProcessadas, notificacaoErroConsulta);
+			reconectarConsultaSituacaoNFe(naoProcessadas, emitenteTO, certificadoTO, isSefaz);
+		} catch (DSGEProxyException ex) {
+			notificarErro(DSENMessageConstants.MSG_WS_PROXY, naoProcessadas, GrupoNotificacaoEnum.ERRO_FATAL);
+			log.error(ex);
+			throw new DSENBusinessException(ex, ex.getMessage());
+		} catch (DSGEWebServiceException ex) {
+			notificarErro(DSENMessageConstants.MSG_WS_ERRO_DESCONHECIDO, naoProcessadas, GrupoNotificacaoEnum.ERRO_FATAL);
+			log.error(ex);
+			throw new DSENBusinessException(ex, ex.getMessage());
+		} catch (Throwable ex) {
+			notificarErro(new DSENBusinessException(ex, ex.getMessage()), naoProcessadas, GrupoNotificacaoEnum.EXCEPTION);
+			log.error(ex);
+			throw new DSENBusinessException(ex, ex.getMessage());
+		}
+	}
+
+
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param chaveAcesso
+	 * @param emitenteTO
+	 * @param certificadoInfoTO
+	 * @throws DSENBusinessException
+	 * @throws IOException 
+	 * @throws DSGEUtilException 
+	 * @throws DSENConverterException 
+	 * @throws DSGEDAOException 
+	 * @throws IOException 
+	 * @throws DSENCommonException 
+	 * @throws  
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	public void consultarSituacaoNFePorChaveAcesso(String chaveAcesso, EmitenteTO emitenteTO, CertificadoTO certificadoTO) throws DSENBusinessException {
+		// begin-user-code
+
+		NotaFiscalTO notaFiscalTO = new NotaFiscalTO();
+		EmitenteTO emitTO = new EmitenteTO();
+		try {
+			// Ajuste para que não na consulta de NF não seja alterado o CNPJ da chave de acesso pelo
+        	// CNPJ do Emitente da NF
+			//notaFiscalTO = ChaveAcessoUtil.gerarNotaFiscalTO(ChaveAcessoUtil.obterChaveAcessoTO(chaveAcesso),emitenteTO);
+			ChaveAcessoTO chaveAcessoTO = ChaveAcessoUtil.obterChaveAcessoTO(chaveAcesso);
+			emitTO = new EmitenteTO();
+        	emitTO.setNrDocumento(chaveAcessoTO.getCnpjEmitente());
+        	EstadoTO emitEstadoTO = DSENUtilHelper.getInstance().getEstadoTO(chaveAcessoTO.getCodigoUfEmitente());
+        	emitTO.setUf(emitEstadoTO.getSigla());
+			notaFiscalTO = ChaveAcessoUtil.gerarNotaFiscalTO(ChaveAcessoUtil.obterChaveAcessoTO(chaveAcesso),emitTO);
+			
+		} catch (DSENCommonException e) {
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEUtilException e) {
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		}
+
+		List<NotaFiscalTO> listaNotaFiscalTO = new ArrayList<NotaFiscalTO>();
+		listaNotaFiscalTO.add(notaFiscalTO);
+		// Ajuste para que não na consulta de NF não seja alterado o CNPJ da chave de acesso pelo
+    	// CNPJ do Emitente da NF
+		//notaFiscalTO.setEmitenteTO(emitenteTO);
+
+		boolean isSefaz = true;
+		ScanHelper scanHelper = new ScanHelper();
+		if (!scanHelper.isSefaz(notaFiscalTO)) {
+			isSefaz = false;
+		}
+		String wsReceptor = isSefaz ? DSENMessageConstants.MSG_WS_SEFAZ : DSENMessageConstants.MSG_WS_RFB;
+		GrupoNotificacaoEnum notificacaoErroConsulta = isSefaz ? GrupoNotificacaoEnum.CONSULTA_NOTA_FISCAL_ERRO_SEFAZ : GrupoNotificacaoEnum.CONSULTA_NOTA_FISCAL_ERRO_SCAN;
+
+
+		try {
+			NotaFiscalEntity notaFiscalEntity = getNotaFiscalDAO().pesquisarPorChaveAcesso(ChaveAcessoUtil.gerarChaveAcessoTO(notaFiscalTO));
+			if (notaFiscalEntity != null) {
+				notaFiscalTO.addError(DSENMessageConstants.MSG_NFE_CONSULTADA_EXISTE_BD);
+				Notificador.getInstance().notificar(notaFiscalTO, GrupoNotificacaoEnum.NOTA_FISCAL_CONSULTADA);
+				return;
+			}
+
+			ChaveAcessoTO chaveAcessoTO = ChaveAcessoUtil.obterChaveAcessoTO(chaveAcesso);
+			EstadoTO emitenteEstadoTO = DSENUtilHelper.getInstance().getEstadoTO(chaveAcessoTO.getCodigoUfEmitente());
+
+			ConsultaStatusServicoHelper consultaStatusServicoHelper = new ConsultaStatusServicoHelper();
+			boolean statusServicoOK = consultaStatusServicoHelper.consultarStatusServico(emitenteEstadoTO, certificadoTO.getX509Certificate(), certificadoTO.getPrivateKey(), ServicoSefazEnum.ConsultaNf,isSefaz);
+
+			if (!statusServicoOK) {
+				return;
+			}
+
+			//TRetConsSitNFe retConsSitNFe = consultarProtocolo(notaFiscalTO, emitenteTO, certificadoTO,isSefaz);
+			TRetConsSitNFe retConsSitNFe = consultarProtocolo(notaFiscalTO, emitTO, certificadoTO,isSefaz);
+			if(retConsSitNFe==null){
+				//	ERRO NA RESPOSTA DA SEFAZ
+				notaFiscalTO.addError(MessageFormat.format(DSENMessageConstants.MSG_WS_RETORNO_INVALIDO, wsReceptor));
+				Notificador.getInstance().notificar(notaFiscalTO.getErroXmlResposta(), GrupoNotificacaoEnum.ERRO_RESPOSTA_SEFAZ_CONSULTA_NOTA_FISCAL);
+				Notificador.getInstance().notificar(notaFiscalTO, GrupoNotificacaoEnum.NOTA_FISCAL_CONSULTADA);
+				return;
+			}
+
+			atualizarSituacaoNfe(notaFiscalTO, retConsSitNFe, false);
+
+			Notificador.getInstance().notificar(notaFiscalTO, GrupoNotificacaoEnum.NOTA_FISCAL_CONSULTADA);
+		} catch (DSGEConnectionClientException ex) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_CLIENT, wsReceptor), listaNotaFiscalTO, notificacaoErroConsulta);
+			reconectarConsultaSituacaoChaveAcesso(chaveAcesso,emitenteTO, certificadoTO);
+		} catch (DSGEConnectionServerException ex) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_SERVER, wsReceptor), listaNotaFiscalTO, notificacaoErroConsulta);
+			reconectarConsultaSituacaoChaveAcesso(chaveAcesso,emitenteTO, certificadoTO);
+		} catch (DSGETimeoutException ex) {
+			notificarErro(DSENMessageConstants.MSG_WS_CONEXAO_TIMEOUT, listaNotaFiscalTO, notificacaoErroConsulta);
+			reconectarConsultaSituacaoChaveAcesso(chaveAcesso,emitenteTO, certificadoTO);
+		} catch (DSGESocketException ex) {
+			notificarErro(DSENMessageConstants.MSG_WS_SOCKET, listaNotaFiscalTO, notificacaoErroConsulta);
+			reconectarConsultaSituacaoChaveAcesso(chaveAcesso,emitenteTO, certificadoTO);
+		} catch (DSGEProxyException ex) {
+			notificarErro(DSENMessageConstants.MSG_WS_PROXY, listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_FATAL);
+			log.error(ex);
+			throw new DSENBusinessException(ex, ex.getMessage());
+		} catch (DSGEWebServiceException ex) {
+			notificarErro(DSENMessageConstants.MSG_WS_ERRO_DESCONHECIDO, listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_FATAL);
+			log.error(ex);
+			throw new DSENBusinessException(ex, ex.getMessage());
+		} catch (Throwable ex) {
+			notificarErro(new DSENBusinessException(ex, ex.getMessage()), listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_FATAL);
+			log.error(ex);
+			throw new DSENBusinessException(ex, ex.getMessage());
+		}
+
+		// end-user-code
+
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param emitenteTO
+	 * @param chaveAcesso
+	 * @param x509Certificate
+	 * @param privateKey
+	 * @return
+	 * @throws DSENBusinessException
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	private TRetConsSitNFe consultarProtocolo(NotaFiscalTO nfeTO, EmitenteTO emitenteTO, CertificadoTO certificadoTO, boolean isSefaz) throws Exception {
+		// begin-user-code
+		ScanHelper scanHelper = new ScanHelper();
+		EstadoTO emitenteEstadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(emitenteTO.getUf());
+		EstadoTO estadoTO = scanHelper.getEstadoTO(emitenteEstadoTO, isSefaz);
+
+		String consultaSituacaoCabecalho = DocumentoUtil.criarCabecalhoMensagem(ServicoSefazEnum.ConsultaNf, emitenteEstadoTO.getCodigo(), DSENProperties.getInstance().getVersaoSchemaConsultaSituacao());
+		String consultaSituacao = DocumentoUtil.criarDocumentoXmlConsultaPorChaveAcesso(nfeTO.getChaveAcesso());
+		String consultaSituacaoRetorno = getWSBusiness().servico(consultaSituacaoCabecalho, consultaSituacao, estadoTO, ServicoSefazEnum.ConsultaNf, certificadoTO.getX509Certificate(), certificadoTO.getPrivateKey());
+		WSStatusRetorno statusRetorno = DocumentoUtil.validarXMLRetornoConsultaSituacao(consultaSituacaoRetorno);
+		switch (statusRetorno) {
+		case XML_INVALIDO:
+			String urlSefaz = DSENUtilHelper.getInstance().getURLPorUF(estadoTO, ServicoSefazEnum.ConsultaNf);
+			ErroXmlResposta erroXmlResposta = new ErroXmlResposta(ServicoSefazEnum.ConsultaNf, urlSefaz, consultaSituacao, consultaSituacaoRetorno,isSefaz?DSENMessageConstants.MSG_WS_SEFAZ:DSENMessageConstants.MSG_WS_RFB);
+			nfeTO.setErroXmlResposta(erroXmlResposta);
+
+			return null;
+
+		default:
+
+			RetConsSitNFeDocument retConsSitNfeDocument = DocumentoUtil.getRetConsSitNfeDocument(consultaSituacaoRetorno);
+		return retConsSitNfeDocument.getRetConsSitNFe();
+		}
+		// end-user-code
+	}
+
+	/**
+	 *  Transmite as notas fiscais para a SEFAZ ou RECEITA FEDERAL.
+	 * Será enviado uma NF-e por lote
+	 * @param listaNotaFiscalTO
+	 * @param certificadoTO
+	 * @throws DSENBusinessException
+	 */
+	@DSGETransaction
+	public void transmitir(List<NotaFiscalTO> listaNotaFiscalTO, CertificadoTO certificadoTO) throws DSENBusinessException {
+		ScanHelper scanHelper = new ScanHelper();
+		Map<TipoEmissaoEnum, List<NotaFiscalTO>> notaFiscalMap = scanHelper.agruparNotaFiscalPorSerie(listaNotaFiscalTO);
+		List<NotaFiscalTO> listaNotaFiscalTOSefaz = notaFiscalMap.get(TipoEmissaoEnum.NORMAL);
+		if (listaNotaFiscalTOSefaz != null && !listaNotaFiscalTOSefaz.isEmpty()) {
+			transmitir(listaNotaFiscalTOSefaz, certificadoTO, true);
+		}
+		List<NotaFiscalTO> listaNotaFiscalTOScan = notaFiscalMap.get(TipoEmissaoEnum.CONTINGENCIA_SCAN);
+		if (listaNotaFiscalTOScan != null && !listaNotaFiscalTOScan.isEmpty()) {
+			transmitir(listaNotaFiscalTOScan, certificadoTO, false);
+		}
+	}
+
+	/** 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * Transmite as notas fiscais para a SEFAZ ou SCAN
+	 * Será enviado uma NF-e por lote
+	 * @param listaNotaFiscalTO 
+	 * @param certificadoTO
+	 * @param isSefaz
+	 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
+	 */
+	@DSGETransaction
+	public void transmitir(List<NotaFiscalTO> listaNotaFiscalTO, CertificadoTO certificadoTO,boolean isSefaz) throws DSENBusinessException {
+		List<NotaFiscalTO> listaBuscaRetorno = new ArrayList<NotaFiscalTO>(); //lista com as NF-es transmitidas com sucesso e que terão os recibos consultados pela Busca Retorno
+		List<NotaFiscalTO> listaNaoTransmitidos = new ArrayList<NotaFiscalTO>();
+		listaNaoTransmitidos.addAll(listaNotaFiscalTO);
+		EmitenteTO emitenteTO = AppContext.getInstance().getTO(AppContextEnum.EMITENTE, EmitenteTO.class);
+		EstadoTO emitenteEstadoTO;
+		try {
+			emitenteEstadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(emitenteTO.getUf());
+			ScanHelper scanHelper = new ScanHelper();
+			EstadoTO estadoTO = scanHelper.getEstadoTO(emitenteEstadoTO, isSefaz);
+
+			ConsultaStatusServicoHelper consultaStatusServicoHelper = new ConsultaStatusServicoHelper();
+			boolean statusServicoOK = consultaStatusServicoHelper.consultarStatusServico(emitenteEstadoTO, certificadoTO.getX509Certificate(), certificadoTO.getPrivateKey(), ServicoSefazEnum.StatusServico,isSefaz);
+			if(!statusServicoOK){
+				notificarErro(null, listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_FATAL);
+				return;
+			}
+
+			for(NotaFiscalTO nfeTO: listaNotaFiscalTO){
+				nfeTO.setCodigoErro(null);
+				nfeTO.setMensagemErro(null);
+				LoteTO loteTO=null;
+				LoteEntity loteEntity = new LoteEntity();
+				if(nfeTO.getLoteTO()!=null && nfeTO.getLoteTO().getIdLote()!=null){
+					//NF-e já tem um lote antigo associado, isso ocorre, por exemplo, quando ele foi rejeitado, alterado e enviado novamente
+					// então atualiza
+					loteEntity = DSENBusinessConverter.getLoteEntity(nfeTO.getLoteTO());
+					loteEntity.setCnpjTransmissao(emitenteTO.getNrDocumento());
+					loteEntity.setDataTransmissao(new Date());
+				}else{
+					loteEntity.setCnpjTransmissao(emitenteTO.getNrDocumento());
+					loteEntity.setDataTransmissao(new Date());
+					getLoteDAO().insert(loteEntity);
+				}
+
+				loteTO = DSENBusinessConverter.getLoteTO(loteEntity);
+				String xmlEnvio = DocumentoUtil.criarDocumentoXmlParaEnvio(loteTO, nfeTO);
+				
+				String retornoXML = getWSBusiness().servico(
+						DocumentoUtil.criarCabecalhoMensagem(ServicoSefazEnum.Recepcao,emitenteEstadoTO.getCodigo(),DSENProperties.getInstance().getVersaoSchema()),
+						xmlEnvio, 
+						estadoTO,
+						ServicoSefazEnum.Recepcao,
+						certificadoTO.getX509Certificate(),
+						certificadoTO.getPrivateKey());
+				WSStatusRetorno retornoEnum = DocumentoUtil.validarXMLRetornoEnvio(retornoXML, nfeTO);
+
+				switch (retornoEnum) {
+				case XML_INVALIDO:
+					loteTO.setDataProcessamento(new Date());
+					loteTO.setXmlRetornoString(retornoXML);
+
+					alterarNotaFiscal(loteTO, SituacaoNFeEnum.TRANSMITIDA_COM_PENDENCIA, nfeTO);
+
+					String urlSefaz = DSENUtilHelper.getInstance().getURLPorUF(estadoTO, ServicoSefazEnum.Recepcao);
+					Notificador.getInstance().notificar(new ErroXmlResposta(ServicoSefazEnum.Recepcao, urlSefaz, xmlEnvio, retornoXML,isSefaz?DSENMessageConstants.MSG_WS_SEFAZ:DSENMessageConstants.MSG_WS_RFB), GrupoNotificacaoEnum.ERRO_RESPOSTA_SEFAZ_ENVIO);
+					nfeTO.addError(DSENMessageConstants.MSG_ERRO_RESPOSTA_SEFAZ_TRANSMITIDA_COM_PENDENCIA);
+
+					break;
+
+				case NOK:
+					loteTO.setDataProcessamento(new Date());
+					loteTO.setXmlRetornoString(retornoXML);
+
+					alterarNotaFiscal(loteTO, SituacaoNFeEnum.REJEITADA, nfeTO);
+
+					break;
+
+				default: 
+					loteTO.setNumRecibo(nfeTO.getNumeroRecibo());
+				listaBuscaRetorno.add(alterarNotaFiscal(loteTO, SituacaoNFeEnum.EM_PROCESSAMENTO_SEFAZ, nfeTO));
+
+				break;
+				}
+
+				Notificador.getInstance().notificar(nfeTO, GrupoNotificacaoEnum.NOTA_FISCAL_ENVIADA);	
+				listaNaoTransmitidos.remove(nfeTO);
+			}
+		} catch (DSGEConnectionClientException e) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_CLIENT, DSENMessageConstants.MSG_WS_SEFAZ), listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_CONEXAO_ENVIO_SEFAZ);
+			reconectarTransmitir(listaNaoTransmitidos, certificadoTO);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEConnectionServerException e) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_SERVER, DSENMessageConstants.MSG_WS_SEFAZ), listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_CONEXAO_ENVIO_SEFAZ);
+			reconectarTransmitir(listaNaoTransmitidos, certificadoTO);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGETimeoutException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_CONEXAO_TIMEOUT, listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_CONEXAO_ENVIO_SEFAZ);
+			reconectarTransmitir(listaNaoTransmitidos, certificadoTO);
+			log.error(e.getMessage());
+		} catch (DSGESocketException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_SOCKET, listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_CONEXAO_ENVIO_SEFAZ);
+			reconectarTransmitir(listaNaoTransmitidos, certificadoTO);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEProxyException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_PROXY, listaNotaFiscalTO, GrupoNotificacaoEnum.ERRO_FATAL);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEWebServiceException e) {
+			notificarErro(new DSENBusinessException(e, e.getMessage()), listaNotaFiscalTO, GrupoNotificacaoEnum.EXCEPTION);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSENConverterException e) {
+			notificarErro(new DSENBusinessException(e, e.getMessage()), listaNotaFiscalTO, GrupoNotificacaoEnum.EXCEPTION);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (Throwable e) {
+			notificarErro(new DSENBusinessException(e, e.getMessage()), listaNotaFiscalTO, GrupoNotificacaoEnum.EXCEPTION);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		}finally{
+			if(listaBuscaRetorno.size()>0)
+				agendarBuscaRetorno(listaBuscaRetorno, certificadoTO,3);
+		}
+
+	}
+
+
+
+	/**
+	 * 
+	 * @param mensagemErro
+	 * @param transporteTO
+	 * @param grupoNotificacaoEnum
+	 */
+	private void notificarErro(Object mensagemErro, List<NotaFiscalTO> transporteTO, GrupoNotificacaoEnum grupoNotificacaoEnum) {
+		Notificador.getInstance().notificar(new Object[] { mensagemErro, transporteTO, grupoNotificacaoEnum }, grupoNotificacaoEnum);
+	}
+	
+	/**
+	 * 
+	 * @param mensagemErro
+	 * @param cartaCorrecaoTO
+	 * @param grupoNotificacaoEnum
+	 */
+	private void notificarErro(Object mensagemErro, EventoTO eventoTO, GrupoNotificacaoEnum grupoNotificacaoEnum) {
+		Notificador.getInstance().notificar(new Object[] { mensagemErro, eventoTO, grupoNotificacaoEnum }, grupoNotificacaoEnum);
+	}
+
+
+	/**
+	 * 
+	 * @param emitenteTO
+	 * @param emitenteEstadoTO
+	 * @param notaFiscalTOList
+	 * @param certificadoTO
+	 * @throws DSGEDAOException
+	 * @throws DSENConverterException
+	 * @throws DSENBusinessException
+	 * @throws DSGEUtilException
+	 * @throws IOException
+	 */
+	private void reconectarTransmitir(List<NotaFiscalTO> notaFiscalTOList, CertificadoTO certificadoTO) throws DSENBusinessException {
+
+		ProblemaConexaoAcao problemaConexaoAcao = AppContext.getInstance().getContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO, ProblemaConexaoAcao.class);
+		AppContext.getInstance().removeContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO);
+
+		if (problemaConexaoAcao == ProblemaConexaoAcao.RECONECTAR) {
+			transmitir(notaFiscalTOList, certificadoTO);
+		} 
+	}
+
+	private void reconectarConsultaSituacaoNFe(List<NotaFiscalTO> listaNotaFiscalTO, EmitenteTO emitenteTO, CertificadoTO certificadoTO, boolean isSefaz) throws DSENBusinessException {
+		ProblemaConexaoAcao problemaConexaoAcao = AppContext.getInstance().getContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO, ProblemaConexaoAcao.class);
+		AppContext.getInstance().removeContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO);
+		if (problemaConexaoAcao == ProblemaConexaoAcao.RECONECTAR) {
+			consultarSituacaoNFe(listaNotaFiscalTO, emitenteTO, certificadoTO, isSefaz);
+		}
+	}
+	
+	private void reconectarEnviarEvento(EventoTO eventoTO, CertificadoTO certificadoTO, boolean isSefaz) throws DSENBusinessException {
+		ProblemaConexaoAcao problemaConexaoAcao = AppContext.getInstance().getContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO, ProblemaConexaoAcao.class);
+		AppContext.getInstance().removeContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO);
+		if (problemaConexaoAcao == ProblemaConexaoAcao.RECONECTAR) {
+			enviarEvento(eventoTO, certificadoTO);
+		}
+	}
+
+	private void reconectarConsultaSituacaoChaveAcesso(String chaveAcesso,EmitenteTO emitenteTO, CertificadoTO certificadoTO) throws DSENBusinessException {
+
+		ProblemaConexaoAcao problemaConexaoAcao = AppContext.getInstance().getContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO, ProblemaConexaoAcao.class);
+		AppContext.getInstance().removeContextParameter(AppContextEnum.PROBLEMA_CONEXAO_ACAO);
+
+		if (problemaConexaoAcao == ProblemaConexaoAcao.RECONECTAR) {
+			consultarSituacaoNFePorChaveAcesso(chaveAcesso, emitenteTO, certificadoTO);
+		}
+	}
+
+	/** 
+	 * Retorna a chave de acesso do conhecimento Transporte presente no xml infProt.
+	 * 
+	 * @param infProt xml que contem a chave de acesso
+	 * @return o valor do atributo chNFe do xml infProt
+	 */
+	private String getChaveAcessoProtocoloNFe(String infProt) {
+		return XMLUtil.getTagConteudo(infProt, "chNFe", false).get(0);
+	}
+
+
+	/**
+	 * 
+	 * @param cancelamentoTO
+	 * @return
+	 * @throws DSENBusinessException
+	 */
+	private CancelamentoTO alterarCancelamento(CancelamentoTO cancelamentoTO) throws DSENBusinessException {
+
+		try {
+
+			getCancelamentoDAO().update(DSENBusinessConverter.getCancelamentoEntity(cancelamentoTO));
+
+		} catch (DSENConverterException e) {
+			cancelamentoTO.addError(MessageFormat.format(DSENMessageConstants.MSG_NFE_CANCELADA_ERRO, cancelamentoTO.getNumeroProtocolo()));
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEDAOException e) {
+			cancelamentoTO.addError(MessageFormat.format(DSENMessageConstants.MSG_NFE_CANCELADA_ERRO, cancelamentoTO.getNumeroProtocolo()));
+			throw new DSENBusinessException(e, e.getMessage());
+
+		}
+		return cancelamentoTO;
+	}
+
+	/**
+	 * Atualiza a tabela de propriedades com a data da atual busca de retorno da SEFAZ.
+	 * Este método deve ser public.
+	 * 
+	 * @param emitenteTO emitente da propriedade
+	 * @param dataProcessamento data do processamento, criada no agendamento do job
+	 * @throws DSENBusinessException
+	 */
+	private void atualizarPropriedadeDataUltimaBuscaSEFAZ(EmitenteTO emitenteTO, Date dataProcessamento) throws DSENBusinessException {
+		PropriedadeTO propriedadeTO = new PropriedadeTO();
+		propriedadeTO.setEmitenteTO(emitenteTO);
+		propriedadeTO.setPropriedadeEnum(PropriedadeEnum.DATA_ULTIMA_BUSCA_SEFAZ);
+		PropriedadeBusiness propriedadeBusiness = getPropriedadeBusiness();
+		PropriedadeTO propriedadeTOPesquisado = propriedadeBusiness.pesquisarPropriedade(propriedadeTO);
+		if (propriedadeTOPesquisado != null) {
+			propriedadeTO = propriedadeTOPesquisado;
+		}
+		propriedadeTO.setValor(dataProcessamento.getTime()+"");
+		propriedadeBusiness.alterarPropriedade(propriedadeTO);
+		log.debug("Ultima busca retorno atualizada para " + dataProcessamento);
+	}
+
+/**
+ * 
+ * @param notaFiscalTO
+ * @param retConsSitNFe
+ * @return true se algum evento foi atualizado
+ * @throws DSENCommonException
+ */
+	private boolean atualizarEventosNfe(NotaFiscalTO notaFiscalTO, TRetConsSitNFe retConsSitNFe) throws DSENCommonException{
+		TProcEvento[] eventosArray = retConsSitNFe.getProcEventoNFeArray();
+	
+		if(eventosArray==null || eventosArray.length==0)
+			return false;
+		
+		boolean atualizado=false;
+		
+		switch(notaFiscalTO.getSituacao()){
+		case AUTORIZADA:
+		case CANCELADA:
+		case CANCELADA_EVENTO:
+		case DENEGADA:
+			Map<String,EventoTO> notaIdEventoMap = new HashMap<String, EventoTO>();
+			if(notaFiscalTO.getEventoTOList()!=null){
+				for(EventoTO eventoTO: notaFiscalTO.getEventoTOList()){
+					ProcEventoNFeDocument procEventoDocument = DocumentoUtil.getProcEventoNFeDocument(eventoTO.getXmlProcString());
+					notaIdEventoMap.put(procEventoDocument.getProcEventoNFe().getEvento().getInfEvento().getId(),eventoTO);
+				}
+			}
+			for(TProcEvento procEvento: eventosArray){
+				TipoEventoEnum tipoEventoEnum = TipoEventoEnum.getEnumPeloCodigo(procEvento.getEvento().getInfEvento().getTpEvento());
+				switch(tipoEventoEnum){
+				case e110100:
+				case e110101:
+					//ignora eventos de autorização e denegação - eles não serão tratados como eventos, a própria situação da nfe já reflete o evento.
+					continue;					
+				}
+				EventoTO eventoTONota = notaIdEventoMap.get(procEvento.getEvento().getInfEvento().getId());
+				EventoTO eventoTO = DocumentoUtil.getEventoTO(notaFiscalTO,procEvento);
+				if(eventoTONota==null){
+					//nota ainda não possui este evento, entao adiciona à lista de eventos da nota.					
+					if(notaFiscalTO.getEventoTOList()==null){
+						notaFiscalTO.setEventoTOList(new ArrayList<EventoTO>());
+					}
+					notaFiscalTO.getEventoTOList().add(eventoTO);
+					atualizado=true;
+				}else{
+					//caso contrário atualiza o evento
+					if(!eventoTONota.getDataEvento().equals(eventoTO.getDataEvento())){
+						eventoTONota.setDataEvento(eventoTO.getDataEvento());
+						atualizado=true;
+					}
+					if((eventoTONota.getDataRegEvento()==null ^ eventoTO.getDataRegEvento()==null) || (eventoTONota.getDataRegEvento()!=null && !eventoTONota.getDataRegEvento().equals(eventoTO.getDataRegEvento()))){
+						eventoTONota.setDataRegEvento(eventoTO.getDataRegEvento());
+						atualizado=true;
+					}
+					if((eventoTONota.getNumProtocolo()==null ^ eventoTO.getNumProtocolo()==null) || (eventoTONota.getNumProtocolo()!=null && !eventoTONota.getNumProtocolo().equals(eventoTO.getNumProtocolo()))){
+						eventoTONota.setNumProtocolo(eventoTO.getNumProtocolo());
+						atualizado=true;
+					}
+					if(!eventoTONota.getXmlProcString().equals(eventoTO.getXmlProcString())){
+						eventoTONota.setXmlProcString(eventoTO.getXmlProcString());
+						atualizado=true;
+					}
+				}
+			}		
+			break;
+		}
+		return atualizado;
+	}
+	
+	/**
+	 * Atualiza a situação do NFe com o resultado da consulta.
+	 * @param notaFiscalTO
+	 * @param retConsSitNFe
+	 * @param persist
+	 * @throws DSENBusinessException
+	 */
+	private void atualizarSituacaoNfe(NotaFiscalTO notaFiscalTO, TRetConsSitNFe retConsSitNFe,boolean persist) throws DSENBusinessException {
+		try {
+			String situacao = retConsSitNFe.getCStat();
+			TProtNFe protNFe = retConsSitNFe.getProtNFe();
+			TRetCancNFe retCancNFe = retConsSitNFe.getRetCancNFe();
+			
+			String digValNFe = DocumentoUtil.getDigestValue(notaFiscalTO);
+			if(digValNFe!=null && protNFe!=null && protNFe.getInfProt()!=null && protNFe.getInfProt().getDigVal()!=null && !digValNFe.equals(new String((protNFe.getInfProt().getDigVal())))){
+			//if(digValNFe!=null && protNFe!=null && protNFe.getInfProt()!=null && protNFe.getInfProt().getDigVal()!=null && !digValNFe.equals(new String(Base64.encode(protNFe.getInfProt().getDigVal())))){
+				notaFiscalTO.setMensagemErro(DSENMessageConstants.DIGEST_VALUE_DIFERE_CADASTRADO);
+				notaFiscalTO.addError(notaFiscalTO.getMensagemErro());
+				return;
+			}
+
+			if (DSENConstants.CODIGO_AUTORIZACAO.equals(situacao) || DSENConstants.CODIGO_AUTORIZADO_FORA_PRAZO.equals(situacao)) {
+
+				if (SituacaoNFeEnum.AUTORIZADA.equals(notaFiscalTO.getSituacao())) {
+					//nada a fazer a nfe já está autorizada...
+					notaFiscalTO.addMessage(SituacaoNFeEnum.AUTORIZADA.getDescricao());
+					boolean atualizado = atualizarEventosNfe(notaFiscalTO, retConsSitNFe);
+					if(persist && atualizado){
+						getNotaFiscalDAO().update(DSENBusinessConverter.getNotaFiscalEntity(notaFiscalTO));
+						notaFiscalTO.setAtualizadaPelaConsulta(true);
+					}
+					return;
+				}
+
+				if(protNFe==null){
+					notaFiscalTO.setMensagemErro("Erro na Resposta da SEFAZ, não existe a tag protNFe.");
+					notaFiscalTO.addError(notaFiscalTO.getMensagemErro());
+					return;
+				}
+			
+				notaFiscalTO.setDataProtocolo (DateHelper.getDateTime(protNFe.getInfProt().getDhRecbto(), DateHelper.DATE_TIME_FORMAT));
+				notaFiscalTO.setDataAutorizacao (notaFiscalTO.getDataProtocolo());
+				if(!StringHelper.isBlankOrNull(protNFe.getInfProt().getNProt()))
+					notaFiscalTO.setNumeroProtocolo(protNFe.getInfProt().getNProt());
+				notaFiscalTO.setProtocoloString(DocumentoUtil.getProtocoloNFeConsultaSituacao(protNFe));
+				notaFiscalTO.setSituacao(SituacaoNFeEnum.AUTORIZADA);
+				notaFiscalTO.addMessage(SituacaoNFeEnum.AUTORIZADA.getDescricao());
+				notaFiscalTO.setCodigoErro(situacao);
+				notaFiscalTO.setMensagemErro(retConsSitNFe.getXMotivo());
+
+			} else if (DSENConstants.CODIGO_DENEGADO.equals(situacao)
+					|| DSENConstants.CODIGO_DENEGADO_EMITENTE.equals(situacao)
+					|| DSENConstants.CODIGO_DENEGADO_DESTINATARIO.equals(situacao)) {
+
+				if (SituacaoNFeEnum.DENEGADA.equals(notaFiscalTO.getSituacao())) {
+					//nada a fazer a nfe já está denegada...
+					notaFiscalTO.addMessage(SituacaoNFeEnum.DENEGADA.getDescricao());
+					boolean atualizado = atualizarEventosNfe(notaFiscalTO, retConsSitNFe);
+					if(persist && atualizado){
+						getNotaFiscalDAO().update(DSENBusinessConverter.getNotaFiscalEntity(notaFiscalTO));
+						notaFiscalTO.setAtualizadaPelaConsulta(true);
+					}
+					return;
+				}
+
+				if(protNFe==null){
+					notaFiscalTO.setMensagemErro("Erro na Resposta da SEFAZ, não existe a tag protNFe.");
+					notaFiscalTO.addError(notaFiscalTO.getMensagemErro());
+					return;
+				}
+
+				notaFiscalTO.setDataProtocolo (DateHelper.getDateTime(protNFe.getInfProt().getDhRecbto(), DateHelper.DATE_TIME_FORMAT));
+				if(!StringHelper.isBlankOrNull(protNFe.getInfProt().getNProt()))
+					notaFiscalTO.setNumeroProtocolo(protNFe.getInfProt().getNProt());
+				notaFiscalTO.setProtocoloString(DocumentoUtil.getProtocoloNFeConsultaSituacao(protNFe));
+				notaFiscalTO.setSituacao(SituacaoNFeEnum.DENEGADA);
+				notaFiscalTO.addMessage(SituacaoNFeEnum.DENEGADA.getDescricao());
+				notaFiscalTO.setCodigoErro(situacao);
+				notaFiscalTO.setMensagemErro(retConsSitNFe.getXMotivo());
+
+			} else if (DSENConstants.CODIGO_CANCELAMENTO.equals(situacao) || 
+						DSENConstants.CODIGO_CANCELAMENTO_FORA_PRAZO.equals(situacao) || //NT 2012.003 - ITEM 05.1 
+						DSENConstants.CODIGO_CANCELAMENTO_EVENTO_FORA_PRAZO.equals(situacao)) { //NT 2012.003 - ITEM 05.1
+
+
+				if (SituacaoNFeEnum.CANCELADA.equals(notaFiscalTO.getSituacao()) || SituacaoNFeEnum.CANCELADA_EVENTO.equals(notaFiscalTO.getSituacao()) ) {
+					//nada a fazer a nfe já está cancelada
+					notaFiscalTO.addMessage(SituacaoNFeEnum.CANCELADA.getDescricao());
+					boolean atualizado = atualizarEventosNfe(notaFiscalTO, retConsSitNFe);
+					if(persist && atualizado){
+						getNotaFiscalDAO().update(DSENBusinessConverter.getNotaFiscalEntity(notaFiscalTO));
+						notaFiscalTO.setAtualizadaPelaConsulta(true);
+					}
+					return ;
+				}
+				if (SituacaoNFeEnum.CANCELADA.equals(notaFiscalTO.getSituacao())){
+					if(retCancNFe==null){
+						notaFiscalTO.setMensagemErro("Erro na Resposta da SEFAZ, não existe a tag retCancNFe.");
+						notaFiscalTO.addError(notaFiscalTO.getMensagemErro());
+						return;
+					}
+	
+				//	CancelamentoTO cancelamentoTO = DocumentoUtil.getCancelamentoTO(notaFiscalTO, retCancNFe);
+	
+					/*if(persist){
+						notaFiscalTO.setCancelamentoTO(alterarCancelamento (cancelamentoTO));
+					}else{
+						notaFiscalTO.setCancelamentoTO(cancelamentoTO);
+					}*/
+	
+					notaFiscalTO.addMessage(SituacaoNFeEnum.CANCELADA.getDescricao());
+					notaFiscalTO.setSituacao(SituacaoNFeEnum.CANCELADA);
+				}else{
+					notaFiscalTO.addMessage(SituacaoNFeEnum.CANCELADA_EVENTO.getDescricao());
+					notaFiscalTO.setSituacao(SituacaoNFeEnum.CANCELADA_EVENTO);
+				}
+				/*notaFiscalTO.setCodigoErro(situacao);
+    			notaFiscalTO.setMensagemErro(retConsSitNFe.getXMotivo());*/
+			} else if (DSENConstants.CODIGO_NAO_CONSTA_SEFAZ.equals(situacao)) {
+				notaFiscalTO.setCodigoErro(situacao);
+				if(notaFiscalTO.getSituacao()==null || 
+						SituacaoNFeEnum.EM_DIGITACAO.equals(notaFiscalTO.getSituacao())
+						|| SituacaoNFeEnum.VALIDADA.equals(notaFiscalTO.getSituacao())
+						|| SituacaoNFeEnum.ASSINADA.equals(notaFiscalTO.getSituacao())){
+					notaFiscalTO.setMensagemErro(retConsSitNFe.getXMotivo());
+					notaFiscalTO.addError(retConsSitNFe.getXMotivo());  
+					return; //nao persiste nesse caso
+				}else{
+					//Troca a situação para assinado se a nfe nao está na sefaz e a situação é <> de em digitacao, validado ou assinado
+					notaFiscalTO.setSituacao(SituacaoNFeEnum.ASSINADA);
+					notaFiscalTO.setCodigoErro(null);
+					notaFiscalTO.setMensagemErro(DSENMessageConstants.MSG_NFE_INEXISTENTE_SITUACAO_ALTERADA_ASSINADA);
+					notaFiscalTO.addError(DSENMessageConstants.MSG_NFE_INEXISTENTE_SITUACAO_ALTERADA_ASSINADA); 
+				}
+
+			} else {
+				notaFiscalTO.setSituacao(SituacaoNFeEnum.REJEITADA);
+				notaFiscalTO.setNumeroProtocolo(null);
+				notaFiscalTO.setDataProtocolo(null);
+				notaFiscalTO.setDataAutorizacao(null);
+				notaFiscalTO.setProtocoloString (null);
+				notaFiscalTO.setCodigoErro(situacao);
+				notaFiscalTO.setMensagemErro(retConsSitNFe.getXMotivo());        
+				notaFiscalTO.addError(retConsSitNFe.getXMotivo());     
+			}
+
+			atualizarEventosNfe(notaFiscalTO, retConsSitNFe);
+			
+			if(persist){
+				getNotaFiscalDAO().update(DSENBusinessConverter.getNotaFiscalEntity(notaFiscalTO));
+				notaFiscalTO.setAtualizadaPelaConsulta(true);
+			}
+			return ;
+
+		} catch (DSENConverterException e) {
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEDAOException e) {
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSENCommonException e) {
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		}catch (Exception e) {
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		}
+	}
+
+	@DSGETransaction
+	public void enviarEvento(EventoTO eventoTO, CertificadoTO certificadoTO) throws DSENBusinessException {
+		EmitenteTO emitenteTO = AppContext.getInstance().getTO(AppContextEnum.EMITENTE, EmitenteTO.class);
+		EstadoTO emitenteEstadoTO;
+		boolean isSefaz = !TipoEmissaoEnum.CONTINGENCIA_SCAN.equals(eventoTO.getNotaFiscalTO().getTipoEmissao());
+		//boolean isSefaz=true;
+		String wsReceptor = isSefaz ? DSENMessageConstants.MSG_WS_SEFAZ : DSENMessageConstants.MSG_WS_RFB;
+		GrupoNotificacaoEnum grupoNotificacaoErroResposta = isSefaz ? GrupoNotificacaoEnum.ERRO_RESPOSTA_SEFAZ_EVENTO : GrupoNotificacaoEnum.ERRO_RESPOSTA_SCAN_EVENTO;
+		GrupoNotificacaoEnum grupoNotificacaoErroConexao = isSefaz ? GrupoNotificacaoEnum.ERRO_CONEXAO_EVENTO_SEFAZ : GrupoNotificacaoEnum.ERRO_CONEXAO_EVENTO_SCAN;
+
+		try {			
+			emitenteEstadoTO = DSENUtilHelper.getInstance().getEstadoTOBySigla(emitenteTO.getUf());
+			ScanHelper scanHelper = new ScanHelper();
+			
+			EstadoTO estadoTO = scanHelper.getEstadoTO(emitenteEstadoTO, isSefaz);
+			
+			if(eventoTO.getTpEvento().equals(TipoEventoEnum.e110110))				
+				estadoTO = emitenteEstadoTO;
+
+			String urlSefaz = DSENUtilHelper.getInstance().getURLPorUF(estadoTO, ServicoSefazEnum.RecepcaoEvento);
+			
+			if(StringHelper.isBlankOrNull(urlSefaz)){
+				notificarErro(MessageFormat.format(DSENMessageConstants.UF_NAO_HABILITADA_RECEPCAO_EVENTOS,estadoTO.getSigla()), eventoTO, GrupoNotificacaoEnum.UF_NAO_HABILITADA);
+				return;
+			}
+			
+			ConsultaStatusServicoHelper consultaStatusServicoHelper = new ConsultaStatusServicoHelper();
+			boolean statusServicoOK = consultaStatusServicoHelper.consultarStatusServico(emitenteEstadoTO, certificadoTO.getX509Certificate(), certificadoTO.getPrivateKey(), ServicoSefazEnum.StatusServico,isSefaz);
+			if(!statusServicoOK){
+				notificarErro(null, eventoTO, GrupoNotificacaoEnum.ERRO_FATAL);
+				return;
+			}
+
+			String xmlEnvio = criarAssinarXmlEnvioEventos(eventoTO, emitenteEstadoTO,certificadoTO,emitenteTO);
+
+			eventoTO.setDocXmlString(xmlEnvio);
+
+			String retornoXML = getWSBusiness().servico(
+					DocumentoUtil.criarCabecalhoMensagem(ServicoSefazEnum.RecepcaoEvento,emitenteEstadoTO.getCodigo(),DSENProperties.getInstance().getVersaoSchemaEventos()),
+					xmlEnvio, 
+					estadoTO,
+					ServicoSefazEnum.RecepcaoEvento,
+					certificadoTO.getX509Certificate(),
+					certificadoTO.getPrivateKey());
+			WSStatusRetorno retornoEnum = DocumentoUtil.validarXmlRetornoEvento(retornoXML, eventoTO);
+
+			switch (retornoEnum) {
+			case XML_INVALIDO:				
+				Notificador.getInstance().notificar(new ErroXmlResposta(ServicoSefazEnum.RecepcaoEvento, urlSefaz, xmlEnvio, retornoXML,wsReceptor), grupoNotificacaoErroResposta);
+				eventoTO.addError(MessageFormat.format(DSENMessageConstants.MSG_WS_RETORNO_INVALIDO,wsReceptor));
+
+				break;
+
+			case NOK:
+				eventoTO.addError(MessageFormat.format(DSENMessageConstants.EVENTO_NAO_REGISTRADO_REJEICAO, eventoTO.getCErro(), eventoTO.getMensagemErro()));
+
+				break;
+			default: 
+				//salvar Evento
+				NotaFiscalTO notafiscalTO = eventoTO.getNotaFiscalTO();
+				DocumentoUtil.setProtocoloEvento(eventoTO, retornoXML); 
+				int x;
+				ProcEventoNFeDocument e = DocumentoUtil.getProcEventoNFeDocument(eventoTO.getXmlProcString());
+				if(notafiscalTO.getEventoTOList()==null){
+					notafiscalTO.setEventoTOList(new ArrayList<EventoTO>());
+				}
+				notafiscalTO.getEventoTOList().add(eventoTO);
+				if(notafiscalTO.getIdNotaFiscal()!=null){
+					notafiscalTO = getNotaFiscalBusiness().alterar(notafiscalTO);
+				}else{
+					notafiscalTO.setDataEmissao(new Date());
+				}
+				eventoTO.addMessage(MessageFormat.format(DSENMessageConstants.MSG_EVENTO_ENVIADO_OK,eventoTO.getTpEvento().getDescricao()));
+				TipoEventoEnum tipoEventoEnum = TipoEventoEnum.getEnumPeloCodigo(eventoTO.getTpEvento().getCodigo());
+				switch(tipoEventoEnum){
+					case e110111:
+						notafiscalTO.setSituacao(SituacaoNFeEnum.CANCELADA_EVENTO);
+						notafiscalTO.setDataSistema(new Date());
+						notafiscalTO = getNotaFiscalBusiness().alterar(notafiscalTO);
+					}
+				break;
+			}
+			
+			Notificador.getInstance().notificar(eventoTO, GrupoNotificacaoEnum.EVENTO_ENVIADO);	
+
+		} catch (DSGEConnectionClientException e) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_CLIENT, wsReceptor), eventoTO, grupoNotificacaoErroConexao);
+			reconectarEnviarEvento(eventoTO, certificadoTO,isSefaz);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEConnectionServerException e) {
+			notificarErro(MessageFormat.format(DSENMessageConstants.MSG_WS_CONEXAO_INEXISTENTE_SERVER, wsReceptor), eventoTO, grupoNotificacaoErroConexao);
+			reconectarEnviarEvento(eventoTO, certificadoTO,isSefaz);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGETimeoutException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_CONEXAO_TIMEOUT, eventoTO, grupoNotificacaoErroConexao);
+			reconectarEnviarEvento(eventoTO, certificadoTO,isSefaz);
+			log.error(e.getMessage());
+		} catch (DSGESocketException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_SOCKET, eventoTO, grupoNotificacaoErroConexao);
+			reconectarEnviarEvento(eventoTO, certificadoTO,isSefaz);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEProxyException e) {
+			notificarErro(DSENMessageConstants.MSG_WS_PROXY, eventoTO, GrupoNotificacaoEnum.ERRO_FATAL);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSGEWebServiceException e) {
+			notificarErro(new DSENBusinessException(e, e.getMessage()), eventoTO, GrupoNotificacaoEnum.EXCEPTION);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (DSENConverterException e) {
+			notificarErro(new DSENBusinessException(e, e.getMessage()), eventoTO, GrupoNotificacaoEnum.EXCEPTION);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		} catch (Throwable e) {
+			e.printStackTrace();
+			notificarErro(new DSENBusinessException(e, e.getMessage()), eventoTO, GrupoNotificacaoEnum.EXCEPTION);
+			log.error(e.getMessage());
+			throw new DSENBusinessException(e, e.getMessage());
+		}
+
+	}
+
+	private String criarAssinarXmlEnvioEventos(EventoTO eventoTO, EstadoTO estadoTO, CertificadoTO certificadoTO, EmitenteTO emitenteTO) throws DSGECertificadoException, DSENCommonException{
+
+		try {
+		//seta o número do próximo evento
+		if(eventoTO.getnSeqEvento()==null)
+			eventoTO.setnSeqEvento(DocumentoUtil.recuperarProximoNSeqEvento(eventoTO));
+		//assinar a tag <evento>
+		Certificado certificado = new Certificado();						
+		
+		String xmlString = DocumentoUtil.criarXMLEnvioEvento(eventoTO, estadoTO.getCodigo());
+		
+		if(eventoTO.getDocXmlString() == null)
+			eventoTO.setDocXmlString(xmlString);
+		
+		String xmlAssinado = certificado.assinarXML(certificadoTO.getX509Certificate(),	certificadoTO.getPrivateKey(),DocumentoUtil.criarIdDocumentoEvento(eventoTO), DocumentoUtil.criarXMLEnvioEvento(eventoTO, estadoTO.getCodigo()),emitenteTO.getNrDocumento(),"evento");
+		
+		/*boolean isAssinaturaValida = certificado.validarAssinaturaXML(xmlAssinado);
+		if (!isAssinaturaValida) {
+			throw new DSENCommonException(new Exception(),"Assinatura Inválida tag evento!");
+		}
+		*/
+		return xmlAssinado;
+		} catch (Throwable e) {
+			log.error(e);
+			throw new DSENCommonException(e, e.getMessage());
+		} 
+	}
+	
+}

@@ -1,0 +1,5 @@
+CLIENTE|2| 
+A|1.01
+E|CPF|28763273845|322|ISENTO||rua x|233232|complem 43||5100250|Alta Floresta|MT|55555555|1058|BRASIL|2222222222| 
+A|1.01
+E|CNPJ|61277224000130|Cliente Energumeno|107509131112||wqrwrrwer rewrwqer|222|errrrrrrrrrrrr|rrrrrrrrrrrrrrrr|3500501|Aguas de Lindoia|SP|03350110|1058|BRASIL|1111111111| 

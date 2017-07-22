@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Este é o DTD do arquivo de configuração do Reports 1.0.
+Todos os arquivos de configuração reports.xml devem incluir um 
+DOCTYPE da seguinte forma:
+
+  <!DOCTYPE reports PUBLIC
+	"-//Prodesp//DTD Reports 1.0//EN"
+	"reports_1_0.dtd">
+-->
+
+<!--Elemento root que contém todos os elementos para configuração dos relatórios.-->
+<!ELEMENT reports (report-location,datasource-param-suffix?,subreport-param-suffix?,report-parameter*,report*)>
+<!--Elemento que define individualmente as configurações de cada relatório.-->
+<!ELEMENT report (report-class?,report-datasource?,report-pageprovider?,report-data,subreport*)>
+
+<!--Atribuito que define o nome do relatório. Este nome deve ser o mesmo do arquivo compilado ".jasper".-->
+
+<!--Atribuito que define se o relatório irá usar paginação na obtenção dos dados. O valor default para este atributo é "false", sem paginação. Os possíveis valores são: "true" ou "yes" e "false" ou "no".-->
+<!ATTLIST report
+name CDATA #REQUIRED
+paging CDATA #IMPLIED
+>
+<!--Elemento que define qual a localização dos arquivos dos relatórios compilados.-->
+<!ELEMENT report-location (#PCDATA)*>
+<!--Elemento que define qual deve ser o sufixo dos parametros utilizados para identificarem os datasources os subrelatórios.-->
+<!ELEMENT datasource-param-suffix (#PCDATA)*>
+<!--Elemento que define qual deve ser o sufixo dos parametros utilizados para identificarem os subrelatórios.-->
+<!ELEMENT subreport-param-suffix (#PCDATA)*>
+<!--Elemento que define individualmente as configurações de cada subrelatório que este relatório contém.-->
+<!ELEMENT subreport (subreport-datasource?,subreport-pageprovider?,subreport-data)>
+
+<!--Atribuito que define o nome do subrelatório. Este nome deve ser o mesmo do arquivo compilado ".jasper".-->
+
+<!--Atribuito que define se o subrelatório irá usar paginação na obtenção dos dados. O valor default para este atributo é "false", sem paginação. Os possíveis valores são: "true" ou "yes" e "false" ou "no".-->
+<!ATTLIST subreport
+name CDATA #REQUIRED
+paging CDATA #IMPLIED
+>
+<!--Elemento que define qual a classe de relatório que será utilizada. O valor default para este elemento é a classe com.brq.report.GenericReport.-->
+<!ELEMENT report-class (#PCDATA)*>
+<!--Elemento que define qual a classe que implementa a interface com.brq.report.datasource.ReportDataSource que será utilizada. O valor default para este elemento é a classe com.brq.report.datasource.ValueObjectDataSource.-->
+<!ELEMENT report-datasource (#PCDATA)*>
+<!--Elemento que define qual a classe que implementa a interface com.brq.report.datasource.PageProvider que será utilizada. O valor default para este elemento é a classe com.brq.report.datasource.GenericPageProvider.-->
+<!ELEMENT report-pageprovider (#PCDATA)*>
+<!--Elemento que define qual a classe que será utilizada para obtenção dos dados. Deve ser informado o nome de uma classe que implemente a interface com.brq.report.datasource.ReportData.-->
+<!ELEMENT report-data (#PCDATA)*>
+<!--Elemento que define qual a classe que implementa a interface com.brq.report.datasource.PageProvider que será utilizada. O valor default para este elemento é a classe com.brq.report.datasource.GenericPageProvider.-->
+<!ELEMENT subreport-pageprovider (#PCDATA)*>
+<!--Elemento que define qual a classe que implementa a interface com.brq.report.datasource.ReportDataSource que será utilizada. O valor default para este elemento é a classe com.brq.report.datasource.ValueObjectDataSource.-->
+<!ELEMENT subreport-datasource (#PCDATA)*>
+<!--Elemento que define qual a classe que será utilizada para obtenção dos dados. Deve ser informado o nome de uma classe que implemente a interface com.brq.report.datasource.ReportData.-->
+<!ELEMENT subreport-data (#PCDATA)*>
+<!--Elemento que define um parametro para ser usado pelos relatórios.-->
+<!ELEMENT report-parameter (parameter-name,parameter-value)>
+<!--Elemento que define o nome do parametro.-->
+<!ELEMENT parameter-name (#PCDATA)*>
+<!--Elemento que define o valor do parametro.-->
+<!ELEMENT parameter-value (#PCDATA)*>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ImpressaoDanfeInfComplPaisagemA4Report" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="0" bottomMargin="0" uuid="3917aec1-e842-46a2-bd3b-48e380cc784d">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<parameter name="infCompl" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="PreImp" class="java.lang.Boolean" isForPrompting="false"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="26" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField-15" x="73" y="9" width="706" height="14" isRemoveLineWhenBlank="true" uuid="4b11381d-995f-4318-a395-847d2440619a">
+					<printWhenExpression><![CDATA[new Boolean($P{infCompl} != null && $P{infCompl}.trim().length() > 0)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Monospaced" size="7" isBold="false" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{infCompl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-16" mode="Transparent" x="73" y="2" width="150" height="6" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="eec08180-0fc5-4be3-a9a3-6556f3fdd77a">
+					<printWhenExpression><![CDATA[new Boolean($P{infCompl} != null && $P{infCompl}.trim().length() > 0)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="5" isItalic="false" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[CONTINUAÇÃO - INFORMAÇÕES COMPLEMENTARES]]></text>
+			</staticText>
+			<rectangle radius="2">
+				<reportElement key="rectangle-15" positionType="Float" stretchType="RelativeToBandHeight" mode="Transparent" x="70" y="1" width="712" height="24" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="00cb9393-35a8-449c-ba49-b070867b31bf">
+					<printWhenExpression><![CDATA[new Boolean($P{infCompl} != null && $P{infCompl}.trim().length() > 0  && !($P{PreImp}.booleanValue()))]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+		</band>
+	</summary>
+</jasperReport>

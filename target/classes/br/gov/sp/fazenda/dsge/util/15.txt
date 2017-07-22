@@ -1,0 +1,144 @@
+1503002|Faro
+1503903|Juruti
+1505106|Obidos
+1505304|Oriximina
+1507979|Terra Santa
+1500404|Alenquer
+1501451|Belterra
+1502855|Curua
+1504802|Monte Alegre
+1505650|Placas
+1506005|Prainha
+1506807|Santarem
+1500503|Almeirim
+1505908|Porto de Moz
+1501105|Bagre
+1503101|Gurupa
+1504505|Melgaco
+1505809|Portel
+1500305|Afua
+1500701|Anajas
+1501808|Breves
+1502806|Curralinho
+1507706|Sao Sebastiao da Boa Vista
+1502004|Cachoeira do Arari
+1502509|Chaves
+1504901|Muana
+1505700|Ponta de Pedras
+1506302|Salvaterra
+1506401|Santa Cruz do Arari
+1507904|Soure
+1500800|Ananindeua
+1501303|Barcarena
+1501402|Belem
+1501501|Benevides
+1504422|Marituba
+1506351|Santa Barbara do Para
+1501907|Bujaru
+1502400|Castanhal
+1503408|Inhangapi
+1506500|Santa Isabel do Para
+1507003|Santo Antonio do Taua
+1502608|Colares
+1502905|Curuca
+1504109|Magalhaes Barata
+1504307|Maracana
+1504406|Marapanim
+1504752|Mojui dos Campos
+1506203|Salinopolis
+1507102|Sao Caetano de Odivelas
+1507466|Sao Joao da Ponta
+1507474|Sao Joao de Pirabas
+1507961|Terra Alta
+1508209|Vigia
+1500909|Augusto Correa
+1501600|Bonito
+1501709|Braganca
+1502202|Capanema
+1503200|Igarape-Acu
+1505007|Nova Timboteua
+1505601|Peixe-Boi
+1506104|Primavera
+1506112|Quatipuru
+1506609|Santa Maria do Para
+1506906|Santarem Novo
+1507409|Sao Francisco do Para
+1508035|Tracuateua
+1500107|Abaetetuba
+1501204|Baiao
+1502103|Cameta
+1503309|Igarape-Miri
+1504000|Limoeiro do Ajuru
+1504604|Mocajuba
+1505205|Oeiras do Para
+1500206|Acara
+1502756|Concordia do Para
+1504703|Moju
+1507953|Tailandia
+1508001|Tome-Acu
+1500958|Aurora do Para
+1501956|Cachoeira do Piria
+1502301|Capitao Poco
+1503077|Garrafao do Norte
+1503457|Ipixuna do Para
+1503507|Irituia
+1504059|Mae do Rio
+1504950|Nova Esperanca do Piria
+1505403|Ourem
+1506559|Santa Luzia do Para
+1507201|Sao Domingos do Capim
+1507607|Sao Miguel do Guama
+1508308|Viseu
+1501006|Aveiro
+1503606|Itaituba
+1503754|Jacareacanga
+1505031|Novo Progresso
+1506195|Ruropolis
+1508050|Trairao
+1500602|Altamira
+1500859|Anapu
+1501725|Brasil Novo
+1504455|Medicilandia
+1505486|Pacaja
+1507805|Senador Jose Porfirio
+1508159|Uruara
+1508357|Vitoria do Xingu
+1501782|Breu Branco
+1503705|Itupiranga
+1503804|Jacunda
+1504976|Nova Ipixuna
+1505064|Novo Repartimento
+1508100|Tucurui
+1500131|Abel Figueiredo
+1501576|Bom Jesus do Tocantins
+1502939|Dom Eliseu
+1503093|Goianesia do Para
+1505502|Paragominas
+1506187|Rondon do Para
+1508126|Ulianopolis
+1501253|Bannach
+1502764|Cumaru do Norte
+1505437|Ourilandia do Norte
+1507300|Sao Felix do Xingu
+1508084|Tucuma
+1500347|Agua Azul do Norte
+1502152|Canaa dos Carajas
+1502772|Curionopolis
+1502954|Eldorado dos Carajas
+1505536|Parauapebas
+1501758|Brejo Grande do Araguaia
+1504208|Maraba
+1505494|Palestina do Para
+1507151|Sao Domingos do Araguaia
+1507508|Sao Joao do Araguaia
+1505551|Pau D Arco
+1505635|Picarra
+1506138|Redencao
+1506161|Rio Maria
+1507458|Sao Geraldo do Araguaia
+1507755|Sapucaia
+1508407|Xinguara
+1502707|Conceicao do Araguaia
+1503044|Floresta do Araguaia
+1506583|Santa Maria das Barreiras
+1506708|Santana do Araguaia

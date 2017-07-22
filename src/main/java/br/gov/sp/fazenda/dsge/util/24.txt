@@ -1,0 +1,167 @@
+2401107|Areia Branca
+2401453|Barauna
+2404408|Grossos
+2408003|Mossoro
+2411056|Tibau
+2413359|Serra do Mel
+2401008|Apodi
+2402303|Caraubas
+2403707|Felipe Guerra
+2404309|Governador Dix-Sept Rosado
+2401305|Augusto Severo
+2405207|Janduis
+2407609|Messias Targino
+2408706|Parau
+2414456|Triunfo Potiguar
+2414605|Upanema
+2400208|Acu
+2400703|Alto do Rodrigues
+2402501|Carnaubais
+2404705|Ipanguacu
+2404853|Itaja
+2406106|Jucurutu
+2409902|Pendencias
+2410256|Porto do Mangue
+2412807|Sao Rafael
+2400406|Agua Nova
+2402907|Coronel Joao Pessoa
+2403202|Doutor Severiano
+2403301|Encanto
+2407005|Luis Gomes
+2407252|Major Sales
+2410801|Riacho de Santana
+2412500|Sao Miguel
+2414753|Venha-Ver
+2400505|Alexandria
+2403905|Francisco Dantas
+2404903|Itau
+2406007|Jose da Penha
+2407302|Marcelino Vieira
+2408607|Parana
+2409407|Pau dos Ferros
+2410009|Piloes
+2410207|Portalegre
+2410504|Rafael Fernandes
+2410702|Riacho da Cruz
+2411007|Rodolfo Fernandes
+2411908|Sao Francisco do Oeste
+2413607|Severiano Melo
+2413805|Taboleiro Grande
+2414100|Tenente Ananias
+2414902|Vicosa
+2400604|Almino Afonso
+2400901|Antonio Martins
+2404002|Frutuoso Gomes
+2405900|Joao Dias
+2406908|Lucrecia
+2407401|Martins
+2408409|Olho-d'Agua do Borges
+2409308|Patu
+2410603|Rafael Godeiro
+2413557|Serrinha dos Pintos
+2414506|Umarizal
+2401859|Caicara do Norte
+2404101|Galinhos
+2404507|Guamare
+2407203|Macau
+2411601|Sao Bento do Norte
+2400307|Afonso Bezerra
+2400802|Angicos
+2401909|Caicara do Rio do Vento
+2403756|Fernando Pedroza
+2405504|Jardim de Angicos
+2406700|Lajes
+2409605|Pedra Preta
+2409704|Pedro Avelino
+2401651|Bodo
+2402709|Cerro Cora
+2403806|Florania
+2406502|Lagoa Nova
+2411403|Santana do Matos
+2413003|Sao Vicente
+2414159|Tenente Laurentino Cruz
+2402006|Caico
+2404804|Ipueira
+2405603|Jardim de Piranhas
+2411809|Sao Fernando
+2412104|Sao Joao do Sabugi
+2413409|Serra Negra do Norte
+2414308|Timbauba dos Batistas
+2400109|Acari
+2402402|Carnauba dos Dantas
+2403004|Cruzeta
+2403103|Currais Novos
+2403400|Equador
+2405702|Jardim do Serido
+2408508|Ouro Branco
+2408904|Parelhas
+2411429|Santana do Serido
+2412401|Sao Jose do Serido
+2401602|Bento Fernandes
+2405108|Jandaira
+2405801|Joao Camara
+2408805|Parazinho
+2410108|Poco Branco
+2401503|Barcelona
+2402105|Campo Redondo
+2402808|Coronel Ezequiel
+2405009|Jacana
+2405405|Japi
+2406403|Lagoa de Velhos
+2406809|Lajes Pintadas
+2407906|Monte das Gameleiras
+2411106|Ruy Barbosa
+2411205|Santa Cruz
+2411700|Sao Bento do Trairi
+2412302|Sao Jose do Campestre
+2412906|Sao Tome
+2413300|Serra de Sao Bento
+2413706|Sitio Novo
+2414001|Tangara
+2401701|Bom Jesus
+2401800|Brejinho
+2404606|Ielmo Marinho
+2405306|Januario Cicco
+2406155|Jundia
+2406205|Lagoa d'Anta
+2406304|Lagoa de Pedras
+2406601|Lagoa Salgada
+2407807|Monte Alegre
+2408300|Nova Cruz
+2409100|Passa e Fica
+2409209|Passagem
+2409332|Santa Maria
+2410306|Presidente Juscelino
+2410900|Riachuelo
+2411502|Santo Antonio
+2412609|Sao Paulo do Potengi
+2412708|Sao Pedro
+2413102|Senador Eloi de Souza
+2413508|Serrinha
+2414704|Varzea
+2414803|Vera Cruz
+2407500|Maxaranguape
+2408953|Rio do Fogo
+2409506|Pedra Grande
+2410405|Pureza
+2412559|Sao Miguel do Gostoso
+2413904|Taipu
+2414407|Touros
+2402600|Ceara-Mirim
+2407104|Macaiba
+2408201|Nisia Floresta
+2412005|Sao Goncalo do Amarante
+2412203|Sao Jose de Mipibu
+2403251|Parnamirim
+2403608|Extremoz
+2408102|Natal
+2401206|Ares
+2401404|Baia Formosa
+2402204|Canguaretama
+2403509|Espirito Santo
+2404200|Goianinha
+2407708|Montanhas
+2409803|Pedro Velho
+2413201|Senador Georgino Avelino
+2414209|Tibau do Sul
+2415008|Vila Flor

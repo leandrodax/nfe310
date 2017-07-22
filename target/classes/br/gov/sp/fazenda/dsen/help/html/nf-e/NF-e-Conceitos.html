@@ -1,0 +1,736 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  
+  <link href="../css/internet.css" type="text/css" rel="stylesheet">
+  
+  <title>NF-e - Conceitos</title>
+
+
+</head>
+
+<body>
+
+<span class="titulo_sistema">Software Emissor NF-e</span><br>
+<hr style="width: 100%; height: 2px;"><br>
+
+<span class="titulo">Conceito de NF-e</span><br>
+<hr style="width: 100%; height: 2px;"><br>
+
+<br>
+
+
+Entende-se por Nota Fiscal Eletr&ocirc;nica (NF-e) como
+sendo um documento de exist&ecirc;ncia exclusivamente digital,
+emitido e
+armazenado eletronicamente, com intuito de documentar uma
+opera&ccedil;&atilde;o de
+circula&ccedil;&atilde;o de mercadoria ou
+presta&ccedil;&atilde;o de servi&ccedil;o, ocorrida entre
+as
+partes, cuja validade jur&iacute;dica &eacute; garantida pela
+assinatura digital do
+emitente e recep&ccedil;&atilde;o, pelo fisco, antes da
+ocorr&ecirc;ncia do fato gerador.<br>
+
+<br>
+
+<span style="font-weight: bold;">IMPORTANTE:
+Para fins de simplifica&ccedil;&atilde;o, o Software Emissor
+NF-e chama de "NF-e" ou
+"Nota Fiscal eletr&ocirc;nica" todo o documento gerado por ele que
+poder&aacute;, em
+algum momento, vir a ser assinado, transmitido e autorizado pela SEFAZ.</span><br>
+
+Assim,
+mesmo que uma NF-e na situa&ccedil;&atilde;o "Em
+digita&ccedil;&atilde;o" ou&nbsp;<span style="font-weight: bold;">"Assinada"</span>
+n&atilde;o seja uma Nota Fiscal
+eletr&ocirc;nica pelo conceito vigente (pois este documento
+n&atilde;o foi assinado
+e n&atilde;o foi autorizado pela SEFAZ), o Software faz o uso deste
+nome para
+facilitar o entendimento do usu&aacute;rio.<br>
+
+<br>
+
+<br>
+
+<table style="background-color: rgb(239, 239, 239); width: 90%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="5" cellspacing="5">
+
+  <tbody>
+
+    <tr>
+
+      <td>
+      <ul>
+
+        <li><a href="#Caracteristicas_da_Nota_Fiscal">Caracter&iacute;sticas da Nota Fiscal
+Eletr&ocirc;nica</a><br>
+
+        </li>
+
+        <br>
+
+        <li><a href="#Modelo_Operacional">Modelo Operacional</a><br>
+
+           </li>
+
+        <br>
+
+        <li><a href="#Detalhamento_das_Etapas_do_Modelo">Detalhamento das Etapas do Modelo Operacional</a><br>
+
+           </li>
+
+        <br>
+
+        
+        <ul>
+
+          <li><a href="#Etapa_1_Habilitacao_do_Contribuinte">Etapa 1 -
+Habilita&ccedil;&atilde;o do Contribuinte como Emissor de NF-e</a><br>
+
+             </li>
+
+          <br>
+
+          <li><a href="#Etapa_2_Emissao_e_Transmissao_da_NF-e">Etapa 2 - Emiss&atilde;o e
+Transmiss&atilde;o da NF-e</a><br>
+
+          </li>
+
+          <br>
+
+          <li><a href="#Etapa_3_Consulta_da_NF-e">Etapa 3 - Consulta da NF-e</a><br>
+
+          </li>
+
+        </ul>
+
+        <br>
+
+        <li><a href="#Casos_Particulares:">Casos Particulares:</a><br>
+
+          <a href="#Casos_Particulares:"><span style="font-weight: bold;"></span></a><br>
+
+        </li>
+
+        <ul>
+
+          <li><a href="#Cancelamento_de_NF-e">Cancelamento
+de NF-e</a><br>
+
+          </li>
+
+          <br>
+
+          <li><a href="#Consulta_Status_de_NF-e">Consulta Status de NF-e</a></li>
+
+        </ul>
+
+      </ul>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<br>
+
+<br>
+
+<span style="font-weight: bold;"><a name="Caracteristicas_da_Nota_Fiscal"></a>Caracter&iacute;sticas
+da Nota Fiscal Eletr&ocirc;nica</span><br>
+
+<br>
+
+A Nota Fiscal Eletr&ocirc;nica proposta possuir&aacute; as
+seguintes caracter&iacute;sticas:<br>
+
+
+<ul>
+
+  <li>Documento digital, que atende
+aos padr&otilde;es definidos na MP 2.200/01, no formato XML
+(Extended Markup Language);</li>
+
+  <li>Garantia de autoria,
+integridade e irrefutabilidade, certificadas
+atrav&eacute;s de assinatura digital do emitente, definido pela
+Infra-estrutura de Chaves P&uacute;blicas Brasileiras (ICP Brasil);</li>
+
+  <li>O arquivo da NF-e
+dever&aacute; seguir o leiaute de campos definido em
+legisla&ccedil;&atilde;o espec&iacute;fica;</li>
+
+  <li>A NF-e, para poder ser
+v&aacute;lida, dever&aacute; ser enviada
+eletronicamente e autorizada pelo fisco, da
+circunscri&ccedil;&atilde;o do
+contribuinte emissor, antes de seu envio ao destinat&aacute;rio e
+antes da
+sa&iacute;da da mercadoria do estabelecimento;</li>
+
+  <li>A transmiss&atilde;o da
+NF-e ser&aacute; efetivada, via Internet, por meio de protocolo de
+seguran&ccedil;a ou criptografia;</li>
+
+  <li>As NF-e dever&atilde;o ser
+emitidas em ordem consecutiva crescente e sem
+intervalos a partir do 1&ordm; n&uacute;mero
+seq&uuml;encial, sendo vedado a duplicidade
+ou re-aproveitamento dos n&uacute;meros inutilizados ou cancelados;</li>
+
+</ul>
+
+<br>
+
+<br>
+
+<span style="font-weight: bold;"><a name="Modelo_Operacional"></a>Modelo Operacional</span><br>
+
+<br>
+
+De
+maneira simplificada, a empresa emissora de NF-e gerar&aacute; um
+arquivo
+eletr&ocirc;nico contendo as informa&ccedil;&otilde;es
+fiscais da opera&ccedil;&atilde;o comercial, o
+qual dever&aacute; ser assinado digitalmente, de maneira a garantir
+a
+integridade dos dados e a autoria do emissor. Este arquivo
+eletr&ocirc;nico,
+que corresponder&aacute; &agrave; Nota Fiscal
+Eletr&ocirc;nica (NF-e), ser&aacute; ent&atilde;o
+transmitido pela Internet para a Secretaria da Fazenda de
+jurisdi&ccedil;&atilde;o do
+contribuinte que far&aacute; uma
+pr&eacute;-valida&ccedil;&atilde;o do arquivo e
+devolver&aacute; um
+protocolo de recebimento (Autoriza&ccedil;&atilde;o de Uso),
+sem o qual n&atilde;o poder&aacute;
+haver o tr&acirc;nsito da mercadoria.<br>
+
+<br>
+
+A NF-e tamb&eacute;m ser&aacute; transmitida
+para a Receita Federal, que ser&aacute; reposit&oacute;rio
+nacional de todas as NF-e
+emitidas (Ambiente Nacional) e, no caso de
+opera&ccedil;&atilde;o interestadual, para
+a Secretaria de Fazenda de destino da opera&ccedil;&atilde;o e
+Suframa, no caso de
+mercadorias destinadas &agrave;s &aacute;reas incentivadas.<br>
+
+<br>
+
+<br>
+
+As Secretarias
+de Fazenda e a RFB (Ambiente Nacional), disponibilizar&atilde;o
+consulta,
+atrav&eacute;s Internet, para o destinat&aacute;rio e outros
+leg&iacute;timos interessados,
+que detenham a chave de acesso do documento eletr&ocirc;nico.<br>
+
+<br>
+
+Para
+acompanhar o tr&acirc;nsito da mercadoria ser&aacute; impressa
+uma representa&ccedil;&atilde;o
+gr&aacute;fica simplificada da Nota Fiscal Eletr&ocirc;nica,
+intitulado DANFE
+(Documento Auxiliar da Nota Fiscal Eletr&ocirc;nica), em papel
+comum, em
+&uacute;nica via, que conter&aacute; impressa, em destaque, a
+chave de acesso para
+consulta da NF-e na Internet e um c&oacute;digo de barras&nbsp;
+que
+facilitar&aacute; a captura e a confirma&ccedil;&atilde;o
+de informa&ccedil;&otilde;es da NF-e pelas
+unidades fiscais.<br>
+
+<br>
+
+O DANFE n&atilde;o &eacute; uma nota fiscal, nem substitui
+uma nota fiscal, servindo apenas como instrumento auxiliar para
+consulta da NF-e, pois cont&eacute;m a chave de acesso da NF-e, que
+permite ao
+detentor desse documento confirmar a efetiva exist&ecirc;ncia da
+NF-e&nbsp;
+atrav&eacute;s do Ambiente Nacional (RFB) ou site da SEFAZ na
+Internet.&nbsp; <br>
+
+<br>
+
+O
+contribuinte destinat&aacute;rio, n&atilde;o emissor de NF-e,
+poder&aacute; escriturar os
+dados contidos no DANFE para a escritura&ccedil;&atilde;o da
+NF-e, sendo que sua
+validade ficar&aacute; vinculada &agrave; efetiva
+exist&ecirc;ncia da NF-e nos arquivos das
+administra&ccedil;&otilde;es tribut&aacute;rias envolvidas
+no processo, comprovada atrav&eacute;s
+da emiss&atilde;o da Autoriza&ccedil;&atilde;o de Uso.<br>
+
+<br>
+
+O contribuinte emitente da NF-e, realizar&aacute; a
+escritura&ccedil;&atilde;o a partir das NF-e emitidas e
+recebidas.<br>
+
+<br>
+
+<br>
+
+<br>
+
+<span style="font-weight: bold;"><a name="Detalhamento_das_Etapas_do_Modelo"></a>Detalhamento
+das Etapas do Modelo Operacional</span><br>
+
+<br>
+
+O processo de emiss&atilde;o da Nota Fiscal Eletr&ocirc;nica
+(NF-e) ser&aacute; constitu&iacute;do das seguintes etapas:<br>
+
+<ul>
+  <li>Etapa 1 -
+Habilita&ccedil;&atilde;o do contribuinte como emissor de NF-e;</li>
+  <li>Etapa 2 -
+Emiss&atilde;o e Transmiss&atilde;o da NF-e;</li>
+  <li>Etapa 3 - Consulta
+da NF-e;</li>
+</ul>
+
+
+
+<br>
+
+<span style="font-weight: bold;"><a name="Etapa_1_Habilitacao_do_Contribuinte"></a>Etapa
+1 - Habilita&ccedil;&atilde;o do Contribuinte como
+Emissor de NF-e</span><br>
+
+<br>
+
+Esta
+etapa corresponde ao processo eletr&ocirc;nico pelo qual um
+contribuinte
+solicita seu cadastramento como emissor de NF-e junto a Secretaria da
+Fazenda.<br>
+
+Cumprida, esta etapa inicial
+de cadastramento, o contribuinte dever&aacute; iniciar o envio de
+suas Notas
+Fiscais Eletr&ocirc;nicas para a Secretaria da
+Fazenda.<br>
+
+<br>
+
+<br>
+
+<span style="font-weight: bold;"><a name="Etapa_2_Emissao_e_Transmissao_da_NF-e"></a>Etapa
+2 - Emiss&atilde;o e Transmiss&atilde;o da NF-e</span><br>
+
+<br>
+
+Esta
+etapa descreve o processo de emiss&atilde;o e
+transmiss&atilde;o de uma Nota Fiscal
+Eletr&ocirc;nica, pelo contribuinte emissor, para a Secretaria de
+Fazenda,
+que ap&oacute;s sua autoriza&ccedil;&atilde;o de uso,
+transmitir&aacute; o documento eletr&ocirc;nico
+para a Secretaria da Receita Federal e Sefaz de destino, no caso de
+opera&ccedil;&otilde;es interestaduais, permitindo assim o
+tr&acirc;nsito da mercadoria.<br>
+
+<br>
+
+Nesta
+etapa, o contribuinte dever&aacute;, ap&oacute;s dispor dos
+dados da opera&ccedil;&atilde;o comercial,&nbsp;preencher
+os campos do arquivo
+da Nota Fiscal Eletr&ocirc;nica.<br>
+
+<br>
+
+De posse do arquivo de NF-e, e ap&oacute;s efetuar
+valida&ccedil;&otilde;es quanto ao correto preenchimento de
+seus campos, o
+contribuinte dever&aacute; proceder a assinatura digital do
+arquivo, atrav&eacute;s
+do padr&atilde;o ICP-Brasil.<br>
+
+<br>
+
+Este arquivo, j&aacute; com a assinatura digital,
+dever&aacute; ser transmitido, pela Internet, para a Secretaria da
+Fazenda, previamente a ocorr&ecirc;ncia do
+fato gerador, ou seja, antes da sa&iacute;da da mercadoria de seu
+estabelecimento.<br>
+
+<br>
+
+A transmiss&atilde;o de dados utilizar&aacute; protocolo de
+seguran&ccedil;a e/ou criptografia, visando a
+prote&ccedil;&atilde;o e sigilo da
+informa&ccedil;&atilde;o.<br>
+
+<br>
+
+A
+Secretaria da Fazenda, ao receber a NF-e pela Internet,
+realizar&aacute;
+automaticamente uma valida&ccedil;&atilde;o de
+recep&ccedil;&atilde;o, momento no qual ser&atilde;o
+avaliados eletronicamente os seguintes aspectos:<br>
+
+<ul>
+  <li>emissor autorizado;</li>
+  <li>assinatura digital do emitente;</li>
+  <li>Integridade&nbsp; (hash
+code);</li>
+  <li>formato dos campos do arquivo
+(esquema XML);</li>
+  <li>regularidade fiscal do
+emitente;</li>
+  <li>n&atilde;o
+exist&ecirc;ncia da NF-e na base de dados da Secretaria da Fazenda
+(duplicidade);</li>
+</ul>
+
+
+
+<br>
+
+Se
+n&atilde;o for detectado nenhum problema na etapa da
+valida&ccedil;&atilde;o de recep&ccedil;&atilde;o, a
+NF-e ser&aacute; recebida e armazenada pela SEFAZ que,
+simultaneamente,
+retornar&aacute; com um protocolo de
+transa&ccedil;&atilde;o com status
+"Autoriza&ccedil;&atilde;o de Uso"
+e disponibilizar&aacute; a NF-e, para consulta pela Internet, pelas
+partes
+envolvidas (emitente e destinat&aacute;rio) e aos terceiros
+legitimamente
+interessados (aqueles que dispuserem da chave de acesso da NF-e).<br>
+
+<br>
+
+Somente ap&oacute;s o
+contribuinte emissor receber o protocolo de
+transa&ccedil;&atilde;o com o status
+"Autoriza&ccedil;&atilde;o de Uso"
+&eacute; que poder&aacute; haver a sa&iacute;da da
+mercadoria de seu
+estabelecimento, podendo ainda ser feita a transmiss&atilde;o da
+NF-e
+autorizada, por qualquer meio, inclusive correio eletr&ocirc;nico,
+ao
+destinat&aacute;rio.<br>
+
+<br>
+
+Para facilitar o controle, o tr&acirc;nsito da
+mercadoria com uma NF-e autorizada, dever&aacute; ser feito
+acompanhado de um
+documento auxiliar, impresso em papel comum, intitulado DANFE
+(Documento Auxiliar da Nota Fiscal Eletr&ocirc;nica). <br>
+
+<br>
+
+O DANFE n&atilde;o &eacute;
+uma nota fiscal, nem substitui uma nota fiscal, servindo apenas como
+instrumento auxiliar para consulta da NF-e por conter impresso a chave
+de acesso da NF-e, permitindo assim que a validade da
+opera&ccedil;&atilde;o e da
+NF-e seja confirmada, pelo detentor deste documento auxiliar,
+atrav&eacute;s
+do site da SEFAZ na Internet.&nbsp; Apesar disto, no primeiro
+momento de
+implanta&ccedil;&atilde;o do projeto, o contribuinte
+destinat&aacute;rio, n&atilde;o emissor de
+NF-e, poder&aacute; escriturar este documento, sendo que sua
+validade fica
+vinculada a efetiva exist&ecirc;ncia da NF-e nos arquivos das
+administra&ccedil;&otilde;es
+tribut&aacute;rias envolvidas no processo.<br>
+
+<br>
+
+O DANFE, conter&aacute; c&oacute;digo de barras unidimensional
+(padr&atilde;o CODE 128C, contendo o n&uacute;mero da chave
+&uacute;nica da NF-e).<br>
+
+<br>
+
+Uma
+NF-e recebida pela SEFAZ representa, simplesmente, que a
+declara&ccedil;&atilde;o de
+uma transa&ccedil;&atilde;o comercial feita pelo contribuinte
+emitente do documento
+foi aceita em termos de formato pela SEFAZ, que a partir deste momento
+poder&aacute; proceder a homologa&ccedil;&atilde;o do
+lan&ccedil;amento da NF-e, conforme
+legisla&ccedil;&atilde;o em vigor.<br>
+
+<br>
+
+Se houver algum problema j&aacute; na
+valida&ccedil;&atilde;o de
+recep&ccedil;&atilde;o, poder&atilde;o ocorrer
+tr&ecirc;s situa&ccedil;&otilde;es distintas:
+interrup&ccedil;&atilde;o da
+comunica&ccedil;&atilde;o, sem um protocolo de
+transa&ccedil;&atilde;o em resposta da SEFAZ;
+resposta da SEFAZ com protocolo de transa&ccedil;&atilde;o com
+status "Rejei&ccedil;&atilde;o" e
+resposta da SEFAZ com protocolo de transa&ccedil;&atilde;o com
+status "N&atilde;o
+Autoriza&ccedil;&atilde;o de Uso".<br>
+
+<br>
+
+A primeira hip&oacute;tese, de interrup&ccedil;&atilde;o da
+comunica&ccedil;&atilde;o, sem um protocolo de
+transa&ccedil;&atilde;o em resposta da SEFAZ,
+ocorrer&aacute; quando, por algum problema de ordem
+t&eacute;cnica na comunica&ccedil;&atilde;o de
+dados, n&atilde;o for poss&iacute;vel a
+recep&ccedil;&atilde;o do arquivo pela SEFAZ. Neste caso, o
+contribuinte dever&aacute; proceder a um novo envio da NF-e para a
+SEFAZ.<br>
+
+<br>
+
+J&aacute;
+a segunda hip&oacute;tese, corresponde a
+situa&ccedil;&atilde;o de rejei&ccedil;&atilde;o da
+NF-e, devido
+a problemas, detectados pela SEFAZ, na valida&ccedil;&atilde;o
+de recep&ccedil;&atilde;o, como:
+assinatura digital inv&aacute;lida, n&atilde;o preenchimento ou
+preenchimento
+inv&aacute;lido do n&uacute;mero da NF-e, exist&ecirc;ncia
+da NF-e na base de dados da
+SEFAZ, etc. Neste caso, o arquivo de NF-e, que foi rejeitado pela
+SEFAZ, n&atilde;o ser&aacute; armazenado na base de consultas
+da SEFAZ, podendo o
+contribuinte corrigir o problema e enviar novamente o arquivo para a
+SEFAZ.<br>
+
+<br>
+
+O protocolo de transa&ccedil;&atilde;o, com status
+"Rejei&ccedil;&atilde;o",
+conter&aacute;,
+al&eacute;m da identifica&ccedil;&atilde;o do status, a
+identifica&ccedil;&atilde;o do motivo da
+rejei&ccedil;&atilde;o
+da NF-e.<br>
+
+<br>
+
+A &uacute;ltima hip&oacute;tese corresponde a
+situa&ccedil;&atilde;o onde a NF-e
+n&atilde;o teve seu uso autorizado pela SEFAZ. Este caso
+ocorrer&aacute; quando
+houver qualquer problemas com a regularidade fiscal do emissor ou
+destinat&aacute;rio.<br>
+
+<br>
+
+Na hip&oacute;tese da n&atilde;o
+autoriza&ccedil;&atilde;o de
+uso, a NF-e &eacute; armazenada para consulta na base de dados da
+SEFAZ com
+este status, n&atilde;o podendo este mesmo n&uacute;mero de
+NF-e ser utilizado
+novamente pelo contribuinte emissor. Da mesma forma, o contribuinte
+emissor n&atilde;o poder&aacute; realizar a sa&iacute;da da
+mercadoria acobertada por uma
+NF-e cuja status seja "N&atilde;o Autorizado
+Uso".<br>
+
+<br>
+
+<img style="width: 624px; height: 383px;" alt="Emiss&atilde;o e Transmiss&atilde;o de NF-e" src="imagens/NF-e-modelo_operacional-emissao_transmissao.PNG"><br>
+
+<br>
+
+Figura 1 - Emiss&atilde;o e Transmiss&atilde;o de NF-e<br>
+
+<br>
+
+<br>
+
+<br>
+
+<span style="font-weight: bold;"><a name="Etapa_3_Consulta_da_NF-e"></a>Etapa 3 - Consulta da NF-e</span><br>
+
+<br>
+
+A
+exist&ecirc;ncia de uma NF-e e sua validade poder&atilde;o ser
+verificadas atrav&eacute;s
+de uma consulta no site da Secretaria de Fazenda da Unidade da
+Federa&ccedil;&atilde;o de origem do emitente da NF-e ou
+atrav&eacute;s do Portal Nacional
+da NF-e, a partir da informa&ccedil;&atilde;o da chave de
+acesso da NF-e. <br>
+
+<br>
+
+A
+chave de acesso da NF-e , que consta impressa no DANFE, &eacute;
+composta
+pelas seguintes informa&ccedil;&otilde;es: c&oacute;digo da
+UF do emitente da NF-e, ano e
+m&ecirc;s de emiss&atilde;o, CNPJ do emissor; modelo do
+documento fiscal, s&eacute;rie,
+n&uacute;mero da NF-e e c&oacute;digo num&eacute;rico que
+comp&otilde;es a chave de acesso.<br>
+
+<br>
+
+O
+c&oacute;digo de acesso &eacute; uma
+seq&uuml;&ecirc;ncia de 10 posi&ccedil;&otilde;es
+num&eacute;ricas, geradas pelo
+emissor da NF-e, no momento de sua emiss&atilde;o e que tem como
+objetivo
+tornar menos previs&iacute;vel a constru&ccedil;&atilde;o
+da chave de&nbsp; acesso da NF-e.<br>
+
+<br>
+
+O
+resultado da consulta da NF-e no site da SEFAZ ou Portal Nacional,
+disponibilizar&aacute; todas as informa&ccedil;&otilde;es
+contidas no arquivo XML por um
+prazo de 180 dias.&nbsp; Ap&oacute;s este per&iacute;odo a
+consulta ser&aacute; mais restrita.&nbsp; <br>
+
+<br>
+
+<img style="width: 624px; height: 383px;" alt="consulta Internet" src="imagens/NF-e-modelo_operacional-consulta_internet.PNG"><br>
+
+<br>
+
+Figura 2 - Consulta NF-e pela Internet<br>
+
+<br>
+
+<span style="font-weight: bold;"></span><br>
+
+<br>
+
+<br>
+
+<span style="font-weight: bold;"><a name="Casos_Particulares:"></a>Casos Particulares:</span><br>
+
+<br>
+
+<span style="font-weight: bold;"><a name="Cancelamento_de_NF-e"></a>Cancelamento de NF-e</span><br>
+
+<br>
+
+Ap&oacute;s
+ter sido recebida pela SEFAZ, uma NF-e poder&aacute; ser objeto de
+cancelamento por pedido do emitente.<br>
+
+<br>
+
+Somente poder&aacute; ser
+cancelada uma NF-e que tenha sido previamente autorizado o seu uso pelo
+Fisco (protocolo "Autoriza&ccedil;&atilde;o de
+Uso") e que n&atilde;o tenha ainda ocorrido o
+fato gerador, ou seja a sa&iacute;da da mercadoria do
+estabelecimento.<br>
+
+<br>
+
+Al&eacute;m
+disso, uma NF-e somente poder&aacute; ser cancelada durante um
+determinado
+per&iacute;odo de tempo, estabelecido pela
+legisla&ccedil;&atilde;o, ap&oacute;s sua
+emiss&atilde;o e
+recep&ccedil;&atilde;o pela SEFAZ.<br>
+
+<br>
+
+Para o cancelamento de uma NF-e, o emissor
+dever&aacute; comunicar-se com a SEFAZ,&nbsp;enviando
+uma mensagem no formato XML (extensible markup language), com
+assinatura digital, solicitando o cancelamento de uma NF-e e
+identificando-a atrav&eacute;s da informa&ccedil;&atilde;o
+de sua respectiva chave de acesso.<br>
+
+<br>
+
+Se
+n&atilde;o houver restri&ccedil;&atilde;o quanto ao pedido
+de cancelamento, a SEFAZ
+responder&aacute; ao contribuinte atrav&eacute;s de protocolo
+de transa&ccedil;&atilde;o com status
+"Cancelamento de NF-e".<br>
+
+<br>
+
+Ao se realizar uma consulta desta NF-e no site da SEFAZ, a mesma
+resultar&aacute; com informa&ccedil;&atilde;o quanto ao seu
+cancelamento.<br>
+
+<br>
+
+<span style="font-weight: bold;"><br>
+
+<a name="Consulta_Status_de_NF-e"></a>Consulta
+Status de NF-e</span><br>
+
+<br>
+
+O emissor de NF-e ter&aacute; a sua
+disposi&ccedil;&atilde;o, um servi&ccedil;o de consulta ao
+status de uma NF-e.<br>
+
+<br>
+
+O objetivo deste servi&ccedil;o &eacute; permitir ao emissor
+certificar-se da situa&ccedil;&atilde;o de uma NF-e que tenha
+emitido e enviado para a SEFAZ.<br>
+
+<br>
+
+Esta
+consulta ser&aacute; feita atrav&eacute;s do envio para a SEFAZ
+de uma mensagem no
+formato XML, solicitando o status de uma NF-e, informando sua
+correspondente chave de acesso.<br>
+
+<br>
+
+A SEFAZ responder&aacute; a consulta
+por interm&eacute;dio de protocolo de
+transa&ccedil;&atilde;o, identificando a NF-e por sua
+chave de acesso e trazendo o hist&oacute;rico de status desta NF-e
+com o
+correspondente momento de registro (data/hora/minuto/segundo) na base
+de dados da SEFAZ.<br>
+
+<br>
+<br>
+<br><br>
+
+</body>
+</html>

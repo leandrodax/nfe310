@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EMITENTE>
+	<A tagXml="sistema" min="1" max="*">
+		<campo xmlType="attrib" nome="versao">
+			<tipoValidacao>
+				<notNull message="emitente.notNull"/>
+			</tipoValidacao>
+		</campo>
+		<campo xmlType="attrib" nome="xmlns" xmlOnly="true" fixedValue="http://www.portalfiscal.inf.br/nfe"/>
+		<C tagXml="emit" min="1" max="*">
+			<tag nome="$tpDoc" campos="nrDocumento" xmlPos="0"/>
+			<tag nome="enderEmit" campos="xLgr,nro,xCpl,xBairro,cMun,xMun,UF,CEP,cPais,xPais,fone" xmlPos="4"/>
+			<campo nome="tpDoc">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<validValues values="CNPJ,CPF" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="text" nome="nrDocumento" xmlPos="1">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<pattern regex="[0-9]{14}|[0-9]{11}" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xNome" xmlPos="2">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<length min="2" max="60" message="emitente.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xFant" xmlPos="3">
+				<tipoValidacao>
+					<length min="1" max="60" message="emitente.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="IE" xmlPos="16">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<pattern regex="[0-9]{2,14}" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="IEST" xmlPos="17">
+				<tipoValidacao>
+					<pattern regex="[0-9]{2,14}" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="IM" xmlPos="18">
+				<tipoValidacao>
+					<pattern regex="[0-9]{1,15}" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="CNAE" xmlPos="19">
+				<tipoValidacao>
+					<pattern regex="[0-9]{7}" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="CRT" xmlPos="20">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<validValues values="1,2,3" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xLgr" xmlPos="0">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<length min="2" max="60" message="emitente.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="nro" xmlPos="1">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<length min="1" max="60" message="emitente.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xCpl" xmlPos="2">
+				<tipoValidacao>
+					<length min="1" max="60" message="emitente.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xBairro" xmlPos="3">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<length min="2" max="60" message="emitente.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="cMun" xmlPos="4">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<pattern regex="[0-9]{7}" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xMun" xmlPos="5">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<length min="2" max="60" message="emitente.tamanhoInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="UF" xmlPos="6">
+				<tipoValidacao>
+					<notNull message="emitente.notNull"/>
+					<validValues values="AC,AL,AM,AP,BA,CE,DF,ES,GO,MA,MG,MS,MT,PA,PB,PE,PI,PR,RJ,RN,RO,RR,RS,SC,SE,SP,TO" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="CEP" xmlPos="7">
+				<tipoValidacao>
+					<pattern regex="[0-9]{8}" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="cPais" xmlPos="8">
+				<tipoValidacao>
+					<validValues values="1058" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="xPais" xmlPos="9">
+				<tipoValidacao>
+					<validValues values="Brasil,BRASIL" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+			<campo xmlType="tag" nome="fone" xmlPos="10">
+				<tipoValidacao>
+					<pattern regex="[0-9]{1,14}" message="emitente.valorInvalido"/>
+				</tipoValidacao>
+			</campo>
+		</C>
+	</A>
+</EMITENTE>

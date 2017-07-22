@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<nfe-emissior xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="view-controller.xsd">
+	
+	<!-- EXAMPLE -->
+	<view>
+		<name>br.gov.sp.fazenda.dsen.view.MeuExemploGUI</name>
+		<controller>
+			<name>br.gov.sp.fazenda.dsen.controller.MeuExemploController</name>
+		</controller>
+	</view>
+</nfe-emissior>
+

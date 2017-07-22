@@ -1,0 +1,217 @@
+2100204|Alcantara
+2100832|Apicum-Acu
+2101301|Bacuri
+2101350|Bacurituba
+2101905|Bequimao
+2102408|Cajapio
+2103109|Cedral
+2103125|Central do Maranhao
+2103703|Cururupu
+2104909|Guimaraes
+2106805|Mirinzal
+2109056|Porto Rico do Maranhao
+2111789|Serrano do Maranhao
+2107506|Paco do Lumiar
+2109452|Raposa
+2111201|Sao Jose de Ribamar
+2111300|Sao Luis
+2101103|Axixa
+2101251|Bacabeira
+2102374|Cachoeira Grande
+2105104|Icatu
+2107100|Morros
+2109205|Presidente Juscelino
+2109601|Rosario
+2110203|Santa Rita
+2101707|Barreirinhas
+2105005|Humberto de Campos
+2108058|Paulino Neves
+2109403|Primeira Cruz
+2110278|Santo Amaro do Maranhao
+2112506|Tutoia
+2100709|Anajatuba
+2101004|Arari
+2101772|Bela Vista do Maranhao
+2102507|Cajari
+2103554|Conceicao do Lago-Acu
+2105153|Igarape do Meio
+2106508|Matinha
+2106904|Moncao
+2107456|Olinda Nova do Maranhao
+2107605|Palmeirandia
+2108256|Pedro do Rosario
+2108306|Penalva
+2108405|Peri Mirim
+2108603|Pinheiro
+2109270|Presidente Sarney
+2109809|Santa Helena
+2110500|Sao Bento
+2111003|Sao Joao Batista
+2111706|Sao Vicente Ferrer
+2112803|Viana
+2112902|Vitoria do Mearim
+2102705|Cantanhede
+2105401|Itapecuru Mirim
+2106631|Matoes do Norte
+2106755|Miranda do Norte
+2107209|Nina Rodrigues
+2108801|Pirapemas
+2109304|Presidente Vargas
+2112704|Vargem Grande
+2100550|Amapa do Maranhao
+2101970|Boa Vista do Gurupi
+2102606|Candido Mendes
+2102903|Carutapera
+2103158|Centro do Guilherme
+2103174|Centro Novo do Maranhao
+2104305|Godofredo Viana
+2104677|Governador Nunes Freire
+2105658|Junco do Maranhao
+2106201|Luis Domingues
+2106326|Maracacume
+2106375|Maranhaozinho
+2112407|Turiacu
+2112456|Turilandia
+2100402|Altamira do Maranhao
+2100477|Alto Alegre do Pindare
+2100873|Araguana
+2102002|Bom Jardim
+2102036|Bom Jesus das Selvas
+2102150|Brejo de Areia
+2102325|Buriticupu
+2104651|Governador Newton Bello
+2105708|Lago da Pedra
+2105963|Lagoa Grande do Maranhao
+2106359|Maraja do Sena
+2107357|Nova Olinda do Maranhao
+2108108|Paulo Ramos
+2108504|Pindare-Mirim
+2109239|Presidente Medici
+2109908|Santa Ines
+2110005|Santa Luzia
+2110039|Santa Luzia do Parua
+2111029|Sao Joao do Caru
+2112274|Tufilandia
+2113009|Vitorino Freire
+2114007|Ze Doca
+2100055|Acailandia
+2100600|Amarante do Maranhao
+2102358|Buritirana
+2103257|Cidelandia
+2103752|Davinopolis
+2104552|Governador Edison Lobao
+2105302|Imperatriz
+2105427|Itinga do Maranhao
+2105500|Joao Lisboa
+2105989|Lajeado Novo
+2107001|Montes Altos
+2109551|Ribamar Fiquene
+2110856|Sao Francisco do Brejao
+2111532|Sao Pedro da Agua Branca
+2111763|Senador La Rocque
+2112852|Vila Nova dos Martirios
+2101202|Bacabal
+2101939|Bernardo do Mearim
+2102077|Bom Lugar
+2104008|Esperantinopolis
+2105203|Igarape Grande
+2105807|Lago do Junco
+2105906|Lago Verde
+2105948|Lago dos Rodrigues
+2106003|Lima Campos
+2107407|Olho d'Agua das Cunhas
+2108207|Pedreiras
+2108702|Pio XII
+2108900|Pocao de Pedras
+2110302|Santo Antonio dos Lopes
+2111409|Sao Luis Gonzaga do Maranhao
+2111508|Sao Mateus do Maranhao
+2111631|Sao Raimundo do Doca Bezerra
+2111672|Sao Roberto
+2111722|Satubinha
+2112233|Trizidela do Vale
+2100956|Arame
+2101608|Barra do Corda
+2104081|Fernando Falcao
+2104099|Formosa da Serra Negra
+2104800|Grajau
+2105351|Itaipava do Grajau
+2105476|Jenipapo dos Vieiras
+2105609|Joselandia
+2109759|Santa Filomena do Maranhao
+2111805|Sitio Novo
+2112308|Tuntum
+2103802|Dom Pedro
+2104206|Fortuna
+2104404|Goncalves Dias
+2104503|Governador Archer
+2104602|Governador Eugenio Barros
+2104628|Governador Luiz Rocha
+2104701|Graca Aranha
+2109106|Presidente Dutra
+2110708|Sao Domingos do Maranhao
+2111250|Sao Jose dos Basilios
+2111748|Senador Alexandre Costa
+2100154|Agua Doce do Maranhao
+2100907|Araioses
+2106300|Magalhaes de Almeida
+2110104|Santa Quiteria do Maranhao
+2110237|Santana do Maranhao
+2110609|Sao Bernardo
+2100808|Anapurus
+2101731|Belagua
+2102101|Brejo
+2102200|Buriti
+2103208|Chapadinha
+2106409|Mata Roma
+2106672|Milagres do Maranhao
+2110401|Sao Benedito do Rio Preto
+2112605|Urbano Santos
+2100436|Alto Alegre do Maranhao
+2102754|Capinzal do Norte
+2103307|Codo
+2103604|Coroata
+2108454|Peritoro
+2112100|Timbiras
+2100105|Afonso Cunha
+2100303|Aldeias Altas
+2103406|Coelho Neto
+2103901|Duque Bacelar
+2102309|Buriti Bravo
+2103000|Caxias
+2106607|Matoes
+2107803|Parnarama
+2111078|Sao Joao do Soter
+2112209|Timon
+2101509|Barao de Grajau
+2103505|Colinas
+2105450|Jatoba
+2105922|Lagoa do Mato
+2106706|Mirador
+2107308|Nova Iorque
+2107704|Paraibano
+2107902|Passagem Franca
+2108009|Pastos Bons
+2110906|Sao Francisco do Maranhao
+2111102|Sao Joao dos Patos
+2111904|Sucupira do Norte
+2111953|Sucupira do Riachao
+2102556|Campestre do Maranhao
+2102804|Carolina
+2104057|Estreito
+2109007|Porto Franco
+2111052|Sao Joao do Paraiso
+2111573|Sao Pedro dos Crentes
+2100501|Alto Parnaiba
+2101400|Balsas
+2104073|Feira Nova do Maranhao
+2109502|Riachao
+2112001|Tasso Fragoso
+2101806|Benedito Leite
+2104107|Fortaleza dos Nogueiras
+2106102|Loreto
+2107258|Nova Colinas
+2109700|Sambaiba
+2110658|Sao Domingos do Azeitao
+2110807|Sao Felix de Balsas
+2111607|Sao Raimundo das Mangabeiras
